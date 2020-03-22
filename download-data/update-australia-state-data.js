@@ -53,6 +53,10 @@ const updateAustraliaStateData = () => {
     }, {
       state: 'Northern Territory',
       code: 'nt'
+    }, 
+    {
+      state: 'Australian Capital Territory',
+      code: 'act'
     }];
   
     states.forEach(value => {
