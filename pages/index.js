@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { ResponsiveLine } from '@nivo/line'
-import data from "../data/australia/nsw.json";
+import data from "../data/australia/confirmed.json";
 
 function padDigits(number, digits) {
   return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
@@ -10,19 +10,17 @@ const dateFormat = (date) => {
   return `2020-${padDigits(str[0], 2)}-${padDigits(str[1], 2)}`;
 };
 
-const LineGraph = ({ data, yValues }) => (
+const LineGraph = ({ data }) => (
   <ResponsiveLine
         data={data}
         margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        curve='monotoneX'
         xScale={{
           type: 'time',
           format: '%Y-%m-%d',
           precision: 'day'
         }}
         xFormat="time:%Y-%m-%d"
-        // xScale={{type: 'point'}}
-        // yScale={{ type: 'linear', min: 0, max: 'auto', stacked: false, reverse: false }}
-        // yScale={{ type: 'point' }}
         yScale={{
           type: 'linear',
           stacked: false,
@@ -31,19 +29,11 @@ const LineGraph = ({ data, yValues }) => (
         axisRight={null}
         axisBottom={{
             orient: 'bottom',
-            // tickSize: 5,
-            // tickPadding: 5,
-            // tickRotation: 0,
-            // tickValues: 'every day',
-            // legend: 'date',
-            // legendOffset: 36,
-            // legendPosition: 'middle'
             format: "%Y-%m-%d",
             legend: "day",
             legendOffset: -80,
             legendPosition: "middle"
         }}
-        // gridXValues={yValues}
         axisLeft={{
             orient: 'left',
             tickSize: 5,
@@ -53,7 +43,7 @@ const LineGraph = ({ data, yValues }) => (
             legendOffset: -40,
             legendPosition: 'middle'
         }}
-        // colors={{ scheme: 'nivo' }}
+        colors={{ scheme: 'category10' }}
         pointSize={2}
         pointColor={{ theme: 'background' }}
         pointBorderWidth={2}
@@ -90,7 +80,7 @@ const LineGraph = ({ data, yValues }) => (
     />
 );
 
-const Home = ({ nsw, yValues}) => (
+const Home = ({ confirmed }) => (
   <div className="container">
     <Head>
       <title>Australia COVID-19</title>
@@ -99,7 +89,7 @@ const Home = ({ nsw, yValues}) => (
 
     <main>
       <div style={{ height: '400px', width: '900px'}}>
-        <LineGraph data={nsw} yValues={yValues} />
+        <LineGraph data={confirmed} />
       </div>
     </main>
 
@@ -156,7 +146,7 @@ const Home = ({ nsw, yValues}) => (
       }
 
       .title a:hover,
-      .title a:focus,
+      .title a:fos,
       .title a:active {
         text-decoration: underline;
       }
@@ -251,27 +241,26 @@ const Home = ({ nsw, yValues}) => (
 )
 
 export async function getStaticProps() { 
-  const { timeline } = data;
-  const nsw = [
-    {id: 'confirmed', color: "hsl(207, 70%, 50%)", data:[]},
-    {id: 'deaths', color: "hsl(257, 70%, 50%)", data:[]},
-    {id: 'recovered', color: "hsl(322, 70%, 50%)", data:[]}
-]
-const yValues = [];
-  const timelineKey = Object.keys(timeline);
-  timelineKey.forEach((date, index) => {
-    const dFormt = dateFormat(date);
-    nsw[0].data.push({ x: dFormt, y: timeline[date].confirmed});
-    nsw[1].data.push({ x: dFormt, y: timeline[date].deaths});
-    nsw[2].data.push({ x: dFormt, y: timeline[date].recovered});
-    if(index % 4 == 0) {
-      yValues.push(dFormt);
-    }
-  })
+//   const { timeline } = data;
+//   const nsw = [
+//     {id: 'confirmed', color: "hsl(207, 70%, 50%)", data:[]},
+//     {id: 'deaths', color: "hsl(257, 70%, 50%)", data:[]},
+//     {id: 'recovered', color: "hsl(322, 70%, 50%)", data:[]}
+// ]
+// const yValues = [];
+//   const timelineKey = Object.keys(timeline);
+//   timelineKey.forEach((date, index) => {
+//     const dFormt = dateFormat(date);
+//     nsw[0].data.push({ x: dFormt, y: timeline[date].confirmed});
+//     nsw[1].data.push({ x: dFormt, y: timeline[date].deaths});
+//     nsw[2].data.push({ x: dFormt, y: timeline[date].recovered});
+//     if(index % 4 == 0) {
+//       yValues.push(dFormt);
+//     }
+//   })
   return {
     props: {
-      nsw,
-      yValues,
+      confirmed: data,
     },
   }
 }
