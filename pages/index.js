@@ -1,60 +1,110 @@
 import Head from 'next/head'
+import { ResponsiveLine } from '@nivo/line'
+import data from "../data/australia/nsw.json";
 
-const Home = () => (
+function padDigits(number, digits) {
+  return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+}
+const dateFormat = (date) => {
+  const str = date.split('/');
+  return `2020-${padDigits(str[0], 2)}-${padDigits(str[1], 2)}`;
+};
+
+const LineGraph = ({ data, yValues }) => (
+  <ResponsiveLine
+        data={data}
+        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        xScale={{
+          type: 'time',
+          format: '%Y-%m-%d',
+          precision: 'day'
+        }}
+        xFormat="time:%Y-%m-%d"
+        // xScale={{type: 'point'}}
+        // yScale={{ type: 'linear', min: 0, max: 'auto', stacked: false, reverse: false }}
+        // yScale={{ type: 'point' }}
+        yScale={{
+          type: 'linear',
+          stacked: false,
+      }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+            orient: 'bottom',
+            // tickSize: 5,
+            // tickPadding: 5,
+            // tickRotation: 0,
+            // tickValues: 'every day',
+            // legend: 'date',
+            // legendOffset: 36,
+            // legendPosition: 'middle'
+            format: "%Y-%m-%d",
+            legend: "day",
+            legendOffset: -80,
+            legendPosition: "middle"
+        }}
+        // gridXValues={yValues}
+        axisLeft={{
+            orient: 'left',
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'count',
+            legendOffset: -40,
+            legendPosition: 'middle'
+        }}
+        // colors={{ scheme: 'nivo' }}
+        pointSize={2}
+        pointColor={{ theme: 'background' }}
+        pointBorderWidth={2}
+        pointBorderColor={{ from: 'serieColor' }}
+        pointLabel="day"
+        pointLabelYOffset={-12}
+        useMesh={true}
+        legends={[
+            {
+                anchor: 'bottom-right',
+                direction: 'column',
+                justify: false,
+                translateX: 100,
+                translateY: 0,
+                itemsSpacing: 0,
+                itemDirection: 'left-to-right',
+                itemWidth: 80,
+                itemHeight: 20,
+                itemOpacity: 0.75,
+                symbolSize: 12,
+                symbolShape: 'circle',
+                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                effects: [
+                    {
+                        on: 'hover',
+                        style: {
+                            itemBackground: 'rgba(0, 0, 0, .03)',
+                            itemOpacity: 1
+                        }
+                    }
+                ]
+            }
+        ]}
+    />
+);
+
+const Home = ({ nsw, yValues}) => (
   <div className="container">
     <Head>
-      <title>Create Next App</title>
+      <title>Australia COVID-19</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
-
-      <p className="description">
-        Get started by editing <code>pages/index.js</code>
-      </p>
-
-      <div className="grid">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
-
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
-
-        <a
-          href="https://zeit.co/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Deploy &rarr;</h3>
-          <p>
-            Instantly deploy your Next.js site to a public URL with ZEIT Now.
-          </p>
-        </a>
+      <div style={{ height: '400px', width: '900px'}}>
+        <LineGraph data={nsw} yValues={yValues} />
       </div>
     </main>
 
     <footer>
-      <a
-        href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
-      </a>
+      
     </footer>
 
     <style jsx>{`
@@ -199,5 +249,31 @@ const Home = () => (
     `}</style>
   </div>
 )
+
+export async function getStaticProps() { 
+  const { timeline } = data;
+  const nsw = [
+    {id: 'confirmed', color: "hsl(207, 70%, 50%)", data:[]},
+    {id: 'deaths', color: "hsl(257, 70%, 50%)", data:[]},
+    {id: 'recovered', color: "hsl(322, 70%, 50%)", data:[]}
+]
+const yValues = [];
+  const timelineKey = Object.keys(timeline);
+  timelineKey.forEach((date, index) => {
+    const dFormt = dateFormat(date);
+    nsw[0].data.push({ x: dFormt, y: timeline[date].confirmed});
+    nsw[1].data.push({ x: dFormt, y: timeline[date].deaths});
+    nsw[2].data.push({ x: dFormt, y: timeline[date].recovered});
+    if(index % 4 == 0) {
+      yValues.push(dFormt);
+    }
+  })
+  return {
+    props: {
+      nsw,
+      yValues,
+    },
+  }
+}
 
 export default Home

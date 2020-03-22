@@ -6,18 +6,23 @@ const createStateData = (allData, stateName, filename) => {
     const { cases, deaths, recovered } = stateData.timeline;
     const timelineKey = Object.keys(cases);
     timelineKey.forEach((key, index) => {
-        if (index === 0) {
-          timeline[key] = {
-            confirmed: parseInt(cases[key]),
-            deaths: parseInt(deaths[key]),
-            recovered: parseInt(recovered[key]),
-          }
-        } else {
-          timeline[key] = {
-            confirmed: parseInt(cases[key]) - parseInt(cases[timelineKey[index -1]]),
-            deaths: parseInt(deaths[key])- parseInt(deaths[timelineKey[index -1]]),
-            recovered: parseInt(recovered[key])- parseInt(recovered[timelineKey[index -1]]),
-          }
+        // if (index === 0) {
+        //   timeline[key] = {
+        //     confirmed: parseInt(cases[key]),
+        //     deaths: parseInt(deaths[key]),
+        //     recovered: parseInt(recovered[key]),
+        //   }
+        // } else {
+        //   timeline[key] = {
+        //     confirmed: parseInt(cases[key]) - parseInt(cases[timelineKey[index -1]]),
+        //     deaths: parseInt(deaths[key])- parseInt(deaths[timelineKey[index -1]]),
+        //     recovered: parseInt(recovered[key])- parseInt(recovered[timelineKey[index -1]]),
+        //   }
+        // }
+        timeline[key] = {
+          confirmed: parseInt(cases[key]),
+          deaths: parseInt(deaths[key]),
+          recovered: parseInt(recovered[key]),
         }
     })
     stateData.timeline = timeline;
