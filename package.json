@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "download": "node download-data"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "csvtojson": "^2.0.10",
     "next": "9.3.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
