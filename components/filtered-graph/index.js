@@ -1,4 +1,5 @@
 import React from 'react';
+import { styled } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -33,7 +34,7 @@ const states = [{
   code: 'ACT'
 }];
 
-export const FilteredGraph = ({ data }) => {
+export const FilteredGraph = ({ title, data }) => {
   const [graphData, setGraphData] = React.useState(data);
   const [stateChecked, setStateChecked] = React.useState({
     NSW: true,
@@ -64,6 +65,7 @@ export const FilteredGraph = ({ data }) => {
 
   return (
     <>
+      <h3>{title}</h3>
       <FormGroup row>
         {
           states.map((item) => (
