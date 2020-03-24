@@ -11,7 +11,11 @@ const dateFormat = (date) => {
 const objToArray = (obj) => {
   return Object.keys(obj).reduce((acc, key) => {
     const t = dateFormat(key);
-    acc.push({ x: t, y: obj[key]})
+    const month  = new Date(t).getMonth();
+    const thisMonth = new Date().getMonth();
+    if (month == thisMonth) {
+      acc.push({ x: t, y: obj[key]})
+    }
     return acc;
   }, []);
 }
@@ -21,19 +25,6 @@ const createStateData = (allData, stateName, filename) => {
     const { cases, deaths, recovered } = stateData.timeline;
     const timelineKey = Object.keys(cases);
     timelineKey.forEach((key, index) => {
-        // if (index === 0) {
-        //   timeline[key] = {
-        //     confirmed: parseInt(cases[key]),
-        //     deaths: parseInt(deaths[key]),
-        //     recovered: parseInt(recovered[key]),
-        //   }
-        // } else {
-        //   timeline[key] = {
-        //     confirmed: parseInt(cases[key]) - parseInt(cases[timelineKey[index -1]]),
-        //     deaths: parseInt(deaths[key])- parseInt(deaths[timelineKey[index -1]]),
-        //     recovered: parseInt(recovered[key])- parseInt(recovered[timelineKey[index -1]]),
-        //   }
-        // }
         timeline[key] = {
           confirmed: parseInt(cases[key]),
           deaths: parseInt(deaths[key]),
@@ -48,50 +39,51 @@ const createStateData = (allData, stateName, filename) => {
 const updateAustraliaStateData = () => {
     const allData = read('./data/time_series.json');
     const states = [{
-      state: 'New South Wales',
-      code: 'nsw'
+      name: 'New South Wales',
+      code: 'NSW'
     }, {
-      state: 'Victoria',
-      code: 'vic'
+      name: 'Victoria',
+      code: 'VIC'
     }, {
-      state: 'Queensland',
-      code: 'queensland'
+      name: 'Queensland',
+      code: 'QLD'
     },  {
-      state: 'South Australia',
-      code: 'sa'
+      name: 'South Australia',
+      code: 'SA'
     }, 
     {
-      state: 'Western Australia',
-      code: 'wa'
+      name: 'Western Australia',
+      code: 'WA'
     }, 
     {
-      state: 'Tasmania',
-      code: 'tas'
+      name: 'Tasmania',
+      code: 'TAS'
     }, {
-      state: 'Northern Territory',
-      code: 'nt'
+      name: 'Northern Territory',
+      code: 'NT'
     }, 
     {
-      state: 'Australian Capital Territory',
-      code: 'act'
+      name: 'Australian Capital Territory',
+      code: 'ACT'
     }];
+
     const cArray = [];
     const dArray = [];
     const rArray = [];
     states.forEach(value => {
-      const { cases, deaths, recovered } = createStateData(allData, value.state, value.code);
+      const { cases, deaths, recovered } = createStateData(allData, value.name, value.code);
       const c = {
-        id: value.state,
+        id: value.code,
         data: objToArray(cases),
       };
       cArray.push(c);
       const d = {
-        id: value.state,
+        id: value.code,
         data: objToArray(deaths),
       };
       dArray.push(d);
       const r = {
-        id: value.state,
+        id: value.code,
         data: objToArray(recovered),
       };
       rArray.push(r);

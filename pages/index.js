@@ -1,86 +1,12 @@
-import Head from 'next/head'
-import { ResponsiveLine } from '@nivo/line'
-import data from "../data/australia/confirmed.json";
+import Head from 'next/head';
+import Chip from '@material-ui/core/Chip';
+import { FilteredGraph } from '../components/filtered-graph';
+import confirmed from "../data/australia/confirmed.json";
+import deaths from "../data/australia/deaths.json";
+import recovered from "../data/australia/recovered.json";
 
-function padDigits(number, digits) {
-  return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
-}
-const dateFormat = (date) => {
-  const str = date.split('/');
-  return `2020-${padDigits(str[0], 2)}-${padDigits(str[1], 2)}`;
-};
-
-const LineGraph = ({ data }) => (
-  <ResponsiveLine
-        data={data}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        curve='monotoneX'
-        xScale={{
-          type: 'time',
-          format: '%Y-%m-%d',
-          precision: 'day'
-        }}
-        xFormat="time:%Y-%m-%d"
-        yScale={{
-          type: 'linear',
-          stacked: false,
-      }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-            orient: 'bottom',
-            format: "%Y-%m-%d",
-            legend: "day",
-            legendOffset: -80,
-            legendPosition: "middle"
-        }}
-        axisLeft={{
-            orient: 'left',
-            tickSize: 5,
-            tickPadding: 5,
-            tickRotation: 0,
-            legend: 'count',
-            legendOffset: -40,
-            legendPosition: 'middle'
-        }}
-        colors={{ scheme: 'category10' }}
-        pointSize={2}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabel="day"
-        pointLabelYOffset={-12}
-        useMesh={true}
-        legends={[
-            {
-                anchor: 'bottom-right',
-                direction: 'column',
-                justify: false,
-                translateX: 100,
-                translateY: 0,
-                itemsSpacing: 0,
-                itemDirection: 'left-to-right',
-                itemWidth: 80,
-                itemHeight: 20,
-                itemOpacity: 0.75,
-                symbolSize: 12,
-                symbolShape: 'circle',
-                symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemBackground: 'rgba(0, 0, 0, .03)',
-                            itemOpacity: 1
-                        }
-                    }
-                ]
-            }
-        ]}
-    />
-);
-
-const Home = ({ confirmed }) => (
+const Home = ({ confirmed, deaths, recovered }) => {
+  return (
   <div className="container">
     <Head>
       <title>Australia COVID-19</title>
@@ -89,7 +15,12 @@ const Home = ({ confirmed }) => (
 
     <main>
       <div style={{ height: '400px', width: '900px'}}>
-        <LineGraph data={confirmed} />
+        <Chip label="Confirmed" />
+        <FilteredGraph data={confirmed} />
+        <Chip label="Deaths" />
+        <FilteredGraph data={deaths} />
+        <Chip label="Recovered" />
+        <FilteredGraph data={recovered} />
       </div>
     </main>
 
@@ -238,29 +169,15 @@ const Home = ({ confirmed }) => (
       }
     `}</style>
   </div>
-)
+);
+}
 
 export async function getStaticProps() { 
-//   const { timeline } = data;
-//   const nsw = [
-//     {id: 'confirmed', color: "hsl(207, 70%, 50%)", data:[]},
-//     {id: 'deaths', color: "hsl(257, 70%, 50%)", data:[]},
-//     {id: 'recovered', color: "hsl(322, 70%, 50%)", data:[]}
-// ]
-// const yValues = [];
-//   const timelineKey = Object.keys(timeline);
-//   timelineKey.forEach((date, index) => {
-//     const dFormt = dateFormat(date);
-//     nsw[0].data.push({ x: dFormt, y: timeline[date].confirmed});
-//     nsw[1].data.push({ x: dFormt, y: timeline[date].deaths});
-//     nsw[2].data.push({ x: dFormt, y: timeline[date].recovered});
-//     if(index % 4 == 0) {
-//       yValues.push(dFormt);
-//     }
-//   })
   return {
     props: {
-      confirmed: data,
+      confirmed,
+      deaths,
+      recovered,
     },
   }
 }
