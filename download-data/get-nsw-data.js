@@ -29,9 +29,9 @@ const getNSWData = async () => {
     }
     if ( i == 1 ) {
       sourcesOfInfection = [2, 4, 6, 8].reduce((acc, index) => {
-        const name = el.children[1].children[index].children[1].children[0].data;
+        const label = el.children[1].children[index].children[1].children[0].data;
         const value = el.children[1].children[index].children[3].children[0].data
-        acc.push({ name, value});
+        acc.push({ id: label, label, value});
         return acc;
       }, [])
     }

@@ -12,6 +12,7 @@
     "@material-ui/core": "^4.9.7",
     "@nivo/bar": "^0.61.1",
     "@nivo/line": "^0.61.1",
+    "@nivo/pie": "^0.61.1",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "csvtojson": "^2.0.10",
