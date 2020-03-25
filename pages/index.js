@@ -32,6 +32,7 @@ const Home = ({
         <h2>NSW - Confirmed cases to date</h2>
         <h3>By sex and age group</h3>
         <BarGraph data={nswSexAndAgeGroup} />
+        <h3>By source of infections</h3>
         <PieChart data={sourceOfInfection} />
       </div>
     </main>
