@@ -1,6 +1,6 @@
 import { ResponsiveBar } from '@nivo/bar';
 
-export const BarGraph = ({ data /* see data tab */ }) => (
+export const NSWSexAgeGroup = ({ data }) => (
     <ResponsiveBar
         data={data}
         keys={[ 'female', 'male' ]}
@@ -8,42 +8,9 @@ export const BarGraph = ({ data /* see data tab */ }) => (
         margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
         padding={0.3}
         groupMode="grouped"
-        colors={{ scheme: 'nivo' }}
-        defs={[
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: '#38bcb2',
-                size: 4,
-                padding: 1,
-                stagger: true
-            },
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: '#eed312',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
-        ]}
-        // fill={[
-        //     {
-        //         match: {
-        //             id: 'fries'
-        //         },
-        //         id: 'dots'
-        //     },
-        //     {
-        //         match: {
-        //             id: 'sandwich'
-        //         },
-        //         id: 'lines'
-        //     }
-        // ]}
+        colors={{ scheme: 'pastel1' }}
         borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+        maxValue={150}
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -62,8 +29,6 @@ export const BarGraph = ({ data /* see data tab */ }) => (
             legendPosition: 'middle',
             legendOffset: -40
         }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
         labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
         legends={[
             {
@@ -89,8 +54,6 @@ export const BarGraph = ({ data /* see data tab */ }) => (
                 ]
             }
         ]}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
+        enableLabel={false}
     />
 )

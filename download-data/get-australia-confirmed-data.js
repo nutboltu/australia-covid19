@@ -13,33 +13,22 @@ const getAusConfirmedData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  
+  let ausConfirmedCases = [];
   html(".health-table__responsive")
-    .filter((i, el) => {
-      console.log('i', i, 'el', el.children[0].children[2].children[3].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[3].children[3].children[1].children[0].data)
+    .filter((_, el) => {
+      const tbody = el.children[0].children[2];
+      ausConfirmedCases = [3, 5, 7, 9, 11, 13, 15, 17, 19]
+        .reduce((acc, index) => {
+          const location = tbody.children[index].children[1].children[1].children[0].data || 'Total';
+          const cases =  index === 3 ?
+            tbody.children[index].children[3].children[1].children[0].data
+            : tbody.children[index].children[3].children[0].data;
+          acc.push({ location, cases });
+          return acc;
+      }, []);
 
-      console.log('i', i, 'el', el.children[0].children[2].children[5].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[5].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[7].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[7].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[9].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[9].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[11].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[11].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[13].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[13].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[15].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[15].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[17].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[17].children[3].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[19].children[1].children[1].children[0].data)
-      console.log('i', i, 'el', el.children[0].children[2].children[19].children[3].children[0].data)
-      
   });
-  // write('./data/australia//nsw/cases.json', JSON.stringify(nswCases));
-  // write('./data/australia//nsw/sources-of-infection.json', JSON.stringify(sourcesOfInfection));
-  // write('./data/australia//nsw/sex-age-group.json', JSON.stringify(sexAndAgeGroup));
+  write('./data/aus_confirmed.json', JSON.stringify(ausConfirmedCases));
 }
 
 module.exports = getAusConfirmedData();
