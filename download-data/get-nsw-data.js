@@ -5,7 +5,7 @@ const { write } = require('./file-manager');
 const getNSWData = async () => {
   let response;
   try {
-    response = await axios.get("https://www.health.nsw.gov.au/news/Pages/20200325_00.aspx");
+    response = await axios.get("https://www.health.nsw.gov.au/news/Pages/20200326_00.aspx");
     if (response.status !== 200) {
       console.log("ERROR");
     }
