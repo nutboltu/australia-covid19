@@ -7,8 +7,8 @@ var base = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/css
 const downloadTimeSeries = async () => {
   let confirmedResponse, deathsResponse, recResponse;
   try {
-    confirmedResponse = await axios.get(`${base}time_series_19-covid-Confirmed.csv`);
-    deathsResponse = await axios.get(`${base}time_series_19-covid-Deaths.csv`);
+    confirmedResponse = await axios.get(`${base}time_series_covid19_confirmed_global.csv`);
+    deathsResponse = await axios.get(`${base}time_series_covid19_deaths_global.csv`);
     recResponse = await axios.get(`${base}time_series_19-covid-Recovered.csv`);
   } catch (err) {
       console.log(err)
