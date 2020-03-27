@@ -9,7 +9,7 @@ const columns = [
     title: 'Location',
     dataIndex: 'location',
     key: 'location',
-    width: 250,
+    width: 150,
     render: text => <span>{text}</span>,
   },
   {
@@ -50,7 +50,7 @@ const columns = [
   },
 ];
 
-export const AusCases = () => {
+export const AustraliaContainer = () => {
   const total = ausCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
       acc.last_24h_confirmed += item.last_24h_confirmed;
@@ -83,11 +83,11 @@ export const AusCases = () => {
 
   return (
       <>
-        <Divider orientation="left">
-            Australia Overall Cases
+        <Divider orientation="left" style={{ fontSize: '28px', color: '#2295ff'}}>
+            Australia
         </Divider>
-        <Row gutter={16}>
-            <Col span={10}>
+        <Row>
+            <Col md={24} lg={13} xl={11}>
                 <AustraliaMap
                     fill="#ffcb03"
                     stroke="#ffffff"
@@ -97,7 +97,7 @@ export const AusCases = () => {
                     customize={mapStyling}
                 />
             </Col>
-            <Col span={12}>
+            <Col md={24} lg={10} xl={11}>
                 <Table
                     columns={columns}
                     dataSource={ausCasesData}
@@ -105,6 +105,7 @@ export const AusCases = () => {
                     bordered
                     tableLayout='fixed'
                     size='small'
+                    style={{fontSize: 8 }}
                     summary={() => (
                         <tr>
                         <th>Total</th>

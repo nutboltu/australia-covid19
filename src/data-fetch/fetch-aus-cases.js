@@ -3,7 +3,7 @@
 const axios = require('axios');
 const csv = require('csvtojson');
 const { stateNames } = require('../constants/states');
-const fetchLast24hAusCases = require('./last-24h-aus-cases');
+const fetchLast24hAusCases = require('./fetch-last-24h-aus-cases');
 const { write } = require('./file-manager');
 
 var base = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports";
