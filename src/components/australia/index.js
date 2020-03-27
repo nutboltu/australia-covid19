@@ -1,8 +1,8 @@
-import { Table, Row, Col, Divider } from 'antd';
+import { Table, Row, Col } from 'antd';
 import { states } from '../../constants/states';
 import AustraliaMap from 'react-australia-map';
+import { MainDivider } from '../main-divider';
 import ausCasesData from '../../data/aus_cases.json';
-
 
 const columns = [
   {
@@ -83,9 +83,7 @@ export const AustraliaContainer = () => {
 
   return (
       <>
-        <Divider orientation="left" style={{ fontSize: '28px', color: '#2295ff'}}>
-            Australia
-        </Divider>
+        <MainDivider title='Australia' />
         <Row>
             <Col md={24} lg={13} xl={11}>
                 <AustraliaMap

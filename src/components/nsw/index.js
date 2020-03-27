@@ -1,4 +1,5 @@
-import { Row, Col, Divider } from 'antd';
+import { Row, Col } from 'antd';
+import { MainDivider } from '../main-divider';
 import { NSWCasesTable } from './nsw-cases-table';
 import { NSWConfirmedCasesTable } from './nsw-confirmed-cases-table';
 import { NSWSexAgeGroup } from './nsw-sex-age-group';
@@ -7,10 +8,8 @@ import nswSexAndAgeGroupData from '../../data/nsw/sex_age_group.json';
 export const NSWContainer = () => {
   return (
       <>
-        <Divider orientation="left" style={{ fontSize: '28px', color: '#2295ff'}}>
-            New South Wales
-        </Divider>
-        <Row gutter={16}>
+        <MainDivider title='New South Wales' />
+        <Row gutter={16} offset={1}>
             <Col xs={24} lg={13} xl={11}>
                 <NSWCasesTable />
             </Col>
