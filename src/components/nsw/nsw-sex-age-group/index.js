@@ -15,9 +15,11 @@ const colors = {
 const getColors = (bar) => colors[bar.id];
 
 export const NSWSexAgeGroup = ({ data }) => {
+    let maxValue = 0;
     const numbers = data.reduce((acc, item) => {
         acc.male += item.male;
         acc.female += item.female;
+        maxValue = Math.max(Math.max(item.male, item.female), maxValue);
         return acc;
     }, {male: 0, female: 0});
     const total = numbers.male + numbers.female;
@@ -51,7 +53,7 @@ export const NSWSexAgeGroup = ({ data }) => {
                 groupMode="grouped"
                 colors={getColors}
                 borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-                maxValue={150}
+                maxValue={maxValue}
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{

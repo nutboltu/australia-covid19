@@ -31,7 +31,7 @@ const App = () => {
             19
           </span>
         </Header>
-        <Content style={{ marginBottom: '80px' }}>
+        <Content style={{ marginBottom: '100px' }}>
           <AustraliaContainer />
           <NSWContainer />
         </Content>

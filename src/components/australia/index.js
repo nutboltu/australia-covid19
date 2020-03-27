@@ -1,4 +1,4 @@
-import { Table, Row, Col } from 'antd';
+import { Table, Row, Col, Divider, Tag } from 'antd';
 import { states } from '../../constants/states';
 import AustraliaMap from 'react-australia-map';
 import { MainDivider } from '../main-divider';
@@ -56,8 +56,8 @@ export const AustraliaContainer = () => {
       acc.last_24h_confirmed += item.last_24h_confirmed;
       acc.deaths += item.deaths;
       acc.last_24h_deaths += item.last_24h_deaths;
-      acc.deaths += item.deaths;
-      acc.last_24h_deaths += item.last_24h_deaths;
+      acc.recovered += item.recovered;
+      acc.last_24h_recovered += item.last_24h_recovered;
     return acc;
   }, {
       confirmed: 0,
@@ -75,7 +75,8 @@ export const AustraliaContainer = () => {
         showLabels: true,
         label: {
           name: ` ${state.code}\n ${item.confirmed} (${per.toFixed(2)}%)`,
-          fontSize: 5,
+          fontSize: 6,
+          fill: 'black'
         }
     }
     return acc;
@@ -96,6 +97,9 @@ export const AustraliaContainer = () => {
                 />
             </Col>
             <Col md={24} lg={10} xl={11}>
+                <Divider orientation='center'>
+                  Current Status*
+                </Divider>
                 <Table
                     columns={columns}
                     dataSource={ausCasesData}
@@ -107,11 +111,23 @@ export const AustraliaContainer = () => {
                     summary={() => (
                         <tr>
                         <th>Total</th>
-                        <th>{total.confirmed}</th>
+                        <th>
+                          <Tag color='geekblue'>
+                              {total.confirmed}
+                          </Tag>
+                        </th>
                         <th>{total.last_24h_confirmed}</th>
-                        <th>{total.deaths}</th>
+                        <th>
+                          <Tag color='volcano'>
+                              {total.deaths}
+                          </Tag>
+                        </th>
                         <th>{total.last_24h_deaths}</th>
-                        <th>{total.recovered}</th>
+                        <th>
+                          <Tag color='green'>
+                              {total.recovered}
+                          </Tag>
+                        </th>
                         <th>{total.last_24h_recovered}</th>
                         </tr>
                         ) }

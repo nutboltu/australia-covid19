@@ -9,8 +9,8 @@ export const NSWContainer = () => {
   return (
       <>
         <MainDivider title='New South Wales' />
-        <Row gutter={16} offset={1}>
-            <Col xs={24} lg={13} xl={11}>
+        <Row gutter={16}>
+            <Col offset={1} xs={24} lg={13} xl={11}>
                 <NSWCasesTable />
             </Col>
             <Col xs={24} lg={10} xl={11}>
