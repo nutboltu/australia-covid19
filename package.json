@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "download": "node download-data"
+    "download": "node src/data-fetch"
   },
   "dependencies": {
     "@nivo/bar": "^0.61.1",

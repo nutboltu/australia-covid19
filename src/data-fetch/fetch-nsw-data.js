@@ -88,4 +88,4 @@ const fetchNSWData = async () => {
   write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
 }
 
-module.exports = fetchNSWData();
+module.exports = fetchNSWData;

@@ -40,4 +40,4 @@ const fetchLatestAusCases = async () => {
   write('./src/data/aus_cases.json', JSON.stringify(ausCases));
 }
 
-module.exports = fetchLatestAusCases();
+module.exports = fetchLatestAusCases;
