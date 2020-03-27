@@ -8,7 +8,7 @@ import deaths from "../data/australia/deaths.json";
 import recovered from "../data/australia/recovered.json";
 import nswSexAndAgeGroup from "../data/australia/nsw/sex-age-group.json";
 import sourceOfInfection from "../data/australia/nsw/sources-of-infection.json";
-
+import { AusCases } from '../src/components/aus-cases';
 const App = ({
   confirmed,
   deaths,
@@ -38,7 +38,8 @@ const App = ({
         <BarGraph data={nswSexAndAgeGroup} />
       </div>
       <ConfirmedTable /> */}
-      <Home />
+      <AusCases />
+      {/* <Home /> */}
     </main>
 
     <footer>
