@@ -13,16 +13,19 @@ const App = () => {
     </Head>
 
     <main>
-      <Layout style={{ backgroundColor: 'white' }}>
+      <Layout style={{
+        backgroundColor: 'white'
+      }}>
         <Header
           style={{
             fontSize: '20px',
-            color: '#ddd',
+            color: '#001529',
             fontFamily: 'initial',
+            backgroundColor: 'white'
           }}
         >
           AUS
-          <span style={{ color: 'yellow'}}>TRALIA</span>
+          <span style={{ color: '#ffd700'}}>TRALIA</span>
           {` `}
           COVID
           <span style={{
@@ -35,7 +38,9 @@ const App = () => {
           <AustraliaContainer />
           <NSWContainer />
         </Content>
-        <Footer></Footer>
+        <Footer
+          style={{backgroundColor: 'white'}}
+        ></Footer>
       </Layout>
     </main>
 

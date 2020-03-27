@@ -86,52 +86,54 @@ export const AustraliaContainer = () => {
       <>
         <MainDivider title='Australia' />
         <Row>
-            <Col md={24} lg={13} xl={11}>
+            <Col style={{ margin: '0 auto'}}>
                 <AustraliaMap
                     fill="#ffcb03"
                     stroke="#ffffff"
                     strokeWidth={1}
-                    width={600}
+                    width={700}
                     height={500}
                     customize={mapStyling}
                 />
             </Col>
-            <Col md={24} lg={10} xl={11}>
-                <Divider orientation='center'>
-                  Current Status*
-                </Divider>
-                <Table
-                    columns={columns}
-                    dataSource={ausCasesData}
-                    pagination={false}
-                    bordered
-                    tableLayout='fixed'
-                    size='small'
-                    style={{fontSize: 8 }}
-                    summary={() => (
-                        <tr>
-                        <th>Total</th>
-                        <th>
-                          <Tag color='geekblue'>
-                              {total.confirmed}
-                          </Tag>
-                        </th>
-                        <th>{total.last_24h_confirmed}</th>
-                        <th>
-                          <Tag color='volcano'>
-                              {total.deaths}
-                          </Tag>
-                        </th>
-                        <th>{total.last_24h_deaths}</th>
-                        <th>
-                          <Tag color='green'>
-                              {total.recovered}
-                          </Tag>
-                        </th>
-                        <th>{total.last_24h_recovered}</th>
-                        </tr>
-                        ) }
-                    />
+        </Row>
+        <Row>
+        <Col>
+              <Divider orientation='center'>
+                Current Status*
+              </Divider>
+              <Table
+                  columns={columns}
+                  dataSource={ausCasesData}
+                  pagination={false}
+                  bordered
+                  tableLayout='fixed'
+                  size='small'
+                  style={{fontSize: 8 }}
+                  summary={() => (
+                      <tr>
+                      <th>Total</th>
+                      <th>
+                        <Tag color='geekblue'>
+                            {total.confirmed}
+                        </Tag>
+                      </th>
+                      <th>{total.last_24h_confirmed}</th>
+                      <th>
+                        <Tag color='volcano'>
+                            {total.deaths}
+                        </Tag>
+                      </th>
+                      <th>{total.last_24h_deaths}</th>
+                      <th>
+                        <Tag color='green'>
+                            {total.recovered}
+                        </Tag>
+                      </th>
+                      <th>{total.last_24h_recovered}</th>
+                      </tr>
+                      ) }
+                  />
             </Col>
         </Row>
     </>

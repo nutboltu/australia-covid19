@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+main {
+  width: 1024px;
+  margin: 0 auto;
+}
 .ant-table {
   font-size: 12px;
 }

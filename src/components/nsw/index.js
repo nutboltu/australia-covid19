@@ -20,15 +20,15 @@ export const NSWContainer = () => {
             </Col>
         </Row>
         <Row>
-            <Col span={12} offset={5}>
+            <Col style={{margin: '0 auto' }}>
                 <div style={{ height: 400, width: 800 }}>
                     <NSWSexAgeGroup data={nswSexAndAgeGroupData} />
                 </div>
             </Col>
         </Row>
         <Row style={{ marginTop: '100px'}}>
-            <Col span={12} offset={5}>
-                <div style={{ height: 400, width: 800 }}>
+            <Col style={{margin: '0 auto' }}>
+                <div style={{ height: 600, width: 800 }}>
                     <NSWLocalDistrictCases data={nswLocalDistrictData} />
                 </div>
             </Col>
