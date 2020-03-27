@@ -1,4 +1,4 @@
-import { Table, Divider } from 'antd';
+import { Table, Divider, Tag } from 'antd';
 import nswCasesData from '../../../data/nsw/cases.json';
 
 const columns = [
@@ -7,7 +7,16 @@ const columns = [
     dataIndex: 'label',
     key: 'label',
     width: 350,
-    render: text => <span>{text}</span>,
+    render: text => {
+      if (text.includes('Confirmed cases')) {
+        return (
+          <Tag color='volcano'>POSITIVE</Tag>
+        )
+      } else if (text.includes('excluded')) {
+        return <Tag color='green'>NEGATIVE</Tag>
+      }
+      return <span>{text}</span>
+    },
   },
   {
     title: 'Number of people',
@@ -20,7 +29,7 @@ export const NSWCasesTable = () => {
   return (
     <>
       <Divider orientation="center">
-          Current cases*
+          Overall tested*
       </Divider>
       <Table
         columns={columns}

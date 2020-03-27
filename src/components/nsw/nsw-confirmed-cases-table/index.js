@@ -20,7 +20,7 @@ export const NSWConfirmedCasesTable = () => {
   return (
     <>
       <Divider orientation="center">
-          Confirmed cases - Status
+          Status of confirmed cases
       </Divider>
       <Table
         columns={columns}
