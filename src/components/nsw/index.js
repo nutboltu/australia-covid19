@@ -3,7 +3,9 @@ import { MainDivider } from '../main-divider';
 import { NSWCasesTable } from './nsw-cases-table';
 import { NSWConfirmedCasesTable } from './nsw-confirmed-cases-table';
 import { NSWSexAgeGroup } from './nsw-sex-age-group';
+import { NSWLocalDistrictCases } from './nsw-local-district-cases';
 import nswSexAndAgeGroupData from '../../data/nsw/sex_age_group.json';
+import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
 
 export const NSWContainer = () => {
   return (
@@ -21,6 +23,13 @@ export const NSWContainer = () => {
             <Col span={12} offset={5}>
                 <div style={{ height: 400, width: 800 }}>
                     <NSWSexAgeGroup data={nswSexAndAgeGroupData} />
+                </div>
+            </Col>
+        </Row>
+        <Row style={{ marginTop: '100px'}}>
+            <Col span={12} offset={5}>
+                <div style={{ height: 400, width: 800 }}>
+                    <NSWLocalDistrictCases data={nswLocalDistrictData} />
                 </div>
             </Col>
         </Row>

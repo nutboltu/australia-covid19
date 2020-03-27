@@ -71,8 +71,8 @@ const fetchNSWData = async () => {
       localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32].reduce((acc, index) => {
         const item = {
           district: el.children[1].children[index].children[1].children[0].data,
-          cases: el.children[1].children[index].children[3].children[0].data,
-          test: el.children[1].children[index].children[5].children[0].data,
+          cases: parseInt(el.children[1].children[index].children[3].children[0].data),
+          test: parseInt(el.children[1].children[index].children[5].children[0].data),
           positive_percentage: el.children[1].children[index].children[7].children[0].data,
         }
         acc.push(item);
