@@ -6,3 +6,6 @@ Web site [link](https://australia-covid19.herokuapp.com/)
 ## Resources
 
 TBD
+
+- NSW Heath - https://www.health.nsw.gov.au/Infectious/diseases/Pages/covid-19-latest.aspx#statistics
+- CSSE John Hopkins Data - https://github.com/CSSEGISandData/COVID-19
