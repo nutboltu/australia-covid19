@@ -1,9 +1,9 @@
-import { Table, Row, Col, Divider, Tag } from 'antd';
+import { Table, Row, Col, Divider, Tag, Typography } from 'antd';
 import { states } from '../../constants/states';
 import AustraliaMap from 'react-australia-map';
 import { MainDivider } from '../main-divider';
 import ausCasesData from '../../data/aus_cases.json';
-
+const { Text } = Typography;
 const columns = [
   {
     title: 'Location',
@@ -13,37 +13,37 @@ const columns = [
     render: text => <span>{text}</span>,
   },
   {
-    title: 'Confirmed',
+    title: () => <Text type='warning'>Confirmed</Text>,
     dataIndex: 'confirmed',
     key: 'confirmed',
     sorter: (a, b) => a.confirmed - b.confirmed,
   },
   {
-    title: 'Confirmed\n(24h)',
+    title: () => <Text type='warning'>Confirmed(24h)</Text>,
     dataIndex: 'last_24h_confirmed',
     key: 'last_24h_confirmed',
     sorter: (a, b) => a.last_24h_confirmed - b.last_24h_confirmed,
   },
   {
-    title: 'Deaths',
+    title: () => <Text type='danger'>Deaths</Text>,
     dataIndex: 'deaths',
     key: 'deaths',
     sorter: (a, b) => a.deaths - b.deaths,
   },
   {
-    title: 'Deaths\n(24h)',
+    title: <Text type='danger'>Deaths(24h)</Text>,
     dataIndex: 'last_24h_deaths',
     key: 'last_24h_deaths',
     sorter: (a, b) => a.last_24h_deaths - b.last_24h_deaths,
   },
   {
-    title: 'Recovered',
+    title: <Text type='secondary'>Recovered</Text>,
     dataIndex: 'recovered',
     key: 'recovered',
     sorter: (a, b) => a.recovered - b.recovered,
   },
   {
-    title: 'Recoverd\n(24h)',
+    title: <Text type='secondary'>Recovered(24h)</Text>,
     dataIndex: 'last_24h_recovered',
     key: 'last_24h_recovered',
     sorter: (a, b) => a.last_24h_recovered - b.last_24h_recovered,
