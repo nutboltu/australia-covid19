@@ -1,9 +1,10 @@
 import { Row, Col } from 'antd';
 import { MainDivider } from '../main-divider';
 import { CasesTable } from '../cases-table';
+import { SourceOfInfection } from '../source-of-infection';
 import { SexAgeGroup } from '../sex-age-group';
 import vicSexAndAgeGroupData from '../../data/vic/sex_age_group.json';
-// import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
+import vicSouceOfInfectionData from '../../data/vic/sources_of_infection.json';
 import vicCasesData from '../../data/vic/cases.json';
 
 export const VictoriaContainer = () => {
@@ -15,7 +16,9 @@ export const VictoriaContainer = () => {
                 <CasesTable data={vicCasesData} />
             </Col>
             <Col xs={24} lg={10} xl={11}>
-                
+                <div style={{ height: 250, width: 500 }}>
+                    <SourceOfInfection data={vicSouceOfInfectionData} />
+                </div>
             </Col>
         </Row>
         <Row>
