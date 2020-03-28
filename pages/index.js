@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import { Layout } from 'antd';
+import { AppHeader } from '../src/components/header';
 import { AustraliaContainer } from '../src/components/australia';
 import { NSWContainer } from '../src/components/nsw';
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 
 const App = () => {
   return (
@@ -16,25 +17,10 @@ const App = () => {
       <Layout style={{
         backgroundColor: 'white'
       }}>
-        <Header
-          style={{
-            fontSize: '20px',
-            color: '#001529',
-            fontFamily: 'initial',
-            backgroundColor: 'white'
-          }}
-        >
-          AUS
-          <span style={{ color: '#ffd700'}}>TRALIA</span>
-          {` `}
-          COVID
-          <span style={{
-            color: 'red',
-          }}>
-            19
-          </span>
-        </Header>
-        <Content style={{ marginBottom: '100px' }}>
+        <AppHeader />
+        <Content style={{
+          margin: '94px 0 100px'
+        }}>
           <AustraliaContainer />
           <NSWContainer />
         </Content>

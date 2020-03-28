@@ -7,7 +7,8 @@ export const MainDivider = ({ title }) => (
     color: '#2295ff',
     position: 'sticky',
     zIndex: 3,
-    background: 'white'
+    background: 'white',
+    top: '94px'
     }}>
       <div
         style={{ display: 'flex', alignItem: 'center'}}

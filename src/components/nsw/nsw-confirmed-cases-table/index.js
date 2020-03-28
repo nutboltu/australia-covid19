@@ -6,7 +6,7 @@ const columns = [
     title: 'Status',
     dataIndex: 'label',
     key: 'label',
-    width: 350,
+    width: 300,
     render: text => <span>{text}</span>,
   },
   {

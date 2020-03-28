@@ -53,6 +53,7 @@ const fetchLast24hAusCases = async () => {
       acc[item[0]] = {
         ...acc[item[0]],
         last_24h_recovered: item[item.length - 1] - item[item.length - 2],
+        recovered: parseInt(item[item.length - 1]),
       }
     }
     return acc;

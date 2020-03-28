@@ -80,21 +80,21 @@ export const AustraliaContainer = () => {
         }
     }
     return acc;
-  }, {})
+  }, {});
 
   return (
       <>
         <MainDivider title='Australia' />
         <Row>
             <Col style={{ margin: '0 auto'}}>
-                <AustraliaMap
-                    fill="#ffcb03"
-                    stroke="#ffffff"
-                    strokeWidth={1}
-                    width={700}
-                    height={500}
-                    customize={mapStyling}
-                />
+              <AustraliaMap
+                  fill="#ffcb03"
+                  stroke="#ffffff"
+                  strokeWidth={1}
+                  width={700}
+                  height={500}
+                  customize={mapStyling}
+              />
             </Col>
         </Row>
         <Row>
@@ -114,7 +114,7 @@ export const AustraliaContainer = () => {
                       <tr>
                       <th>Total</th>
                       <th>
-                        <Tag color='geekblue'>
+                        <Tag color='orange'>
                             {total.confirmed}
                         </Tag>
                       </th>

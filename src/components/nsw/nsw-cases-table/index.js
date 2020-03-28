@@ -6,9 +6,9 @@ const columns = [
     title: 'Cases',
     dataIndex: 'label',
     key: 'label',
-    width: 350,
+    width: 300,
     render: text => {
-      if (text.includes('Confirmed cases')) {
+      if (text.includes('confirmed')) {
         return (
           <Tag color='volcano'>POSITIVE</Tag>
         )
@@ -29,7 +29,7 @@ export const NSWCasesTable = () => {
   return (
     <>
       <Divider orientation="center">
-          Overall tested*
+          Total tested
       </Divider>
       <Table
         columns={columns}

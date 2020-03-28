@@ -9,6 +9,7 @@
     "download": "node src/data-fetch"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.0.3",
     "@nivo/bar": "^0.61.1",
     "antd": "^4.0.4",
     "axios": "^0.19.2",

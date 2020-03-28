@@ -6,10 +6,7 @@ const colors = {
     test: '#ffd700',
 }
 
-const getColors = (bar) => {
-  console.log(bar);
-  return colors[bar.id];
-}
+const getColors = (bar) => colors[bar.id];
 
 export const NSWLocalDistrictCases = ({ data }) => {
   data.pop();
