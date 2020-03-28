@@ -1,4 +1,5 @@
-import { Table, Row, Col, Divider, Tag, Typography } from 'antd';
+import { Table, Row, Col, Divider, Tag, Typography, Alert } from 'antd';
+import Router from 'next/router';
 import { states } from '../../constants/states';
 import AustraliaMap from 'react-australia-map';
 import { MainDivider } from '../main-divider';
@@ -75,26 +76,36 @@ export const AustraliaContainer = () => {
         showLabels: true,
         label: {
           name: ` ${state.code}\n ${item.confirmed} (${per.toFixed(2)}%)`,
-          fontSize: 6,
+          fontSize: 4,
           fill: 'black'
         }
     }
     return acc;
   }, {});
-
+  const mapHandler = (event) => {
+    console.log(event.target.dataset.name);
+    const path = `/${event.target.dataset.name.toLowerCase()}`;
+    Router.push(path);
+  }
   return (
     <>
         <MainDivider title='Australia' />
         <div style={{ marginBottom: '64px'}}>
           <Row>
-              <Col style={{ margin: '0 auto'}}>
+              <Col style={{ margin: '0 auto', cursor: 'pointer' }}>
+                <Alert
+                  message="Click the state in the map for specific statistics (Only NSW and VIC available)"
+                  type="info"
+                  showIcon
+                />
                 <AustraliaMap
                     fill="#ffcb03"
                     stroke="#ffffff"
                     strokeWidth={1}
-                    width={700}
-                    height={500}
+                    width={800}
+                    height={600}
                     customize={mapStyling}
+                    onClick={mapHandler}
                 />
               </Col>
           </Row>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Layout, Tag  } from 'antd';
 import { GlobalOutlined, GithubOutlined } from '@ant-design/icons';
 import globalCases from '../../data/global_cases.json';
@@ -43,7 +44,11 @@ export const AppHeader = () => {
         justifyContent: 'space-between',
         padding: '0 24px',
       }}>
-        <Logo />
+        <Link href='/'>
+          <a>
+            <Logo />
+          </a>
+        </Link>
         <div>
           <GlobalOutlined style={{ marginRight: '10px'}} />
           <Tag color='orange'> Confirmed {globalCases.confirmed}</Tag>
