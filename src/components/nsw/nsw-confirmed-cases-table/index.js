@@ -1,4 +1,4 @@
-import { Table, Divider } from 'antd';
+import { Table, Divider, Badge } from 'antd';
 import nswConfirmedCasesData from '../../../data/nsw/confirmed.json';
 
 const columns = [
@@ -13,6 +13,12 @@ const columns = [
     title: 'Number of people',
     dataIndex: 'value',
     key: 'value',
+    render: (text, item) => {
+      if (item.label.includes('deaths')) {
+        return <Badge count={text} />
+      }
+      return <span>{text}</span>
+    },
   },
 ];
 
