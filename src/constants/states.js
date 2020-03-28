@@ -29,7 +29,19 @@ const states = [{
 
 const stateNames = states.map(item => item.name);
 
+const mapToStateName = {
+  act_australia: 'Australian Capital Territory',
+  nsw_australia: 'New South Wales',
+  northernterritory_australia: 'Northern Territory',
+  tasmania_australia: 'Tasmania',
+  westernaustralia_australia: 'Western Australia',
+  southaustralia_australia: 'South Australia',
+  queensland_australia: 'Queensland',
+  victoria_australia: 'Victoria',
+};
+
 module.exports = {
+    mapToStateName,
     states,
     stateNames,
 }
