@@ -14,30 +14,32 @@ export const NSWContainer = () => {
   return (
       <>
         <MainDivider title='New South Wales' />
-        <Row gutter={16}>
-            <Col xs={24} lg={13} xl={11}>
-                <CasesTable data={nswCasesData} />
-            </Col>
-            <Col xs={24} lg={10} xl={11}>
-                <div style={{ height: 250, width: 500 }}>
-                    <SourceOfInfection data={nswSouceOfInfectionData} />
-                </div>
-            </Col>
-        </Row>
-        <Row>
-            <Col style={{margin: '0 auto' }}>
-                <div style={{ height: 400, width: 800 }}>
-                    <SexAgeGroup data={nswSexAndAgeGroupData} />
-                </div>
-            </Col>
-        </Row>
-        <Row style={{ marginTop: '100px'}}>
-            <Col style={{margin: '0 auto' }}>
-                <div style={{ height: 500, width: 900 }}>
-                    <NSWLocalDistrictCases data={nswLocalDistrictData} />
-                </div>
-            </Col>
-        </Row>
+        <div style={{ marginBottom: '64px'}}>
+            <Row gutter={16}>
+                <Col xs={24} lg={13} xl={11}>
+                    <CasesTable data={nswCasesData} />
+                </Col>
+                <Col xs={24} lg={10} xl={11}>
+                    <div style={{ height: 250, width: 500 }}>
+                        <SourceOfInfection data={nswSouceOfInfectionData} />
+                    </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col style={{margin: '0 auto' }}>
+                    <div style={{ height: 400, width: 800 }}>
+                        <SexAgeGroup data={nswSexAndAgeGroupData} />
+                    </div>
+                </Col>
+            </Row>
+            <Row style={{ marginTop: '100px'}}>
+                <Col style={{margin: '0 auto' }}>
+                    <div style={{ height: 500, width: 900 }}>
+                        <NSWLocalDistrictCases data={nswLocalDistrictData} />
+                    </div>
+                </Col>
+            </Row>
+        </div>
     </>
   );
 }

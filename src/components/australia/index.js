@@ -83,59 +83,61 @@ export const AustraliaContainer = () => {
   }, {});
 
   return (
-      <>
+    <>
         <MainDivider title='Australia' />
-        <Row>
-            <Col style={{ margin: '0 auto'}}>
-              <AustraliaMap
-                  fill="#ffcb03"
-                  stroke="#ffffff"
-                  strokeWidth={1}
-                  width={700}
-                  height={500}
-                  customize={mapStyling}
-              />
-            </Col>
-        </Row>
-        <Row>
-        <Col>
-              <Divider orientation='center'>
-                Current Status*
-              </Divider>
-              <Table
-                  columns={columns}
-                  dataSource={ausCasesData}
-                  pagination={false}
-                  bordered
-                  tableLayout='fixed'
-                  size='small'
-                  style={{fontSize: 8 }}
-                  summary={() => (
-                      <tr>
-                      <th>Total</th>
-                      <th>
-                        <Tag color='orange'>
-                            {total.confirmed}
-                        </Tag>
-                      </th>
-                      <th>{total.last_24h_confirmed}</th>
-                      <th>
-                        <Tag color='volcano'>
-                            {total.deaths}
-                        </Tag>
-                      </th>
-                      <th>{total.last_24h_deaths}</th>
-                      <th>
-                        <Tag color='green'>
-                            {total.recovered}
-                        </Tag>
-                      </th>
-                      <th>{total.last_24h_recovered}</th>
-                      </tr>
-                      ) }
-                  />
-            </Col>
-        </Row>
-    </>
+        <div style={{ marginBottom: '64px'}}>
+          <Row>
+              <Col style={{ margin: '0 auto'}}>
+                <AustraliaMap
+                    fill="#ffcb03"
+                    stroke="#ffffff"
+                    strokeWidth={1}
+                    width={700}
+                    height={500}
+                    customize={mapStyling}
+                />
+              </Col>
+          </Row>
+          <Row>
+            <Col>
+                <Divider orientation='center'>
+                  Current Status*
+                </Divider>
+                <Table
+                    columns={columns}
+                    dataSource={ausCasesData}
+                    pagination={false}
+                    bordered
+                    tableLayout='fixed'
+                    size='small'
+                    style={{fontSize: 8 }}
+                    summary={() => (
+                        <tr>
+                        <th>Total</th>
+                        <th>
+                          <Tag color='orange'>
+                              {total.confirmed}
+                          </Tag>
+                        </th>
+                        <th>{total.last_24h_confirmed}</th>
+                        <th>
+                          <Tag color='volcano'>
+                              {total.deaths}
+                          </Tag>
+                        </th>
+                        <th>{total.last_24h_deaths}</th>
+                        <th>
+                          <Tag color='green'>
+                              {total.recovered}
+                          </Tag>
+                        </th>
+                        <th>{total.last_24h_recovered}</th>
+                        </tr>
+                        ) }
+                    />
+              </Col>
+          </Row>
+        </div>
+     </>
   );
 }

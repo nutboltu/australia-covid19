@@ -20,7 +20,7 @@ const App = () => {
       }}>
         <AppHeader />
         <Content style={{
-          margin: '94px 0 100px'
+          margin: '64px 0 100px'
         }}>
           <AustraliaContainer />
           <NSWContainer />

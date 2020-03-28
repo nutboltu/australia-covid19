@@ -8,7 +8,7 @@ export const MainDivider = ({ title }) => (
     position: 'sticky',
     zIndex: 3,
     background: 'white',
-    top: '94px'
+    top: '64px',
     }}>
       <div
         style={{ display: 'flex', alignItem: 'center'}}
