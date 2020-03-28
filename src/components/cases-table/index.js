@@ -1,5 +1,4 @@
 import { Table, Divider, Tag } from 'antd';
-import nswCasesData from '../../../data/nsw/cases.json';
 
 const columns = [
   {
@@ -25,7 +24,7 @@ const columns = [
   },
 ];
 
-export const NSWCasesTable = () => {
+export const CasesTable = ({ data }) => {
   return (
     <>
       <Divider orientation="center">
@@ -33,7 +32,7 @@ export const NSWCasesTable = () => {
       </Divider>
       <Table
         columns={columns}
-        dataSource={nswCasesData}
+        dataSource={data}
         pagination={false}
         bordered
         tableLayout='fixed'

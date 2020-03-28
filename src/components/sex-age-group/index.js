@@ -14,7 +14,7 @@ const colors = {
 
 const getColors = (bar) => colors[bar.id];
 
-export const NSWSexAgeGroup = ({ data }) => {
+export const SexAgeGroup = ({ data }) => {
     let maxValue = 0;
     const numbers = data.reduce((acc, item) => {
         acc.male += item.male;

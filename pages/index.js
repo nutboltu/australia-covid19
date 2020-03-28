@@ -3,6 +3,7 @@ import { Layout } from 'antd';
 import { AppHeader } from '../src/components/header';
 import { AustraliaContainer } from '../src/components/australia';
 import { NSWContainer } from '../src/components/nsw';
+import { VictoriaContainer } from '../src/components/victoria';
 const { Footer, Content } = Layout;
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         }}>
           <AustraliaContainer />
           <NSWContainer />
+          <VictoriaContainer />
         </Content>
         <Footer
           style={{backgroundColor: 'white'}}
