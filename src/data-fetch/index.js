@@ -3,7 +3,7 @@ const fetchNSWData = require('./fetch-nsw-data');
 
 const fetchAll = async () => {
   await fetchLatestAusCases();
-  await fetchNSWData();
+  // await fetchNSWData();
 }
 
 module.exports = fetchAll();
