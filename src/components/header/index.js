@@ -12,8 +12,7 @@ const Logo = () => (
     fontSize: '30px',
     textShadow: '1px 1px 0 #000b5b, 1px -1px 0 #000b5b, -1px 1px 0 #000b5b, -1px -1px 0 #000b5b, 1px 0px 0 #000b5b, 0px 1px 0 #000b5b, -1px 0px 0 #000b5b, 0px -1px 0 #000b5b',
    }}>
-    AUS
-    <span style={{ color: '#ffd700'}}>TRALIA</span>
+    AUSTRALIA
     {` `}
     COVID
     <span style={{

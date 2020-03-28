@@ -1,1 +1,62 @@
-[{"age":"0-9","female":5,"male":3,"total":8},{"age":"10-19 ","female":21,"male":18,"total":39},{"age":"20-29 ","female":191,"male":136,"total":327},{"age":"30-39 ","female":133,"male":130,"total":263},{"age":"40-49 ","female":95,"male":120,"total":215},{"age":"50-59​​ ","female":128,"male":131,"total":259},{"age":"60-69 ","female":141,"male":122,"total":263},{"age":"70-79 ","female":84,"male":92,"total":176},{"age":"80-89 ","female":20,"male":32,"total":52},{"age":"90-100 ","female":9,"male":6,"total":15}]
+[
+  {
+     "age":"0-9",
+     "female":5,
+     "male":3,
+     "total":8
+  },
+  {
+     "age":"10-19 ",
+     "female":21,
+     "male":18,
+     "total":39
+  },
+  {
+     "age":"20-29 ",
+     "female":191,
+     "male":136,
+     "total":327
+  },
+  {
+     "age":"30-39 ",
+     "female":133,
+     "male":130,
+     "total":263
+  },
+  {
+     "age":"40-49 ",
+     "female":95,
+     "male":120,
+     "total":215
+  },
+  {
+     "age":"50-59​​ ",
+     "female":128,
+     "male":131,
+     "total":259
+  },
+  {
+     "age":"60-69 ",
+     "female":141,
+     "male":122,
+     "total":263
+  },
+  {
+     "age":"70-79 ",
+     "female":84,
+     "male":92,
+     "total":176
+  },
+  {
+     "age":"80-89 ",
+     "female":20,
+     "male":32,
+     "total":52
+  },
+  {
+     "age":"90-100 ",
+     "female":9,
+     "male":6,
+     "total":15
+  }
+]

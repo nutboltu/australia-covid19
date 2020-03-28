@@ -7,7 +7,7 @@ import vicSexAndAgeGroupData from '../../data/vic/sex_age_group.json';
 import vicSouceOfInfectionData from '../../data/vic/sources_of_infection.json';
 import vicCasesData from '../../data/vic/cases.json';
 
-export const VictoriaContainer = () => {
+export const VICContainer = () => {
   return (
     <>
         <MainDivider title='Victoria' />

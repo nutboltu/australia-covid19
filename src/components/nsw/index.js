@@ -34,9 +34,10 @@ export const NSWContainer = () => {
             </Row>
             <Row style={{ marginTop: '100px'}}>
                 <Col style={{margin: '0 auto' }}>
-                    <div style={{ height: 500, width: 900 }}>
+                    <div style={{ height: 500, width: 800 }}>
                         <NSWLocalDistrictCases data={nswLocalDistrictData} />
                     </div>
+                    
                 </Col>
             </Row>
         </div>
