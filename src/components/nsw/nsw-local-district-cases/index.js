@@ -24,13 +24,13 @@ export const NSWLocalDistrictCases = ({ data }) => {
                 data={data}
                 keys={[ 'cases' ]}
                 indexBy="district"
-                margin={{ top: 0, right: 0, bottom: 50, left: 120 }}
+                margin={{ top: 0, right: 0, bottom: 50, left: 130 }}
                 padding={0.3}
                 groupMode="grouped"
                 colors={getColors}
                 layout='horizontal'
                 borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-                maxValue={maxValue}
+                maxValue={maxValue + 5}
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
