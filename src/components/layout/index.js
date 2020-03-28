@@ -1,9 +1,9 @@
 import React from 'react';
-
 import Head from 'next/head';
 import { Layout } from 'antd';
 import { AppHeader } from '../header';
-const { Footer, Content } = Layout;
+import { AppFooter } from '../footer';
+const { Content } = Layout;
 
 export const AppLayout= ({ children }) => {
   return (
@@ -23,9 +23,7 @@ export const AppLayout= ({ children }) => {
         }}>
           {children}
         </Content>
-        <Footer
-          style={{backgroundColor: 'white'}}
-        ></Footer>
+        <AppFooter />
       </Layout>
     </main>
     </div>

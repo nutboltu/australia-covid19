@@ -1,4 +1,4 @@
-import { Table, Row, Col, Divider, Tag, Typography, Alert } from 'antd';
+import { Table, Row, Col, Divider, Tag, Typography, Alert, message } from 'antd';
 import Router from 'next/router';
 import { states } from '../../constants/states';
 import AustraliaMap from 'react-australia-map';
@@ -83,9 +83,13 @@ export const AustraliaContainer = () => {
     return acc;
   }, {});
   const mapHandler = (event) => {
-    console.log(event.target.dataset.name);
     const path = `/${event.target.dataset.name.toLowerCase()}`;
-    Router.push(path);
+    const routePaths = ['/nsw', '/vic'];
+    if (routePaths.includes(path)) {
+      Router.push(path);
+    } else {
+      message.warning('Only NSW and VIC statistics are availabe now')
+    }
   }
   return (
     <>
