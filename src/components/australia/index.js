@@ -1,10 +1,22 @@
-import { Table, Row, Col, Divider, Tag, Typography, Alert, message } from 'antd';
+import React, { useState } from 'react';
+import {
+  Table,
+  Row,
+  Col,
+  Divider,
+  Tag,
+  Typography,
+  Alert,
+  Spin,
+  message,
+} from 'antd';
 import Router from 'next/router';
 import { states } from '../../constants/states';
 import AustraliaMap from 'react-australia-map';
 import { MainDivider } from '../main-divider';
 import ausCasesData from '../../data/aus_cases.json';
 const { Text } = Typography;
+
 const columns = [
   {
     title: 'Location',
@@ -52,6 +64,7 @@ const columns = [
 ];
 
 export const AustraliaContainer = () => {
+  const [loading, setLoading] = useState(false);
   const total = ausCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
       acc.last_24h_confirmed += item.last_24h_confirmed;
@@ -86,6 +99,7 @@ export const AustraliaContainer = () => {
     const path = `/${event.target.dataset.name.toLowerCase()}`;
     const routePaths = ['/nsw', '/vic'];
     if (routePaths.includes(path)) {
+      setLoading(true);
       Router.push(path);
     } else {
       message.warning('Only NSW and VIC statistics are availabe now')
@@ -102,15 +116,17 @@ export const AustraliaContainer = () => {
                   type="info"
                   showIcon
                 />
-                <AustraliaMap
-                    fill="#ffcb03"
-                    stroke="#ffffff"
-                    strokeWidth={1}
-                    width={800}
-                    height={600}
-                    customize={mapStyling}
-                    onClick={mapHandler}
-                />
+                <Spin spinning={loading}>
+                  <AustraliaMap
+                      fill="#ffcb03"
+                      stroke="#ffffff"
+                      strokeWidth={1}
+                      width={800}
+                      height={600}
+                      customize={mapStyling}
+                      onClick={mapHandler}
+                  />
+                </Spin>
               </Col>
           </Row>
           <Row>
