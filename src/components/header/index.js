@@ -49,7 +49,10 @@ export const AppHeader = () => {
             <Logo />
           </a>
         </Link>
-        <div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center'
+        }}>
           <GlobalOutlined style={{ marginRight: '10px'}} />
           <Tag color='orange'> Confirmed {globalCases.confirmed}</Tag>
           <Tag color='volcano'> Deaths {globalCases.deaths}</Tag>
