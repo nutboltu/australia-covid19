@@ -26,6 +26,15 @@ export const AppLayout= ({ children }) => {
         <AppFooter />
       </Layout>
     </main>
+    <style jsx global>{`
+        @font-face {
+          font-family: 'Gotu';
+          src: url('/fonts/Gotu-Regular.ttf'); 
+          font-weight: bold;
+          font-style: normal;
+          font-display: swap;
+        }
+    `}</style>
     </div>
   );
 }

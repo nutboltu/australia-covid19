@@ -56,7 +56,7 @@ export const AppHeader = () => {
           <Tag color='green'> Recovered {globalCases.deaths}</Tag>
             <a
               target="_blank"
-              noopener
+              rel="noreferrer noopener"
               style={{ color: 'black'}}
               href='https://github.com/nutboltu/australia-covid19'
             >

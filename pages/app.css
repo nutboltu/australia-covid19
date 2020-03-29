@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+html, body {
+  font-family: 'Gotu';
+}
+
 main {
   width: 1024px;
   margin: 0 auto;

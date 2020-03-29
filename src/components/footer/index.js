@@ -17,14 +17,14 @@ export const AppFooter = () => (
       maintained by
         <a
           target='_blank'
-          noopener href='https://github.com/nutboltu'
+          rel="noreferrer noopener" href='https://github.com/nutboltu'
           style={{color: '#ccc'}}
         >
           {` `}@nutboltu {` `}
         </a>
         <a
           target='_blank'
-          noopener href='https://twitter.com/nutboltu'
+          rel="noreferrer noopener" href='https://twitter.com/nutboltu'
           style={{color: '#ccc'}}
         >
           <TwitterOutlined />
