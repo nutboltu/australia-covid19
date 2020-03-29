@@ -53,18 +53,19 @@ export const AppHeader = () => {
           display: 'flex',
           alignItems: 'center'
         }}>
-          <GlobalOutlined style={{ marginRight: '10px'}} />
-          <Tag color='orange' className='ant-tag-lg'> Confirmed {globalCases.confirmed}</Tag>
+          <GlobalOutlined style={{ marginRight: '5px'}} />
+          Worldwide
+          <Tag color='orange' className='ant-tag-lg' style={{ marginLeft: '10px'}}> Confirmed {globalCases.confirmed}</Tag>
           <Tag color='volcano' className='ant-tag-lg'> Deaths {globalCases.deaths}</Tag>
           <Tag color='cyan' className='ant-tag-lg'> Recovered {globalCases.deaths}</Tag>
-            <a
+            {/* <a
               target="_blank"
               rel="noreferrer noopener"
               style={{ color: 'black'}}
               href='https://github.com/nutboltu/australia-covid19'
             >
               <GithubOutlined />
-            </a>
+            </a> */}
         </div>
       </div>
   </Header>
