@@ -1,1 +1,14 @@
-[{"label":"Total confirmed cases","value":"1,617"},{"label":"​People tested on 26/3/2020","value":"4,195​"},{"label":"Total deaths","value":"7"}]
+[
+   {
+      "label":"Total confirmed cases",
+      "value":"1,791"
+   },
+   {
+      "label":"​People tested on 26/3/2020",
+      "value":"6,726​​"
+   },
+   {
+      "label":"Total deaths",
+      "value":"8"
+   }
+]
