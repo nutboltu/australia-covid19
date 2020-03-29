@@ -54,9 +54,9 @@ export const AppHeader = () => {
           alignItems: 'center'
         }}>
           <GlobalOutlined style={{ marginRight: '10px'}} />
-          <Tag color='orange'> Confirmed {globalCases.confirmed}</Tag>
-          <Tag color='volcano'> Deaths {globalCases.deaths}</Tag>
-          <Tag color='green'> Recovered {globalCases.deaths}</Tag>
+          <Tag color='orange' className='ant-tag-lg'> Confirmed {globalCases.confirmed}</Tag>
+          <Tag color='volcano' className='ant-tag-lg'> Deaths {globalCases.deaths}</Tag>
+          <Tag color='cyan' className='ant-tag-lg'> Recovered {globalCases.deaths}</Tag>
             <a
               target="_blank"
               rel="noreferrer noopener"
