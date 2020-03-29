@@ -22,7 +22,7 @@ export const SourceOfInfection = ({ data }) => {
             innerRadius={0.5}
             padAngle={0.7}
             cornerRadius={3}
-            colors={getColor}
+            colors={{ scheme: 'set3' }}
             borderWidth={1}
             borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
             slicesLabelsSkipAngle={10}

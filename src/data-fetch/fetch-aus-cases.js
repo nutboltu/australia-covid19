@@ -1,7 +1,7 @@
 
 
 const axios = require('axios');
-const csv = require('csvtojson');
+// const csv = require('csvtojson');
 const { mapToStateName } = require('../constants/states');
 const fetchLast24hAusCases = require('./fetch-last-24h-aus-cases');
 const { write } = require('./file-manager');

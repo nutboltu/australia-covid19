@@ -12,7 +12,7 @@ import {
 } from 'antd';
 import Router from 'next/router';
 import { states } from '../../constants/states';
-import AustraliaMap from 'react-australia-map';
+import { AustraliaMap } from '../map';
 import { MainDivider } from '../main-divider';
 import ausCasesData from '../../data/aus_cases.json';
 const { Text } = Typography;
@@ -81,22 +81,21 @@ export const AustraliaContainer = () => {
       recovered: 0,
       last_24h_recovered: 0,
   });
-  const mapStyling = ausCasesData.reduce((acc, item) => {
-    const state = states.find(i => i.name === item.location);
-    const per = (item.confirmed * 100) / total.confirmed;
-    acc[state.code] = {
-        fill: '#86D9E1',
-        showLabels: true,
-        label: {
-          name: ` ${state.code}\n ${item.confirmed} (${per.toFixed(2)}%)`,
-          fontSize: 4,
-          fill: 'black'
-        }
-    }
+
+  const mapData = ausCasesData.reduce((acc, item) => {
+  const state = states.find(i => i.name === item.location);
+  const per = (item.confirmed * 100) / total.confirmed;
+    acc.push({
+      id: state.code,
+      value: item.confirmed,
+      confirmed: item.confirmed,
+      deaths: item.deaths,
+      percentage: `${per.toFixed(2)}%`
+    });
     return acc;
-  }, {});
+  }, []);
   const mapHandler = (event) => {
-    const path = `/${event.target.dataset.name.toLowerCase()}`;
+    const path = `/${event.data.id.toLowerCase()}`;
     const routePaths = ['/nsw', '/vic'];
     if (routePaths.includes(path)) {
       setLoading(true);
@@ -110,26 +109,21 @@ export const AustraliaContainer = () => {
         <MainDivider title='Australia' />
         <div style={{ marginBottom: '64px'}}>
           <Row>
-              <Col style={{ margin: '0 auto', cursor: 'pointer' }}>
-                <Alert
-                  message="Click the state in the map for specific statistics (Only NSW and VIC available)"
-                  type="info"
-                  showIcon
-                />
-                <Spin spinning={loading}>
+            <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
+              <Alert
+                message="Click the state in the map for specific statistics (Only NSW and VIC available)"
+                type="info"
+                showIcon
+              />
+              <Spin spinning={loading}>
+                <div style={{ height: 450, width: 800}}>
                   <AustraliaMap
-                      fill="#ffcb03"
-                      stroke="#ffffff"
-                      strokeWidth={1}
-                      width={800}
-                      height={600}
-                      customize={mapStyling}
-                      onClick={mapHandler}
+                    data={mapData}
+                    mapHandler={mapHandler}
                   />
-                </Spin>
-              </Col>
-          </Row>
-          <Row>
+                </div>
+              </Spin>
+            </Col>
             <Col>
                 <Divider orientation='center'>
                   Current Status*
