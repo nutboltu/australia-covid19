@@ -66,7 +66,7 @@ export const AustraliaContainer = () => {
         <CasesStats {...globalCases} />
         <MainDivider title='Australia' />
         <CasesStats {...total} />
-        <div style={{ margin: '24px 0 64px'}}>
+        <div style={{ margin: '24px 0'}}>
           <Row>
             <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
