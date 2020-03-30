@@ -4,7 +4,7 @@ import { Divider } from 'antd';
 export const MainDivider = ({ title }) => (
   <Divider orientation="left" style={{
     fontSize: '28px',
-    color: '#2295ff',
+    color: '#108ee9',
     position: 'sticky',
     zIndex: 3,
     background: 'white',
