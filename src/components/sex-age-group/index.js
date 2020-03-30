@@ -9,7 +9,7 @@ const commonStyles = {
 
 const colors = {
     male: '#000b5b',
-    female: '#ffd700',
+    female: '#60acee',
 }
 
 const getColors = (bar) => colors[bar.id];
