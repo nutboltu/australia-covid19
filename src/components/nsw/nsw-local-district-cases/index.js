@@ -15,7 +15,7 @@ export const NSWLocalDistrictCases = ({ data }) => {
     return (
         <>
             <Divider orientation="center">
-              Total number of confirmed cases by Local Health District
+              Confirmed cases by Local Health District
             </Divider>
             <ResponsiveBar
                 data={data}

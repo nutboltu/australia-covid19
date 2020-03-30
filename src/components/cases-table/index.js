@@ -5,7 +5,6 @@ const columns = [
     title: 'Cases',
     dataIndex: 'label',
     key: 'label',
-    width: 300,
     render: text => {
       if (text.includes('confirmed')) {
         return (

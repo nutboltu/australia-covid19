@@ -20,24 +20,23 @@ export const NSWContainer = () => {
                     <CasesTable data={nswCasesData} />
                 </Col>
                 <Col xs={24} lg={10} xl={11}>
-                    <div style={{ height: 250, width: 500, margin: '0 auto' }}>
+                    <div style={{ height: 250, margin: '0 auto' }}>
                         <SourceOfInfection data={nswSouceOfInfectionData} />
                     </div>
                 </Col>
             </Row>
             <Row>
-                <Col style={{margin: '0 auto' }}>
-                    <div style={{ height: 400, width: 800 }}>
+                <Col span={24} style={{margin: '0 auto' }}>
+                    <div style={{ height: 400 }}>
                         <SexAgeGroup data={nswSexAndAgeGroupData} />
                     </div>
                 </Col>
             </Row>
             <Row style={{ marginTop: '100px'}}>
-                <Col style={{margin: '0 auto' }}>
-                    <div style={{ height: 500, width: 800 }}>
+                <Col span={24} style={{margin: '0 auto' }}>
+                    <div style={{ height: 500 }}>
                         <NSWLocalDistrictCases data={nswLocalDistrictData} />
                     </div>
-                    
                 </Col>
             </Row>
         </div>

@@ -81,7 +81,7 @@ export const SourceOfInfection = ({ data }) => {
                 {
                     anchor: 'right',
                     direction: 'column',
-                    translateX: 150,
+                    translateX: 220,
                     translateY: 0,
                     itemWidth: 250,
                     itemHeight: 24,
