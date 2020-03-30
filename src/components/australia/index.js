@@ -85,7 +85,7 @@ export const AustraliaContainer = () => {
                   </div>
                 </Breakpoint>
                 <Breakpoint small down>
-                  <div style={{ height: 350 }}>
+                  <div style={{ height: 310 }}>
                       <AustraliaMap
                         data={mapData}
                         mapHandler={(event) => onClick(event.data.id)}
