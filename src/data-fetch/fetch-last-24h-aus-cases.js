@@ -5,7 +5,7 @@ const { stateNames } = require('../constants/states');
 
 const dataFormat = (str) => {
   const part = str.split('/');
-  return `20${part[2]}-0${part[0]}-${part[1]}`;
+  return `20${part[2]}-${part[0].padStart(2, '0')}-${part[1].padStart(2, '0')}`;
 }
 const base = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
 
