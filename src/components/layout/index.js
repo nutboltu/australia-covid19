@@ -1,4 +1,5 @@
 import React from 'react';
+import  { BreakpointProvider } from 'react-socks';
 import Head from 'next/head';
 import { Layout } from 'antd';
 import { AppHeader } from '../header';
@@ -14,17 +15,19 @@ export const AppLayout= ({ children }) => {
     </Head>
 
     <main>
-      <Layout style={{
-        backgroundColor: 'white'
-      }}>
-        <AppHeader />
-        <Content style={{
-          margin: '64px 0 100px'
+      <BreakpointProvider>
+        <Layout style={{
+          backgroundColor: 'white'
         }}>
-          {children}
-        </Content>
-        <AppFooter />
-      </Layout>
+          <AppHeader />
+          <Content style={{
+            margin: '64px 0 100px'
+          }}>
+            {children}
+          </Content>
+          <AppFooter />
+        </Layout>
+      </BreakpointProvider>
     </main>
     <style jsx global>{`
         @font-face {

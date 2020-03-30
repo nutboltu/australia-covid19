@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Layout, Tag  } from 'antd';
-import { GlobalOutlined, GithubOutlined } from '@ant-design/icons';
-import globalCases from '../../data/global_cases.json';
+import { Layout  } from 'antd';
 
 const { Header } = Layout;
 
@@ -34,39 +32,16 @@ export const AppHeader = () => {
         backgroundColor: 'white',
         position: 'fixed',
         zIndex: 4,
-        width: '1024px',
-        padding: 0
+        padding: '0 24px',
+        width: '100%',
       }}
     >
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 24px',
+        
       }}>
-        <Link href='/'>
-          <a>
-            <Logo />
-          </a>
-        </Link>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <GlobalOutlined style={{ marginRight: '5px'}} />
-          Worldwide
-          <Tag color='orange' className='ant-tag-lg' style={{ marginLeft: '10px'}}> Confirmed {globalCases.confirmed}</Tag>
-          <Tag color='volcano' className='ant-tag-lg'> Deaths {globalCases.deaths}</Tag>
-          <Tag color='cyan' className='ant-tag-lg'> Recovered {globalCases.deaths}</Tag>
-            {/* <a
-              target="_blank"
-              rel="noreferrer noopener"
-              style={{ color: 'black'}}
-              href='https://github.com/nutboltu/australia-covid19'
-            >
-              <GithubOutlined />
-            </a> */}
-        </div>
+        <Link href='/'><a> <Logo /></a></Link>
       </div>
   </Header>
   );

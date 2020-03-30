@@ -1,67 +1,21 @@
 import React, { useState } from 'react';
+import { Breakpoint } from 'react-socks';
 import {
-  Table,
   Row,
   Col,
   Divider,
-  Tag,
-  Typography,
   Alert,
   Spin,
   message,
 } from 'antd';
 import Router from 'next/router';
 import { states } from '../../constants/states';
-import { AustraliaMap } from '../map';
+import { AustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
+import { CasesStats } from '../cases-stats';
+import { CurrentStatus } from '../current-status';
 import ausCasesData from '../../data/aus_cases.json';
-const { Text } = Typography;
-
-const columns = [
-  {
-    title: 'Location',
-    dataIndex: 'location',
-    key: 'location',
-    width: 150,
-    render: text => <span>{text}</span>,
-  },
-  {
-    title: () => <Text type='warning'>Confirmed</Text>,
-    dataIndex: 'confirmed',
-    key: 'confirmed',
-    sorter: (a, b) => a.confirmed - b.confirmed,
-  },
-  {
-    title: () => <Text type='warning'>Confirmed(24h)</Text>,
-    dataIndex: 'last_24h_confirmed',
-    key: 'last_24h_confirmed',
-    sorter: (a, b) => a.last_24h_confirmed - b.last_24h_confirmed,
-  },
-  {
-    title: () => <Text type='danger'>Deaths</Text>,
-    dataIndex: 'deaths',
-    key: 'deaths',
-    sorter: (a, b) => a.deaths - b.deaths,
-  },
-  {
-    title: <Text type='danger'>Deaths(24h)</Text>,
-    dataIndex: 'last_24h_deaths',
-    key: 'last_24h_deaths',
-    sorter: (a, b) => a.last_24h_deaths - b.last_24h_deaths,
-  },
-  {
-    title: <Text type='secondary'>Recovered</Text>,
-    dataIndex: 'recovered',
-    key: 'recovered',
-    sorter: (a, b) => a.recovered - b.recovered,
-  },
-  {
-    title: <Text type='secondary'>Recovered(24h)</Text>,
-    dataIndex: 'last_24h_recovered',
-    key: 'last_24h_recovered',
-    sorter: (a, b) => a.last_24h_recovered - b.last_24h_recovered,
-  },
-];
+import globalCases from '../../data/global_cases.json';
 
 export const AustraliaContainer = () => {
   const [loading, setLoading] = useState(false);
@@ -95,8 +49,9 @@ export const AustraliaContainer = () => {
     mapMaxValue = Math.max(mapMaxValue, item.confirmed);
     return acc;
   }, []);
-  const mapHandler = (event) => {
-    const path = `/${event.data.id.toLowerCase()}`;
+
+  const onClick = (code) => {
+    const path = `/${code.toLowerCase()}`;
     const routePaths = ['/nsw', '/vic'];
     if (routePaths.includes(path)) {
       setLoading(true);
@@ -106,9 +61,12 @@ export const AustraliaContainer = () => {
     }
   }
   return (
-    <>
+    <Spin spinning={loading}>
+        <MainDivider title='Worldwide' />
+        <CasesStats {...globalCases} />
         <MainDivider title='Australia' />
-        <div style={{ marginBottom: '64px'}}>
+        <CasesStats {...total} />
+        <div style={{ margin: '24px 0 64px'}}>
           <Row>
             <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
@@ -116,55 +74,56 @@ export const AustraliaContainer = () => {
                 type="info"
                 showIcon
               />
-              <Spin spinning={loading}>
-                <div style={{ height: 450, width: 800}}>
-                  <AustraliaMap
-                    data={mapData}
-                    mapHandler={mapHandler}
-                    mapMaxValue={mapMaxValue}
-                  />
-                </div>
-              </Spin>
+                <Breakpoint medium up>
+                  <div style={{ height: 490, width: 500}}>
+                    <AustraliaMap
+                      data={mapData}
+                      mapHandler={(event) => onClick(event.data.id)}
+                      scale={650}
+                      translation={[ -2.50, -0.2 ]}
+                    />
+                  </div>
+                </Breakpoint>
+                <Breakpoint small down>
+                  <div style={{ height: 350, width: 400}}>
+                      <AustraliaMap
+                        data={mapData}
+                        mapHandler={(event) => onClick(event.data.id)}
+                        scale={400}
+                        translation={[-1.85, -0.1]}
+                      />
+                  </div>
+                </Breakpoint>
             </Col>
             <Col>
-                <Divider orientation='center'>
-                  Current Status*
-                </Divider>
-                <Table
-                    columns={columns}
-                    dataSource={ausCasesData}
-                    pagination={false}
-                    bordered
-                    tableLayout='fixed'
-                    size='small'
-                    style={{fontSize: 8 }}
-                    summary={() => (
-                        <tr>
-                        <th>Total</th>
-                        <th>
-                          <Tag color='orange'>
-                              {total.confirmed}
-                          </Tag>
-                        </th>
-                        <th>{total.last_24h_confirmed}</th>
-                        <th>
-                          <Tag color='volcano'>
-                              {total.deaths}
-                          </Tag>
-                        </th>
-                        <th>{total.last_24h_deaths}</th>
-                        <th>
-                          <Tag color='green'>
-                              {total.recovered}
-                          </Tag>
-                        </th>
-                        <th>{total.last_24h_recovered}</th>
-                        </tr>
-                        ) }
-                    />
-              </Col>
+              <Divider orientation='center'>
+                Current Status*
+              </Divider>
+              <CurrentStatus
+                data={ausCasesData}
+                onClick={onClick}
+                totalConfirmed={total.confirmed}
+                totalDeaths={total.deaths}
+                totalRecovered={total.recovered}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Divider orientation='center'>
+                Last 24 hours status
+              </Divider>
+              <CurrentStatus
+                data={ausCasesData}
+                onClick={onClick}
+                totalConfirmed={total.last_24h_confirmed}
+                totalDeaths={total.last_24h_deaths}
+                totalRecovered={total.last_24h_recovered}
+                is24h
+              />
+            </Col>
           </Row>
         </div>
-     </>
+     </Spin>
   );
 }
