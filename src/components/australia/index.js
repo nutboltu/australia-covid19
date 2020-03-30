@@ -75,39 +75,41 @@ export const AustraliaContainer = () => {
                 showIcon
               />
                 <Breakpoint medium up>
-                  <div style={{ height: 490, width: 500}}>
+                  <div style={{ height: 490}}>
                     <AustraliaMap
                       data={mapData}
                       mapHandler={(event) => onClick(event.data.id)}
                       scale={650}
-                      translation={[ -2.50, -0.2 ]}
+                      translation={[ -2.10, -0.2 ]}
                     />
                   </div>
                 </Breakpoint>
                 <Breakpoint small down>
-                  <div style={{ height: 350, width: 400}}>
+                  <div style={{ height: 350 }}>
                       <AustraliaMap
                         data={mapData}
                         mapHandler={(event) => onClick(event.data.id)}
                         scale={400}
-                        translation={[-1.85, -0.1]}
+                        translation={[-2.35, -0.1]}
                       />
                   </div>
                 </Breakpoint>
             </Col>
-            <Col>
-              <Divider orientation='center'>
-                Current Status*
-              </Divider>
-              <CurrentStatus
-                data={ausCasesData}
-                onClick={onClick}
-                totalConfirmed={total.confirmed}
-                totalDeaths={total.deaths}
-                totalRecovered={total.recovered}
-              />
-            </Col>
           </Row>
+          <Row>
+            <Col>
+                <Divider orientation='center'>
+                  Current Status*
+                </Divider>
+                <CurrentStatus
+                  data={ausCasesData}
+                  onClick={onClick}
+                  totalConfirmed={total.confirmed}
+                  totalDeaths={total.deaths}
+                  totalRecovered={total.recovered}
+                />
+              </Col>
+           </Row>
           <Row>
             <Col>
               <Divider orientation='center'>
