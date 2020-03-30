@@ -81,7 +81,7 @@ export const AustraliaContainer = () => {
       recovered: 0,
       last_24h_recovered: 0,
   });
-
+  let mapMaxValue = 0;
   const mapData = ausCasesData.reduce((acc, item) => {
   const state = states.find(i => i.name === item.location);
   const per = (item.confirmed * 100) / total.confirmed;
@@ -92,6 +92,7 @@ export const AustraliaContainer = () => {
       deaths: item.deaths,
       percentage: `${per.toFixed(2)}%`
     });
+    mapMaxValue = Math.max(mapMaxValue, item.confirmed);
     return acc;
   }, []);
   const mapHandler = (event) => {
@@ -120,6 +121,7 @@ export const AustraliaContainer = () => {
                   <AustraliaMap
                     data={mapData}
                     mapHandler={mapHandler}
+                    mapMaxValue={mapMaxValue}
                   />
                 </div>
               </Spin>
