@@ -1,7 +1,12 @@
 const axios = require('axios');
 const csv = require('csvtojson');
+const { write } = require('./file-manager');
 const { stateNames } = require('../constants/states');
 
+const dataFormat = (str) => {
+  const part = str.split('/');
+  return `20${part[2]}-0${part[0]}-${part[1]}`;
+}
 const base = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/"
 
 const fetchLast24hAusCases = async () => {
@@ -58,7 +63,17 @@ const fetchLast24hAusCases = async () => {
     }
     return acc;
   }, last24hAusCases);
- 
+  let ausDailyReports = confirmedData
+  .filter(item => stateNames.includes(item[0]))
+  .reduce((acc, item) => {
+    const data = [];
+    for(let i = 4; i < item.length; i++) {
+      data.push({ day: dataFormat(confirmedData[0][i]), value: item[i] - item[i -1]})
+    }
+    acc[item[0]] = data;
+    return acc;
+  }, {});
+  write('./src/data/daily-reports.json', JSON.stringify(ausDailyReports));
   return last24hAusCases;
 }
 

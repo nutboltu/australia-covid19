@@ -6,12 +6,24 @@ import { SexAgeGroup } from '../sex-age-group';
 import vicSexAndAgeGroupData from '../../data/vic/sex_age_group.json';
 import vicSouceOfInfectionData from '../../data/vic/sources_of_infection.json';
 import vicCasesData from '../../data/vic/cases.json';
+import ausCasesData from '../../data/aus_cases.json';
+import { CasesStats } from '../cases-stats';
+import { DailyCasesCalendar } from '../daily-cases-calendar';
 
 export const VICContainer = () => {
+const vicStats = ausCasesData.find(item => item.location === 'Victoria');
   return (
     <>
         <MainDivider title='Victoria' />
+        <CasesStats {...vicStats} />
         <div style={{ marginBottom: '64px'}}>
+            <Row style={{ marginBottom: '32px'}} >
+                <Col span={24}>
+                <div style={{height: 300}}>
+                    <DailyCasesCalendar stateName='Victoria' />
+                </div>
+                </Col>
+            </Row>
             <Row gutter={16}>
                 <Col xs={24} lg={13} xl={11}>
                     <CasesTable data={vicCasesData} />
