@@ -31,7 +31,7 @@ export const NSWContainer = () => {
                     <CasesTable data={nswCasesData} />
                 </Col>
                 <Col xs={24} lg={10} xl={11}>
-                    <div style={{ height: 250, margin: '0 auto' }}>
+                    <div style={{ height: 280, margin: '0 auto' }}>
                         <SourceOfInfection data={nswSouceOfInfectionData} />
                     </div>
                 </Col>
