@@ -68,7 +68,9 @@ const fetchLast24hAusCases = async () => {
   .reduce((acc, item) => {
     const data = [];
     for(let i = 4; i < item.length; i++) {
-      data.push({ day: dataFormat(confirmedData[0][i]), value: item[i] - item[i -1]})
+      if (item[i] - item[i -1]) {
+        data.push({ day: dataFormat(confirmedData[0][i]), value: item[i] - item[i -1]});
+      }
     }
     acc[item[0]] = data;
     return acc;
