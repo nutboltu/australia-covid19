@@ -8,14 +8,14 @@ const colors = {
 
 const getColors = (bar) => colors[bar.id];
 
-export const NSWLocalDistrictCases = ({ data }) => {
+export const LocalDistrictCases = ({ data, title }) => {
   data.pop();
   data.sort((a, b) => a.cases - b.cases);
   const maxValue = data.reduce((acc, item) => Math.max(acc, item.cases), 0);
     return (
         <>
             <Divider orientation="center">
-              Confirmed cases by Local Health District
+              {title}
             </Divider>
             <ResponsiveBar
                 data={data}

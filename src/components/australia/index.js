@@ -52,12 +52,12 @@ export const AustraliaContainer = () => {
 
   const onClick = (code) => {
     const path = `/${code.toLowerCase()}`;
-    const routePaths = ['/nsw', '/vic'];
+    const routePaths = ['/nsw', '/vic', '/qld'];
     if (routePaths.includes(path)) {
       setLoading(true);
       Router.push(path);
     } else {
-      message.warning('Only NSW and VIC statistics are availabe now')
+      message.warning('NSW, VIC and QLD statistics are availabe now')
     }
   }
   return (
@@ -70,7 +70,7 @@ export const AustraliaContainer = () => {
           <Row>
             <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
-                message="Click the state in the map for specific statistics (Only NSW and VIC available)"
+                message="Click the state in the map for specific statistics (NSW, VIC and QLD available)"
                 type="info"
                 showIcon
               />

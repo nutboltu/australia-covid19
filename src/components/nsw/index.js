@@ -4,7 +4,7 @@ import { CasesTable } from '../cases-table';
 import { SourceOfInfection } from '../source-of-infection';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { SexAgeGroup } from '../sex-age-group';
-import { NSWLocalDistrictCases } from './nsw-local-district-cases';
+import { LocalDistrictCases } from '../local-district-cases';
 import nswSexAndAgeGroupData from '../../data/nsw/sex_age_group.json';
 import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
 import nswCasesData from '../../data/nsw/cases.json';
@@ -46,7 +46,10 @@ export const NSWContainer = () => {
             <Row style={{ marginTop: '100px'}}>
                 <Col span={24} style={{margin: '0 auto' }}>
                     <div style={{ height: 500 }}>
-                        <NSWLocalDistrictCases data={nswLocalDistrictData} />
+                        <LocalDistrictCases
+                            data={nswLocalDistrictData}
+                            title='Confirmed cases by Local Health District'
+                        />
                     </div>
                 </Col>
             </Row>
