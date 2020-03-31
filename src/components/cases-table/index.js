@@ -11,7 +11,7 @@ const columns = [
           <Tag color='volcano'>POSITIVE</Tag>
         )
       } else if (text.includes('excluded')) {
-        return <Tag color='green'>NEGATIVE</Tag>
+        return <Tag color='cyan'>NEGATIVE</Tag>
       }
       return <span>{text}</span>
     },
