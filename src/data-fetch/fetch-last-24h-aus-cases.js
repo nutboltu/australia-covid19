@@ -79,4 +79,4 @@ const fetchLast24hAusCases = async () => {
   return last24hAusCases;
 }
 
-module.exports = fetchLast24hAusCases;
+module.exports = fetchLast24hAusCases();
