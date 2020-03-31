@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Automated data update
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   schedule:
-    - cron:  '*/30 * * * *'
+    - cron:  '*/60 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -44,4 +44,4 @@ jobs:
         # Optional commit user and author settings
         commit_user_name: github-bot
         commit_user_email: github-bot@auto.org
-        commit_author: Author <actions@github.com>
+        commit_author: github-bot <actions@github.com>
