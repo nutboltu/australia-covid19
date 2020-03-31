@@ -29,7 +29,7 @@ const vicStats = ausCasesData.find(item => item.location === 'Victoria');
                     <CasesTable data={vicCasesData} />
                 </Col>
                 <Col xs={24} lg={10} xl={11}>
-                    <div style={{ height: 250, margin: '0 auto' }}>
+                    <div style={{ height: 280, margin: '0 auto' }}>
                         <SourceOfInfection data={vicSouceOfInfectionData} />
                     </div>
                 </Col>
