@@ -1,98 +1,98 @@
 [
   {
      "district":"South Eastern Sydney",
-     "cases":450,
-     "test":14549,
-     "positive_percentage":"3.09"
+     "cases":469,
+     "test":15252,
+     "positive_percentage":"3.08"
   },
   {
      "district":"Northern Sydney",
-     "cases":348,
-     "test":14990,
-     "positive_percentage":"2.32"
-  },
-  {
-     "district":"Central Coast",
-     "cases":90,
-     "test":3808,
+     "cases":364,
+     "test":15415,
      "positive_percentage":"2.36"
   },
   {
+     "district":"Central Coast",
+     "cases":91,
+     "test":3760,
+     "positive_percentage":"2.42"
+  },
+  {
      "district":"Nepean Blue Mountains",
-     "cases":80,
-     "test":5145,
-     "positive_percentage":"1.55"
+     "cases":85,
+     "test":5331,
+     "positive_percentage":"1.59"
   },
   {
       "district":"Hunter New England",
-      "cases":195,
-      "test":8991,
-      "positive_percentage":"2.17"
+      "cases":208,
+      "test":9112,
+      "positive_percentage":"2.28"
    },
    {
       "district":"Southern NSW",
-      "cases":41,
-      "test":1628,
-      "positive_percentage":"2.52"
+      "cases":48,
+      "test":1695,
+      "positive_percentage":"2.83"
    },
   {
      "district":"Sydney",
-     "cases":141,
-     "test":8679,
-     "positive_percentage":"1.62"
+     "cases":149,
+     "test":9161,
+     "positive_percentage":"1.63"
   },
   {
      "district":"Illawarra Shoalhaven",
-     "cases":76,
-     "test":4558,
-     "positive_percentage":"1.67"
+     "cases":83,
+     "test":4706,
+     "positive_percentage":"1.76"
   },
   {
      "district":"South Western Sydney",
-     "cases":148,
-     "test":10505,
-     "positive_percentage":"1.41"
+     "cases":155,
+     "test":10917,
+     "positive_percentage":"1.42"
   },
   {
      "district":"Western Sydney",
-     "cases":160,
-     "test":11646,
-     "positive_percentage":"1.37"
+     "cases":176,
+     "test":12040,
+     "positive_percentage":"1.46"
   },
   {
      "district":"Western NSW",
-     "cases":36,
-     "test":1924,
-     "positive_percentage":"1.87"
+     "cases":37,
+     "test":2027,
+     "positive_percentage":"1.83"
   },
   {
      "district":"Northern NSW",
-     "cases":37,
-     "test":2154,
-     "positive_percentage":"1.72"
+     "cases":38,
+     "test":2145,
+     "positive_percentage":"1.77"
   },
   {
      "district":"Mid North Coast",
-     "cases":35,
-     "test":2084,
-     "positive_percentage":"1.68"
+     "cases":37,
+     "test":2178,
+     "positive_percentage":"1.70"
   },
   {
      "district":"Murrumbidgee",
-     "cases":28,
-     "test":1354,
-     "positive_percentage":"2.07"
+     "cases":34,
+     "test":1455,
+     "positive_percentage":"2.34"
   },
   {
      "district":"Far West",
      "cases":0,
-     "test":138,
+     "test":139,
      "positive_percentage":"0"
   },
   {
      "district":"NSW Total",
-     "cases":1918,
-     "test":96452,
-     "positive_percentage":"1.99"
+     "cases":2032,
+     "test":99951,
+     "positive_percentage":"2.03"
   }
 ]
