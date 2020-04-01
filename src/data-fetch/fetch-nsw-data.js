@@ -3,7 +3,12 @@ const cheerio = require("cheerio");
 const { write } = require('./file-manager');
 
 const toNumber = (str) => parseInt(str.replace(',', ''));
-
+const sources = [
+  'Travel overseas',
+  'Contact with a confirmed case',
+  'Locally acquired – unknown source',
+  'Under investigation'
+]
 const fetchNSWData = async () => {
   let response;
   try {
@@ -54,20 +59,19 @@ const fetchNSWData = async () => {
       }, [])
     }
     if ( i == 3) {
-      sourcesOfInfection = [2, 4, 6, 8, 10].reduce((acc, index) => {
-        const label = tbody.children[index].children[0].children[0].data;
+      sourcesOfInfection = [2, 4, 6, 8, 10].reduce((acc, index, i) => {
         const value = tbody.children[index].children[2].children[0].data;
-        acc.push({ label, value});
+        acc.push({ id: sources[i], label: sources[i], value});
         return acc;
       }, [])
     }
     if ( i == 4 ) {
       localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32].reduce((acc, index) => {
         const item = {
-          district: tbody.children[index].children[0].children[0].children[0].children[0].data.replace('\n ', ''),
-          cases: parseInt(tbody.children[index].children[2].children[0].children[0].children[0].data),
-          test: parseInt(tbody.children[index].children[4].children[0].children[0].children[0].data),
-          positive_percentage: tbody.children[index].children[6].children[0].children[0].children[0].data,
+          district: el.children[1].children[index].children[1].children[1].children[0].data.replace('\n ', ''),
+          cases: parseInt(el.children[1].children[index].children[3].children[1].children[0].data),
+          test: parseInt(el.children[1].children[index].children[5].children[1].children[0].data),
+          positive_percentage: el.children[1].children[index].children[7].children[1].children[0].data,
         }
         acc.push(item);
         return acc;

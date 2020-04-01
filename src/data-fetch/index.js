@@ -1,11 +1,11 @@
-const fetchLatestAusCases = require('./fetch-aus-cases');
+const fetchAustraliaData = require('./fetch-aus-data');
 const fetchNSWData = require('./fetch-nsw-data');
-const fetchLatestGlobalCases = require('./fetch-global-cases');
+const fetchLatestGlobalData = require('./fetch-global-data');
 
 const fetchAll = async () => {
-  await fetchLatestAusCases();
-  // await fetchNSWData();
-  await fetchLatestGlobalCases();
+  await fetchAustraliaData();
+  await fetchNSWData();
+  await fetchLatestGlobalData();
 }
 
 module.exports = fetchAll();

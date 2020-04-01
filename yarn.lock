@@ -4561,7 +4561,7 @@ next@9.3.2:
     webpack-hot-middleware "2.25.0"
     webpack-sources "1.4.3"
 
-node-fetch@2.6.0:
+node-fetch@2.6.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
@@ -4651,6 +4651,13 @@ normalize-url@1.9.1:
     prepend-http "^1.0.0"
     query-string "^4.1.0"
     sort-keys "^1.0.0"
+
+novelcovid@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/novelcovid/-/novelcovid-1.1.0.tgz#4be030382928649f1b972253a005f1826121ac60"
+  integrity sha512-RyIi+hDM8M1ZG3HH8MGkTpWLKzD6FpC/6CJJgKIEeODmnCw70Wc2OVCI3niDcWNy6cuC+i8QxKoaIk1oUVm1nw==
+  dependencies:
+    node-fetch "^2.6.0"
 
 nth-check@~1.0.1:
   version "1.0.2"

@@ -9,38 +9,36 @@ import {
   message,
 } from 'antd';
 import Router from 'next/router';
-import { states } from '../../constants/states';
 import { AustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
 import { CasesStats } from '../cases-stats';
 import { CurrentStatus } from '../current-status';
 import ausCasesData from '../../data/aus_cases.json';
+import statesCasesData from '../../data/states_cases.json';
+import statesCasesTodayData from '../../data/states_cases_today.json';
 import globalCases from '../../data/global_cases.json';
 
 export const AustraliaContainer = () => {
   const [loading, setLoading] = useState(false);
-  const total = ausCasesData.reduce((acc, item) => {
+  const total = statesCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
-      acc.last_24h_confirmed += item.last_24h_confirmed;
       acc.deaths += item.deaths;
-      acc.last_24h_deaths += item.last_24h_deaths;
       acc.recovered += item.recovered;
-      acc.last_24h_recovered += item.last_24h_recovered;
+      
     return acc;
-  }, {
-      confirmed: 0,
-      last_24h_confirmed: 0,
-      deaths: 0,
-      last_24h_deaths: 0,
-      recovered: 0,
-      last_24h_recovered: 0,
-  });
+  }, { confirmed: 0, deaths: 0, recovered: 0 });
+  const totalToday = statesCasesTodayData.reduce((acc, item) => {
+    acc.confirmed += item.confirmed;
+    acc.deaths += item.deaths;
+    acc.recovered += item.recovered;
+    
+  return acc;
+}, { confirmed: 0, deaths: 0, recovered: 0 });
   let mapMaxValue = 0;
-  const mapData = ausCasesData.reduce((acc, item) => {
-  const state = states.find(i => i.name === item.location);
+  const mapData = statesCasesData.reduce((acc, item) => {
   const per = (item.confirmed * 100) / total.confirmed;
     acc.push({
-      id: state.code,
+      id: item.code,
       value: item.confirmed,
       confirmed: item.confirmed,
       deaths: item.deaths,
@@ -65,7 +63,7 @@ export const AustraliaContainer = () => {
         <MainDivider title='Worldwide' />
         <CasesStats {...globalCases} />
         <MainDivider title='Australia' />
-        <CasesStats {...total} />
+        <CasesStats {...ausCasesData} />
         <div style={{ margin: '24px 0'}}>
           <Row>
             <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
@@ -102,7 +100,7 @@ export const AustraliaContainer = () => {
                   Current Status*
                 </Divider>
                 <CurrentStatus
-                  data={ausCasesData}
+                  data={statesCasesData}
                   onClick={onClick}
                   totalConfirmed={total.confirmed}
                   totalDeaths={total.deaths}
@@ -116,12 +114,11 @@ export const AustraliaContainer = () => {
                 Last 24 hours status
               </Divider>
               <CurrentStatus
-                data={ausCasesData}
+                data={statesCasesTodayData}
                 onClick={onClick}
-                totalConfirmed={total.last_24h_confirmed}
-                totalDeaths={total.last_24h_deaths}
-                totalRecovered={total.last_24h_recovered}
-                is24h
+                totalConfirmed={totalToday.confirmed}
+                totalDeaths={totalToday.deaths}
+                totalRecovered={totalToday.recovered}
               />
             </Col>
           </Row>

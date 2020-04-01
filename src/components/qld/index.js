@@ -5,13 +5,13 @@ import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { LocalDistrictCases } from '../local-district-cases';
 import qldLocalDistrictData from '../../data/qld/local_district_cases.json';
 import qldCasesData from '../../data/qld/cases.json';
-import ausCasesData from '../../data/aus_cases.json';
+import statesCasesData from '../../data/states_cases.json';
 import { CasesStats } from '../cases-stats';
 
 const stateName = 'Queensland';
 
 export const QLDContainer = () => {
-  const qldStats = ausCasesData.find(item => item.location === stateName);
+  const qldStats = statesCasesData.find(item => item.location === stateName);
   return (
       <>
         <MainDivider title={stateName} />

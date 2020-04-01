@@ -1,7 +1,7 @@
 const axios = require('axios');
 const csv = require('csvtojson');
-const { write } = require('./file-manager');
-const { stateNames } = require('../constants/states');
+const { write } = require('../src/data-fetch/file-manager');
+const { stateNames } = require('../src/constants/states');
 
 const dataFormat = (str) => {
   const part = str.split('/');

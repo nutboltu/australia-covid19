@@ -9,11 +9,11 @@ import nswSexAndAgeGroupData from '../../data/nsw/sex_age_group.json';
 import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
 import nswCasesData from '../../data/nsw/cases.json';
 import nswSouceOfInfectionData from '../../data/nsw/sources_of_infection.json';
-import ausCasesData from '../../data/aus_cases.json';
+import statesCasesData from '../../data/states_cases.json';
 import { CasesStats } from '../cases-stats';
 
 export const NSWContainer = () => {
-  const nswStats = ausCasesData.find(item => item.location === 'New South Wales');
+  const nswStats = statesCasesData.find(item => item.location === 'New South Wales');
   return (
       <>
         <MainDivider title='New South Wales' />

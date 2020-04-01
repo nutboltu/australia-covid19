@@ -1,6 +1,6 @@
 import { Divider } from 'antd';
 import { ResponsiveCalendar } from '@nivo/calendar';
-import daily from '../../data/daily-reports.json';
+import daily from '../../data/daily_reports.json';
 
 export const DailyCasesCalendar = ({ stateName }) => {
     return (

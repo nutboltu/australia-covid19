@@ -44,33 +44,6 @@ const columns = [
   },
 ];
 
-const last24hColumns = [
-  {
-    title: 'Location',
-    dataIndex: 'location',
-    key: 'location',
-    render: (text) => <span>{text}</span>,
-  },
-  {
-    title: () => <Text type='warning'>Confirmed)</Text>,
-    dataIndex: 'last_24h_confirmed',
-    key: 'last_24h_confirmed',
-    sorter: (a, b) => a.last_24h_confirmed - b.last_24h_confirmed,
-  },
-  {
-    title: <Text type='danger'>Deaths</Text>,
-    dataIndex: 'last_24h_deaths',
-    key: 'last_24h_deaths',
-    sorter: (a, b) => a.last_24h_deaths - b.last_24h_deaths,
-  },
-  {
-    title: <Text type='secondary'>Recovered</Text>,
-    dataIndex: 'last_24h_recovered',
-    key: 'last_24h_recovered',
-    sorter: (a, b) => a.last_24h_recovered - b.last_24h_recovered,
-  },
-];
-
 export const CurrentStatus = ({
   data,
   onClick,
@@ -90,7 +63,7 @@ export const CurrentStatus = ({
             },
           };
         }}
-        columns={is24h ? last24hColumns : columns}
+        columns={columns}
         dataSource={data}
         pagination={false}
         bordered
