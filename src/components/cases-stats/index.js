@@ -12,7 +12,11 @@ export const CasesStats = ({ confirmed, deaths, recovered }) => (
         <Statistic title={<Text type="danger">Deaths</Text>} value={deaths} />
       </Col>
       <Col span={8}>
-        <Statistic title={<Text>Recovered</Text>} value={recovered} />
+        { 
+          recovered ?
+          <Statistic title={<Text>Recovered</Text>} value={recovered} />
+          : null
+        }
       </Col>
     </Row>
   </div>

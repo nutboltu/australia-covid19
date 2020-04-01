@@ -8,16 +8,15 @@ import { LocalDistrictCases } from '../local-district-cases';
 import nswSexAndAgeGroupData from '../../data/nsw/sex_age_group.json';
 import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
 import nswCasesData from '../../data/nsw/cases.json';
+import nswTestedData from '../../data/nsw/tested.json';
 import nswSouceOfInfectionData from '../../data/nsw/sources_of_infection.json';
-import statesCasesData from '../../data/states_cases.json';
 import { CasesStats } from '../cases-stats';
 
 export const NSWContainer = () => {
-  const nswStats = statesCasesData.find(item => item.location === 'New South Wales');
   return (
       <>
         <MainDivider title='New South Wales' />
-        <CasesStats {...nswStats} />
+        <CasesStats {...nswCasesData} />
         <div style={{ marginBottom: '64px'}}>
             <Row style={{ marginBottom: '32px'}} >
                 <Col span={24}>
@@ -28,7 +27,7 @@ export const NSWContainer = () => {
             </Row>
             <Row gutter={16}>
                 <Col xs={24} lg={13} xl={11}>
-                    <CasesTable data={nswCasesData} />
+                    <CasesTable data={nswTestedData} />
                 </Col>
                 <Col xs={24} lg={10} xl={11}>
                     <div style={{ height: 280, margin: '0 auto' }}>

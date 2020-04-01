@@ -20,7 +20,8 @@ const fetchNSWData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  let nswCases = [];
+  let nswCases = {};
+  let nswTested = [];
   let nswConfirmedCases = [];
   let sourcesOfInfection = [];
   let sexAndAgeGroup = [];
@@ -30,7 +31,7 @@ const fetchNSWData = async () => {
     .filter((i, el) => {
       const tbody = el.children[0];
    if ( i == 0 ) {
-      nswCases = [2, 4, 6].reduce((acc, index) => {
+      nswTested = [2, 4, 6].reduce((acc, index) => {
         const label = tbody.children[index].children[0].children[0].data;
         const value = tbody.children[index].children[2].children[0].data;
         acc.push({ label, value});
@@ -78,7 +79,12 @@ const fetchNSWData = async () => {
       }, [])
     }
   });
+  nswCases = {
+    confirmed: toNumber(nswConfirmedCases[0].value),
+    deaths: toNumber(nswConfirmedCases[2].value),
+  }
   write('./src/data/nsw/cases.json', JSON.stringify(nswCases));
+  write('./src/data/nsw/tested.json', JSON.stringify(nswTested));
   write('./src/data/nsw/confirmed.json', JSON.stringify(nswConfirmedCases));
   write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
