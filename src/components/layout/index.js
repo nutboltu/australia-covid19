@@ -6,7 +6,7 @@ import { AppHeader } from '../header';
 import { AppFooter } from '../footer';
 const { Content } = Layout;
 
-export const AppLayout= ({ children }) => {
+export const AppLayout= ({ state, children }) => {
   return (
   <div className="container">
     <Head>
@@ -19,9 +19,9 @@ export const AppLayout= ({ children }) => {
         <Layout style={{
           backgroundColor: 'white'
         }}>
-          <AppHeader />
+          <AppHeader state={state} />
           <Content style={{
-            margin: '64px 0 100px'
+            margin: '134px 0 100px'
           }}>
             {children}
           </Content>

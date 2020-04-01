@@ -4,7 +4,7 @@ import { NSWContainer } from '../../src/components/nsw';
 
 const NSW = () => {
   return (
-    <AppLayout>
+    <AppLayout state='nsw'>
         <NSWContainer />
     </AppLayout>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Layout  } from 'antd';
+import { StateSelect } from '../state-select';
 
 const { Header } = Layout;
 
@@ -18,7 +19,7 @@ const Logo = () => (
   </span>
 );
 
-export const AppHeader = () => {
+export const AppHeader = ({ state = '' }) => {
   return (
     <Header
       style={{
@@ -29,6 +30,7 @@ export const AppHeader = () => {
         zIndex: 4,
         padding: '0 24px',
         width: '100%',
+        height: 'auto',
       }}
     >
       <div style={{
@@ -38,6 +40,7 @@ export const AppHeader = () => {
       }}>
         <Link href='/'><a> <Logo /></a></Link>
       </div>
+      <StateSelect defaultValue={state} />
   </Header>
   );
 }

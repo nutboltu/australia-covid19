@@ -17,6 +17,7 @@ import ausCasesData from '../../data/aus_cases.json';
 import statesCasesData from '../../data/states_cases.json';
 import statesCasesTodayData from '../../data/states_cases_today.json';
 import globalCases from '../../data/global_cases.json';
+import { routeTo } from '../../utils/route';
 
 export const AustraliaContainer = () => {
   const [loading, setLoading] = useState(false);
@@ -49,14 +50,7 @@ export const AustraliaContainer = () => {
   }, []);
 
   const onClick = (code) => {
-    const path = `/${code.toLowerCase()}`;
-    const routePaths = ['/nsw', '/vic', '/qld'];
-    if (routePaths.includes(path)) {
-      setLoading(true);
-      Router.push(path);
-    } else {
-      message.warning('NSW, VIC and QLD statistics are availabe now')
-    }
+    routeTo(code);
   }
   return (
     <Spin spinning={loading}>

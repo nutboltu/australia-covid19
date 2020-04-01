@@ -4,7 +4,7 @@ import { VICContainer } from '../../src/components/victoria';
 
 const VIC = () => {
   return (
-    <AppLayout>
+    <AppLayout state='vic'>
         <VICContainer />
     </AppLayout>
   );
