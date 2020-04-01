@@ -61,7 +61,7 @@ const fetchNSWData = async () => {
     }
     if ( i == 3) {
       sourcesOfInfection = [2, 4, 6, 8, 10].reduce((acc, index, i) => {
-        const value = tbody.children[index].children[2].children[0].data;
+        const value = toNumber(tbody.children[index].children[2].children[0].data);
         acc.push({ id: sources[i], label: sources[i], value});
         return acc;
       }, [])
