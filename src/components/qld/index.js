@@ -4,18 +4,23 @@ import { CasesTable } from '../cases-table';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { LocalDistrictCases } from '../local-district-cases';
 import qldLocalDistrictData from '../../data/qld/local_district_cases.json';
-import qldCasesData from '../../data/qld/cases.json';
+import qldTestedData from '../../data/qld/tested.json';
 import statesCasesData from '../../data/states_cases.json';
+import qldCasesData from '../../data/qld/cases.json';
 import { CasesStats } from '../cases-stats';
 
 const stateName = 'Queensland';
 
 export const QLDContainer = () => {
-  const qldStats = statesCasesData.find(item => item.location === stateName);
+    const qldStats = statesCasesData.find(item => item.location === stateName);
+    const stats = {
+        ...qldStats,
+        ...qldCasesData,
+    }
   return (
       <>
         <MainDivider title={stateName} />
-        <CasesStats {...qldStats} />
+        <CasesStats {...stats} />
         <div style={{ marginBottom: '64px'}}>
             <Row style={{ marginBottom: '32px'}} >
                 <Col span={24}>
@@ -26,7 +31,7 @@ export const QLDContainer = () => {
             </Row>
             <Row gutter={16}>
                 <Col span={24}>
-                    <CasesTable data={qldCasesData} />
+                    <CasesTable data={qldTestedData} />
                 </Col>
                 {/* <Col xs={24} lg={10} xl={11}>
                     <div style={{ height: 280, margin: '0 auto' }}>

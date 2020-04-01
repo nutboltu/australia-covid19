@@ -10,18 +10,26 @@ import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
 import nswCasesData from '../../data/nsw/cases.json';
 import nswTestedData from '../../data/nsw/tested.json';
 import nswSouceOfInfectionData from '../../data/nsw/sources_of_infection.json';
+import statesCasesData from '../../data/states_cases.json';
 import { CasesStats } from '../cases-stats';
 
+const stateName = 'New South Wales';
+
 export const NSWContainer = () => {
+    const nswStats = statesCasesData.find(item => item.location === stateName);
+    const stats = {
+        ...nswStats,
+        ...nswCasesData,
+    }
   return (
       <>
-        <MainDivider title='New South Wales' />
-        <CasesStats {...nswCasesData} />
+        <MainDivider title={stateName} />
+        <CasesStats {...stats} />
         <div style={{ marginBottom: '64px'}}>
             <Row style={{ marginBottom: '32px'}} >
                 <Col span={24}>
                 <div style={{height: 300}}>
-                    <DailyCasesCalendar stateName='New South Wales' />
+                    <DailyCasesCalendar stateName={stateName} />
                 </div>
                 </Col>
             </Row>
