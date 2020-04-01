@@ -25,7 +25,7 @@ const fetchLatestAusCases = async () => {
   // }).fromString(dailyReport.data);
   const { data } = dailyReport;
   const ausDailyReportData = data.areas.find(item => item.id == 'australia').areas;
-  
+
   const last24hAusCasesData = await fetchLast24hAusCases();
   // const ausDailyReportData = dailyReportData.filter((item) => stateNames.includes(item[2]));
 
@@ -41,12 +41,6 @@ const fetchLatestAusCases = async () => {
     return acc;
   }, []);
   write('./src/data/aus_cases.json', JSON.stringify(ausCases));
-  const globalCases = {
-    confirmed: data.totalConfirmed,
-    deaths: data.totalDeaths,
-    recovered: data.totalRecovered,
-  }
-  write('./src/data/global_cases.json', JSON.stringify(globalCases));
 }
 
 
