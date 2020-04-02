@@ -14,12 +14,12 @@ export const SourceOfInfection = ({ data }) => {
     return (
     <>
         <Divider orientation="center">
-            Likely source of infection of confirmed cases
+            Source of infection of confirmed cases
         </Divider>
         <ResponsivePie
             data={data}
             background='#ffffff'
-            margin={{ top: 0, right: 100, bottom: 100, left: 0 }}
+            margin={{ top: 0, right: 80, bottom: 100, left: 0 }}
             innerRadius={0.5}
             padAngle={2}
             colors={getColor}

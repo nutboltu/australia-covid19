@@ -44,7 +44,7 @@ export const QLDContainer = () => {
                     <div style={{ height: 500 }}>
                         <LocalDistrictCases
                             data={qldLocalDistrictData}
-                            title='Confirmed cases by Hospital and Health Service'
+                            title='Confirmed cases by HHS'
                         />
                     </div>
                 </Col>

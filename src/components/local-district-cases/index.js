@@ -21,7 +21,7 @@ export const LocalDistrictCases = ({ data, title }) => {
                 data={data}
                 keys={[ 'cases' ]}
                 indexBy="district"
-                margin={{ top: 0, right: 0, bottom: 50, left: 130 }}
+                margin={{ top: 0, right: 0, bottom: 50, left: 100 }}
                 padding={0.3}
                 groupMode="grouped"
                 colors={getColors}

@@ -28,7 +28,7 @@ export const SexAgeGroup = ({ data }) => {
     return (
         <>
             <Divider orientation="center">
-                Age and sex breakdown of confirmed cases
+                Age and sex grouped of confirmed cases
             </Divider>
             <Row style={{ height: 50 }}>
                 <Col
@@ -48,7 +48,7 @@ export const SexAgeGroup = ({ data }) => {
                 data={data}
                 keys={[ 'female', 'male' ]}
                 indexBy="age"
-                margin={{ top: 50, right: 0, bottom: 50, left: 30 }}
+                margin={{ top: 50, right: 20, bottom: 70, left: 30 }}
                 padding={0.3}
                 groupMode="grouped"
                 colors={getColors}
@@ -59,34 +59,27 @@ export const SexAgeGroup = ({ data }) => {
                 axisBottom={{
                     tickSize: 5,
                     tickPadding: 5,
-                    tickRotation: 0,
-                    legend: 'age',
-                    legendPosition: 'middle',
-                    legendOffset: 32
+                    tickRotation: -59,
                 }}
                 axisLeft={{
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
-                    legend: 'Number of people',
-                    legendPosition: 'middle',
-                    legendOffset: -40
                 }}
                 labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
                 legends={[
                     {
                         dataFrom: 'keys',
-                        anchor: 'bottom-right',
-                        direction: 'column',
+                        anchor: 'bottom',
+                        direction: 'row',
                         justify: false,
-                        translateX: 120,
-                        translateY: 0,
+                        translateY: 60,
                         itemsSpacing: 2,
                         itemWidth: 100,
                         itemHeight: 20,
                         itemDirection: 'left-to-right',
                         itemOpacity: 0.85,
-                        symbolSize: 20,
+                        symbolSize: 15,
                         effects: [
                             {
                                 on: 'hover',
