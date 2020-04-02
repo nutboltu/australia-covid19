@@ -5,17 +5,18 @@ import { SourceOfInfection } from '../source-of-infection';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { SexAgeGroup } from '../sex-age-group';
 import { LocalDistrictCases } from '../local-district-cases';
-import nswSexAndAgeGroupData from '../../data/nsw/sex_age_group.json';
-import nswLocalDistrictData from '../../data/nsw/local_district_cases.json';
-import nswCasesData from '../../data/nsw/cases.json';
-import nswTestedData from '../../data/nsw/tested.json';
-import nswSouceOfInfectionData from '../../data/nsw/sources_of_infection.json';
-import statesCasesData from '../../data/states_cases.json';
 import { CasesStats } from '../cases-stats';
 
 const stateName = 'New South Wales';
 
-export const NSWContainer = () => {
+export const NSWContainer = ({
+    nswSexAndAgeGroupData,
+    nswLocalDistrictData,
+    nswCasesData,
+    nswTestedData,
+    nswSouceOfInfectionData,
+    statesCasesData
+}) => {
     const nswStats = statesCasesData.find(item => item.location === stateName);
     const stats = {
         ...nswStats,

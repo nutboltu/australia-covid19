@@ -3,15 +3,16 @@ import { MainDivider } from '../main-divider';
 import { CasesTable } from '../cases-table';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { LocalDistrictCases } from '../local-district-cases';
-import qldLocalDistrictData from '../../data/qld/local_district_cases.json';
-import qldTestedData from '../../data/qld/tested.json';
-import statesCasesData from '../../data/states_cases.json';
-import qldCasesData from '../../data/qld/cases.json';
 import { CasesStats } from '../cases-stats';
 
 const stateName = 'Queensland';
 
-export const QLDContainer = () => {
+export const QLDContainer = ({
+    qldLocalDistrictData,
+    qldTestedData,
+    statesCasesData,
+    qldCasesData
+}) => {
     const qldStats = statesCasesData.find(item => item.location === stateName);
     const stats = {
         ...qldStats,

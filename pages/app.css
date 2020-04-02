@@ -16,9 +16,19 @@ main {
   font-size: 30px;
   text-shadow: 1px 1px 0 #000b5b, 1px -1px 0 #000b5b, -1px 1px 0 #000b5b, -1px -1px 0 #000b5b, 1px 0px 0 #000b5b, 0px 1px 0 #000b5b, -1px 0px 0 #000b5b, 0px -1px 0 #000b5b;
 }
+
 @media only screen and (max-width: 400px) {
   .logo {
     font-size: 22px;
   }
 }
 
+.australia-map {
+  height: 490px;
+}
+
+@media screen and (max-width: 550px) {
+  .australia-map {
+    height: 310px;
+  }
+}

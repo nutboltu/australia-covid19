@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breakpoint } from 'react-socks';
+import { Breakpoint, useCurrentWidth } from 'react-socks';
 import {
   Row,
   Col,
@@ -14,16 +14,25 @@ import { CasesStats } from '../cases-stats';
 import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
 
-import ausCasesData from '../../data/aus_cases.json';
-import statesCasesData from '../../data/states_cases.json';
-import statesCasesTodayData from '../../data/states_cases_today.json';
-import globalCases from '../../data/global_cases.json';
-import ausHistoricalData from '../../data/aus_historical_data.json';
-import ausDailyHistoricalData from '../../data/aus_daily_historical_data.json';
+// import ausCasesData from '../../data/aus_cases.json';
+// import statesCasesData from '../../data/states_cases.json';
+// import statesCasesTodayData from '../../data/states_cases_today.json';
+// import globalCases from '../../data/global_cases.json';
+// import ausHistoricalData from '../../data/aus_historical_data.json';
+// import ausDailyHistoricalData from '../../data/aus_daily_historical_data.json';
 
 
-export const AustraliaContainer = () => {
+export const AustraliaContainer = ({
+  ausCasesData,
+  statesCasesData,
+  statesCasesTodayData,
+  globalCases,
+  ausHistoricalData,
+  ausDailyHistoricalData,
+}) => {
   const [loading, setLoading] = useState(false);
+  const width = useCurrentWidth();
+
   const total = statesCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
       acc.deaths += item.deaths;
@@ -69,8 +78,10 @@ export const AustraliaContainer = () => {
                 type="info"
                 showIcon
               />
-                <Breakpoint medium up>
-                  <div style={{ height: 490}}>
+              {
+                width > 550
+                ?
+                <div className='australia-map'>
                     <AustraliaMap
                       data={mapData}
                       mapHandler={(event) => onClick(event.data.id)}
@@ -78,9 +89,8 @@ export const AustraliaContainer = () => {
                       translation={[ -2.10, -0.2 ]}
                     />
                   </div>
-                </Breakpoint>
-                <Breakpoint small down>
-                  <div style={{ height: 310 }}>
+                  : 
+                  <div className='australia-map'>
                       <AustraliaMap
                         data={mapData}
                         mapHandler={(event) => onClick(event.data.id)}
@@ -88,7 +98,7 @@ export const AustraliaContainer = () => {
                         translation={[-2.35, -0.1]}
                       />
                   </div>
-                </Breakpoint>
+              }
             </Col>
           </Row>
           <Row>
