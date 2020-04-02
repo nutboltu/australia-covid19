@@ -6,18 +6,21 @@ import {
   Divider,
   Alert,
   Spin,
-  message,
 } from 'antd';
-import Router from 'next/router';
+import { routeTo } from '../../utils/route';
 import { AustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
 import { CasesStats } from '../cases-stats';
 import { CurrentStatus } from '../current-status';
+// import { TimeSeriesGraph } from '../time-series-graph';
+
 import ausCasesData from '../../data/aus_cases.json';
 import statesCasesData from '../../data/states_cases.json';
 import statesCasesTodayData from '../../data/states_cases_today.json';
 import globalCases from '../../data/global_cases.json';
-import { routeTo } from '../../utils/route';
+// import ausHistoricalData from '../../data/aus_historical_data.json';
+// import ausDailyHistoricalData from '../../data/aus_daily_historical_data.json';
+
 
 export const AustraliaContainer = () => {
   const [loading, setLoading] = useState(false);
@@ -116,6 +119,18 @@ export const AustraliaContainer = () => {
               />
             </Col>
           </Row>
+          {/* <Row>
+            <Col span={24}>
+              <Divider orientation='center'>
+                Cumulative
+              </Divider>
+              <div style={{ height: 400}}>
+                  <TimeSeriesGraph
+                    data={ausHistoricalData}
+                  />
+              </div>
+            </Col>
+          </Row> */}
         </div>
      </Spin>
   );

@@ -3,6 +3,8 @@
 const axios = require('axios');
 const { NovelCovid } = require('novelcovid');
 const { write } = require('./file-manager');
+const { dateFormat } = require('./utils');
+
 const provinces = [
   'australian capital territory',
   'new south wales',
@@ -36,18 +38,14 @@ const mapProvincestoStateCode = {
   'western australia': 'WA',
 };
 
-const dataFormat = (str) => {
-  const part = str.split('/');
-  return `20${part[2]}-${part[0].padStart(2, '0')}-${part[1].padStart(2, '0')}`;
-}
 
-getDailyReport = (obj) => {
+const getDailyReport = (obj) => {
   const keys = Object.keys(obj);
   return keys.reduce((acc, key, index) => {
     const i = Math.max(index-1, 0);
     const d = obj[key] - obj[[keys[i]]];
     if (d) {
-      acc.push({ day: dataFormat(key), value: d});
+      acc.push({ day: dateFormat(key), value: d});
     }
     return acc;
   }, []);

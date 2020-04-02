@@ -1,8 +1,8 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
+const { toNumber } = require('./utils');
 
-const toNumber = (str) => parseInt(str.replace(',', ''));
 const sources = [
   'Travel overseas',
   'Contact with a confirmed case',

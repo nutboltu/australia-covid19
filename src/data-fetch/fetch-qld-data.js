@@ -1,8 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
-
-const toNumber = (str) => parseInt(str.replace(',', ''));
+const { toNumber } = require('./utils');
 
 const fetchQLDData = async () => {
   let response;
