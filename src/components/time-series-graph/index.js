@@ -1,10 +1,17 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line';
 
+const colors = {
+    confirmed: '#faad14',
+    deaths: '#ff4d4f',
+    recovered: '#13c2c2',
+}
+const getColors = (line) => colors[line.id];
+
 export const TimeSeriesGraph = ({ data }) => (
   <ResponsiveLine
         data={data}
-        margin={{ top: 50, right: 180, bottom: 50, left: 60 }}
+        margin={{ top: 20, right: 0, bottom: 75, left: 60 }}
         curve='catmullRom'
         enableSlices='x'
         xScale={{
@@ -22,35 +29,31 @@ export const TimeSeriesGraph = ({ data }) => (
         axisBottom={{
             orient: 'bottom',
             format: '%d-%b',
+            tickRotation: -59,
         }}
         axisLeft={{
             orient: 'left',
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'Number of people',
-            legendOffset: -40,
-            legendPosition: 'middle'
         }}
-        colors={{ scheme: 'category10' }}
-        pointSize={4}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
+        colors={getColors}
+        pointSize={1}
+        enableArea
         useMesh={true}
         legends={[
             {
-                anchor: 'bottom-right',
-                direction: 'column',
+                anchor: 'bottom',
+                direction: 'row',
                 justify: false,
-                translateX: 160,
-                translateY: 10,
+                translateX: 0,
+                translateY: 70,
                 itemsSpacing: 0,
                 itemDirection: 'left-to-right',
-                itemWidth: 140,
-                itemHeight: 30,
+                itemWidth: 100,
+                itemHeight: 25,
                 itemOpacity: 0.75,
-                symbolSize: 18,
+                symbolSize: 12,
                 symbolShape: 'circle',
                 symbolBorderColor: 'rgba(0, 0, 0, .5)',
                 effects: [

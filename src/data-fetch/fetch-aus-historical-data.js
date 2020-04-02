@@ -14,7 +14,7 @@ const getData = (obj) => Object.keys(obj).map((key) => ({
     const keys = Object.keys(obj);
     return keys.map((key, index) => ({
         x: dateFormat(key),
-        y: obj[key] - obj[keys[Math.max(index, 0)]],
+        y: obj[key] - obj[keys[Math.max(index - 1, 0)]],
     }));
 };
 

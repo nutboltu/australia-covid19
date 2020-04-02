@@ -12,14 +12,14 @@ import { AustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
 import { CasesStats } from '../cases-stats';
 import { CurrentStatus } from '../current-status';
-// import { TimeSeriesGraph } from '../time-series-graph';
+import { TimeSeriesGraph } from '../time-series-graph';
 
 import ausCasesData from '../../data/aus_cases.json';
 import statesCasesData from '../../data/states_cases.json';
 import statesCasesTodayData from '../../data/states_cases_today.json';
 import globalCases from '../../data/global_cases.json';
-// import ausHistoricalData from '../../data/aus_historical_data.json';
-// import ausDailyHistoricalData from '../../data/aus_daily_historical_data.json';
+import ausHistoricalData from '../../data/aus_historical_data.json';
+import ausDailyHistoricalData from '../../data/aus_daily_historical_data.json';
 
 
 export const AustraliaContainer = () => {
@@ -106,6 +106,30 @@ export const AustraliaContainer = () => {
               </Col>
            </Row>
           <Row>
+            <Col span={24}>
+              <Divider orientation='center'>
+                Cumulative cases
+              </Divider>
+              <div style={{ height: 400}}>
+                  <TimeSeriesGraph
+                    data={ausHistoricalData}
+                  />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Divider orientation='center'>
+                Daily cases
+              </Divider>
+              <div style={{ height: 400}}>
+                  <TimeSeriesGraph
+                    data={ausDailyHistoricalData}
+                  />
+              </div>
+            </Col>
+          </Row>
+          <Row>
             <Col>
               <Divider orientation='center'>
                 Last 24 hours status
@@ -119,18 +143,6 @@ export const AustraliaContainer = () => {
               />
             </Col>
           </Row>
-          {/* <Row>
-            <Col span={24}>
-              <Divider orientation='center'>
-                Cumulative
-              </Divider>
-              <div style={{ height: 400}}>
-                  <TimeSeriesGraph
-                    data={ausHistoricalData}
-                  />
-              </div>
-            </Col>
-          </Row> */}
         </div>
      </Spin>
   );
