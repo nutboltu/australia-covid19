@@ -5,9 +5,9 @@ const fetchLatestGlobalData = require('./fetch-global-data');
 
 const fetchAll = async () => {
   await fetchAustraliaData();
-  await fetchNSWData();
   await fetchQLDData();
   await fetchLatestGlobalData();
+  await fetchNSWData();
 }
 
 module.exports = fetchAll();

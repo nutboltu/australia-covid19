@@ -30,6 +30,7 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
+
    if ( i == 0 ) {
       nswTested = [2, 4, 6].reduce((acc, index) => {
         const label = tbody.children[index].children[0].children[0].data;
@@ -69,10 +70,10 @@ const fetchNSWData = async () => {
     if ( i == 4 ) {
       localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32].reduce((acc, index) => {
         const item = {
-          district: el.children[1].children[index].children[1].children[1].children[0].data.replace('\n ', ''),
-          cases: parseInt(el.children[1].children[index].children[3].children[1].children[0].data),
-          test: parseInt(el.children[1].children[index].children[5].children[1].children[0].data),
-          positive_percentage: el.children[1].children[index].children[7].children[1].children[0].data,
+          district: el.children[1].children[index].children[1].children[0].data.replace('\n ', ''),
+          cases: parseInt(el.children[1].children[index].children[3].children[0].data),
+          test: parseInt(el.children[1].children[index].children[5].children[0].data),
+          positive_percentage: el.children[1].children[index].children[7].children[0].data,
         }
         acc.push(item);
         return acc;
