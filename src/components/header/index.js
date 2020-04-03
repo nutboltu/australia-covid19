@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Layout  } from 'antd';
 import { StateSelect } from '../state-select';
+import { GithubOutlined } from '@ant-design/icons';
 
 const { Header } = Layout;
 
@@ -31,14 +32,21 @@ export const AppHeader = ({ state = '' }) => {
         padding: '0 24px',
         width: '100%',
         height: 'auto',
+        maxWidth: '1024px'
       }}
     >
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        
+        justifyContent: 'space-between',
       }}>
-        <Link href='/'><a> <Logo /></a></Link>
+
+        <div><Link href='/'><a> <Logo /></a></Link></div>
+        <div>
+          <Link href='https://github.com/nutboltu/australia-covid19'>
+            <a style={{ color: '#333'}}> <GithubOutlined /></a>
+          </Link>
+        </div>
       </div>
       <StateSelect defaultValue={state} />
   </Header>

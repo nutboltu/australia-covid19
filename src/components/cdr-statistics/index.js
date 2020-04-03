@@ -5,10 +5,10 @@ const { Text } = Typography;
 export const CDRStatistics = ({ confirmed, deaths, recovered }) => (
   <div>
     <Row gutter={16}>
-      <Col span={9}>
+      <Col span={10}>
         <Statistic title={<Text type="warning">Confirmed</Text>} value={confirmed} />
       </Col>
-      <Col span={8}>
+      <Col span={7}>
         <Statistic title={<Text type="danger">Deaths</Text>} value={deaths} />
       </Col>
       <Col span={7}>
