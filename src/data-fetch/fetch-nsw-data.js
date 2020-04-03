@@ -30,7 +30,6 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
-
    if ( i == 0 ) {
       nswTested = [2, 4, 6].reduce((acc, index) => {
         const label = tbody.children[index].children[0].children[0].data;
@@ -40,13 +39,18 @@ const fetchNSWData = async () => {
       }, [])
     }
     if ( i == 1 ) {
-      nswConfirmedCases = [2, 5, 7].reduce((acc, index) => {
-        let label, value;
-        label = tbody.children[index].children[0].children[0].data;
-        value = tbody.children[index].children[2].children[0].data;
-        acc.push({ label, value});
-        return acc;
-      }, []);
+      nswConfirmedCases.push({
+        label: tbody.children[2].children[0].children[0].data,
+        value: tbody.children[2].children[2].children[0].data,
+      })
+      nswConfirmedCases.push({
+        label: tbody.children[5].children[1].children[0].data,
+        value: tbody.children[5].children[1].children[0].data,
+      })
+      nswConfirmedCases.push({
+        label: tbody.children[7].children[0].children[0].data,
+        value: tbody.children[7].children[2].children[0].data,
+      })
     }
     if ( i == 2 ) {
       sexAndAgeGroup = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20].reduce((acc, index) => {
