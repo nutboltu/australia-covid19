@@ -36,7 +36,7 @@ const fetchQLDData = async () => {
   html("#table59454")
     .filter((i, el) => {
       const totalTested = el.children[1].children[0].children[1].children[0].children[0].data;
-      getTestedFormat(totalConfirmed, toNumber(totalTested));
+      qldTested = getTestedFormat(totalConfirmed, toNumber(totalTested));
   });
   const qldCases = {
     confirmed: totalConfirmed,

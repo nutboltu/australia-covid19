@@ -1,13 +1,4 @@
-[
-  {
-    "label":"Total confirmed cases",
-    "value":"917"
-  },
-  {
-    "label":"Cases tested and excluded",
-    "value":"44,083"
-  },
-  {
-    "label":"Total",
-    "value":"45,000"
-  }]
+{
+  "confirmed":1036,
+  "deaths":5
+}

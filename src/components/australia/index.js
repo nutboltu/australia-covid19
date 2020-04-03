@@ -10,7 +10,7 @@ import {
 import { routeTo } from '../../utils/route';
 import { AustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
-import { CasesStats } from '../cases-stats';
+import { CDRStatistics } from '../cdr-statistics';
 import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
 
@@ -67,9 +67,9 @@ export const AustraliaContainer = ({
   return (
     <Spin spinning={loading}>
         <MainDivider title='Worldwide' />
-        <CasesStats {...globalCases} />
+        <CDRStatistics {...globalCases} />
         <MainDivider title='Australia' />
-        <CasesStats {...ausCasesData} />
+        <CDRStatistics {...ausCasesData} />
         <div style={{ margin: '24px 0'}}>
           <Row>
             <Col style={{ margin: '0 auto', cursor: 'pointer'}}>

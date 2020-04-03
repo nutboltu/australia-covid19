@@ -1,36 +1,42 @@
 import { AppLayout } from '../../src/components/layout';
-import { QLDContainer } from '../../src/components/qld';
+import { StateContainer } from '../../src/components/state-container';
+
+const stateName = 'Queensland';
 
 const QLD = ({
-  qldLocalDistrictData,
-  qldTestedData,
-  statesCasesData,
-  qldCasesData
+  localDistrictData,
+  testedData,
+  CDRData,
 }) => {
   return (
     <AppLayout state='qld'>
-        <QLDContainer
-           qldLocalDistrictData={qldLocalDistrictData}
-           qldTestedData={qldTestedData}
-           statesCasesData={statesCasesData}
-           qldCasesData={qldCasesData}
+        <StateContainer
+          stateName={stateName}
+           localDistrictData={localDistrictData}
+           testedData={testedData}
+           CDRData={CDRData}
         />
     </AppLayout>
   );
 }
 
 export async function getStaticProps() { 
-  const qldLocalDistrictData = require('../../src/data/qld/local_district_cases.json');
-  const qldTestedData = require('../../src/data/qld/tested.json');
+  const localDistrictData = require('../../src/data/qld/local_district_cases.json');
+  const testedData = require('../../src/data/qld/tested.json');
   const statesCasesData = require('../../src/data/states_cases.json');
-  const qldCasesData = require('../../src/data/qld/cases.json');
+  const newCDRData = require('../../src/data/qld/cases.json');
+  
+  const oldCDRData = statesCasesData.find(item => item.location === stateName);
+  const CDRData = {
+      ...oldCDRData,
+      ...newCDRData,
+  }
   return {
     props: {
-      qldLocalDistrictData,
-      qldTestedData,
-      statesCasesData,
-      qldCasesData
-    },
+      CDRData,
+      localDistrictData,
+      testedData,
+   },
   }
 }
 

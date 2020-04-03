@@ -50,7 +50,6 @@ export const CurrentStatus = ({
   totalConfirmed,
   totalDeaths,
   totalRecovered,
-  is24h = false,
 }) => {
   return (
     <div style={{ cursor: 'pointer'}}>

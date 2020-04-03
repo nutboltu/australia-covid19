@@ -1,36 +1,45 @@
 import { AppLayout } from '../../src/components/layout';
-import { VICContainer } from '../../src/components/vic';
+import { StateContainer } from '../../src/components/state-container';
+
+const stateName = 'Victoria';
 
 const VIC = ({
-  vicSexAndAgeGroupData,
-  vicSouceOfInfectionData,
-  vicCasesData,
-  statesCasesData,
+  CDRData,
+  sexAndAgeGroupData,
+  souceOfInfectionData,
+  testedData,
 }) => {
   return (
     <AppLayout state='vic'>
-        <VICContainer
-          vicSexAndAgeGroupData={vicSexAndAgeGroupData}
-          vicSouceOfInfectionData={vicSouceOfInfectionData}
-          vicCasesData={vicCasesData}
-          statesCasesData={statesCasesData}
+        <StateContainer
+          stateName={stateName}
+          sexAndAgeGroupData={sexAndAgeGroupData}
+          souceOfInfectionData={souceOfInfectionData}
+          CDRData={CDRData}
+          testedData={testedData}
         />
     </AppLayout>
   );
 }
 
 export async function getStaticProps() { 
-  const vicSexAndAgeGroupData = require('../../src/data/vic/sex_age_group.json');
-  const vicSouceOfInfectionData = require('../../src/data/vic/sources_of_infection.json');
-  const vicCasesData = require('../../src/data/vic/cases.json');
+  const sexAndAgeGroupData = require('../../src/data/vic/sex_age_group.json');
+  const souceOfInfectionData = require('../../src/data/vic/sources_of_infection.json');
+  const testedData = require('../../src/data/vic/tested.json');
+  const newCDRData = require('../../src/data/vic/cases.json');
   const statesCasesData = require('../../src/data/states_cases.json');
 
+  const oldCDRData = statesCasesData.find(item => item.location === stateName);
+  const CDRData = {
+      ...oldCDRData,
+      ...newCDRData,
+  }
   return {
     props: {
-      vicSexAndAgeGroupData,
-      vicSouceOfInfectionData,
-      vicCasesData,
-      statesCasesData,
+      CDRData,
+      sexAndAgeGroupData,
+      souceOfInfectionData,
+      testedData,
     },
   }
 }

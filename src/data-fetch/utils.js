@@ -17,7 +17,7 @@ const getTestedFormat = (totalConfirmed, totalTested) => {
         },
         {
             "label":"Total",
-            "value": totalTested
+            "value": new Intl.NumberFormat().format(totalTested),
         }];
 }
 
