@@ -66,7 +66,7 @@ export const AustraliaContainer = ({
           <Row>
             <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
-                message="Click the state in the map for specific statistics (NSW, VIC and QLD available)"
+                message="Click the state in the map for specific statistics."
                 type="info"
                 showIcon
               />
