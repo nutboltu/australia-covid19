@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
-const { toNumber } = require('./utils');
+const { toNumber, getTestedFormat } = require('./utils');
 
 const sources = [
   'Travel overseas',
@@ -31,12 +31,9 @@ const fetchNSWData = async () => {
     .filter((i, el) => {
       const tbody = el.children[0];
     if ( i == 0 ) {
-      nswTested = [2, 4, 6].reduce((acc, index) => {
-        const label = tbody.children[index].children[0].children[0].data;
-        const value = tbody.children[index].children[2].children[0].data;
-        acc.push({ label, value});
-        return acc;
-      }, [])
+      const totalConfirmed = toNumber(tbody.children[2].children[2].children[0].data);
+      const totalTested= toNumber(tbody.children[6].children[2].children[0].data);
+      nswTested = getTestedFormat(totalConfirmed, totalTested);
     }
     if ( i == 1 ) {
       nswConfirmedCases.push({

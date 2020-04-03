@@ -1,10 +1,10 @@
 [
   {
-    "label":"Total confirmed cases",
+    "label":"Positive",
     "value":"917"
   },
   {
-    "label":"Cases tested and excluded",
+    "label":"Negative",
     "value":"44,083"
   },
   {

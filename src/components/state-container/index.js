@@ -1,6 +1,6 @@
 import { Row, Col } from 'antd';
 import { MainDivider } from '../main-divider';
-import { CasesTable } from '../cases-table';
+import { TestedTable } from '../tested-table';
 import { SourceOfInfection } from '../source-of-infection';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { SexAgeGroup } from '../sex-age-group';
@@ -31,7 +31,7 @@ export const StateContainer = ({
             {
               testedData && 
                 <Col xs={24} lg={13} xl={11}>
-                  <CasesTable data={testedData} />
+                  <TestedTable data={testedData} />
                 </Col>
             }
             {

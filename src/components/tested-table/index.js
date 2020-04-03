@@ -6,11 +6,11 @@ const columns = [
     dataIndex: 'label',
     key: 'label',
     render: text => {
-      if (text.includes('confirmed')) {
+      if (text.includes('Positive')) {
         return (
           <Tag color='volcano'>POSITIVE</Tag>
         )
-      } else if (text.includes('excluded')) {
+      } else if (text.includes('Negative')) {
         return <Tag color='cyan'>NEGATIVE</Tag>
       }
       return <span>{text}</span>
@@ -23,7 +23,7 @@ const columns = [
   },
 ];
 
-export const CasesTable = ({ data }) => {
+export const TestedTable = ({ data }) => {
   return (
     <>
       <Divider orientation="center">

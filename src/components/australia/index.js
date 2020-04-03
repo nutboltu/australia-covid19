@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breakpoint, useCurrentWidth } from 'react-socks';
+import { useCurrentWidth } from 'react-socks';
 import {
   Row,
   Col,
@@ -13,14 +13,6 @@ import { MainDivider } from '../main-divider';
 import { CDRStatistics } from '../cdr-statistics';
 import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
-
-// import ausCasesData from '../../data/aus_cases.json';
-// import statesCasesData from '../../data/states_cases.json';
-// import statesCasesTodayData from '../../data/states_cases_today.json';
-// import globalCases from '../../data/global_cases.json';
-// import ausHistoricalData from '../../data/aus_historical_data.json';
-// import ausDailyHistoricalData from '../../data/aus_daily_historical_data.json';
-
 
 export const AustraliaContainer = ({
   ausCasesData,
@@ -102,20 +94,6 @@ export const AustraliaContainer = ({
             </Col>
           </Row>
           <Row>
-            <Col>
-                <Divider orientation='center'>
-                  Current Status*
-                </Divider>
-                <CurrentStatus
-                  data={statesCasesData}
-                  onClick={onClick}
-                  totalConfirmed={total.confirmed}
-                  totalDeaths={total.deaths}
-                  totalRecovered={total.recovered}
-                />
-              </Col>
-           </Row>
-          <Row>
             <Col span={24}>
               <Divider orientation='center'>
                 Cumulative cases
@@ -139,6 +117,20 @@ export const AustraliaContainer = ({
               </div>
             </Col>
           </Row>
+          <Row>
+            <Col>
+                <Divider orientation='center'>
+                  Current Status*
+                </Divider>
+                <CurrentStatus
+                  data={statesCasesData}
+                  onClick={onClick}
+                  totalConfirmed={total.confirmed}
+                  totalDeaths={total.deaths}
+                  totalRecovered={total.recovered}
+                />
+              </Col>
+           </Row>
           <Row>
             <Col>
               <Divider orientation='center'>

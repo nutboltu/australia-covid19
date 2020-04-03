@@ -8,11 +8,11 @@ const dateFormat = (str) => {
 const getTestedFormat = (totalConfirmed, totalTested) => {
     return [
         {
-            "label":"Total confirmed cases",
+            "label":"Positive",
             "value": new Intl.NumberFormat().format(totalConfirmed),
         },
         {
-            "label":"Cases tested and excluded",
+            "label":"Negative",
             "value": new Intl.NumberFormat().format(totalTested - totalConfirmed),
         },
         {
