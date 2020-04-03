@@ -1,53 +1,39 @@
-import { ResponsiveChoropleth } from '@nivo/geo';
-import geo from '../../data/topology.json';
+import AustraliaMap from 'react-australia-map';
+import { states } from '../../constants/states';
 
-export const AustraliaMap = ({
+export const COVIDAustraliaMap = ({
     data,
-    mapHandler,
-    scale,
-    translation,
+    total,
+    onClick,
 }) => {
+    const mapMaxValue = data.reduce((acc, item) => Math.max(acc, item.confirmed), 0);
+    const range = parseInt((mapMaxValue + 100) / 9);
+    const colors = ['#fff5f0','#fee0d2','#fcbba1', '#fc9272','#fb6a4a','#ef3b2c','#cb181d','#a50f15','#67000d'];
+    const mapStyling = data.reduce((acc, item) => {
+        const state = states.find(i => i.name === item.location);
+        const per = (item.confirmed * 100) / total.confirmed;
+        const colorIndex = parseInt(item.confirmed/range);
+        acc[state.code] = {
+            fill: colors[colorIndex],
+            showLabels: true,
+            label: {
+            name: ` ${state.code}\n ${item.confirmed} (${per.toFixed(2)}%)`,
+            fontSize: 4,
+            fill: colorIndex > 4 ? 'white' : 'black'
+            }
+        }
+        return acc;
+    }, {});
+    const handleOnClick = (event) => {
+        onClick(event.target.dataset.name);
+    }
     return (
-    <ResponsiveChoropleth
-        data={data}
-        features={geo}
-        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-        colors='reds'
-        domain={[ 0, 1800]}
-        unknownColor="#666666"
-        label="properties.STATE_NAME"
-        valueFormat=","
-        projectionScale={scale}
-        projectionTranslation={translation}
-        graticuleLineColor="#dddddd"
-        borderWidth={0.5}
-        borderColor='#152538'
-        onClick={mapHandler}
-        // legends={[
-        //     {
-        //         anchor: 'bottom-left',
-        //         direction: 'column',
-        //         justify: true,
-        //         translateX: 40,
-        //         translateY: -100,
-        //         itemsSpacing: 0,
-        //         itemWidth: 80,
-        //         itemHeight: 18,
-        //         itemDirection: 'left-to-right',
-        //         itemTextColor: '#444444',
-        //         itemOpacity: 0.85,
-        //         symbolSize: 12,
-        //         effects: [
-        //             {
-        //                 on: 'hover',
-        //                 style: {
-        //                     itemTextColor: '#000000',
-        //                     itemOpacity: 1
-        //                 }
-        //             }
-        //         ]
-        //     }
-        // ]}
-    />
+        <AustraliaMap
+            fill="#ffcb03"
+            stroke="#ddd"
+            strokeWidth={0.5}
+            customize={mapStyling}
+            onClick={handleOnClick}
+      />
 );
 }

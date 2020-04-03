@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useCurrentWidth } from 'react-socks';
+import React from 'react';
 import {
   Row,
   Col,
@@ -8,7 +7,7 @@ import {
   Spin,
 } from 'antd';
 import { routeTo } from '../../utils/route';
-import { AustraliaMap } from '../australia-map';
+import { COVIDAustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
 import { CDRStatistics } from '../cdr-statistics';
 import { CurrentStatus } from '../current-status';
@@ -22,9 +21,6 @@ export const AustraliaContainer = ({
   ausHistoricalData,
   ausDailyHistoricalData,
 }) => {
-  const [loading, setLoading] = useState(false);
-  const width = useCurrentWidth();
-
   const total = statesCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
       acc.deaths += item.deaths;
@@ -39,58 +35,32 @@ export const AustraliaContainer = ({
     
   return acc;
 }, { confirmed: 0, deaths: 0, recovered: 0 });
-  let mapMaxValue = 0;
-  const mapData = statesCasesData.reduce((acc, item) => {
-  const per = (item.confirmed * 100) / total.confirmed;
-    acc.push({
-      id: item.code,
-      value: item.confirmed,
-      confirmed: item.confirmed,
-      deaths: item.deaths,
-      percentage: `${per.toFixed(2)}%`
-    });
-    mapMaxValue = Math.max(mapMaxValue, item.confirmed);
-    return acc;
-  }, []);
-
-  const onClick = (code) => {
+  
+const onClick = (code) => {
     routeTo(code);
   }
+
   return (
-    <Spin spinning={loading}>
+    <>
         <MainDivider title='Worldwide' />
         <CDRStatistics {...globalCases} />
         <MainDivider title='Australia' />
         <CDRStatistics {...ausCasesData} />
         <div style={{ margin: '24px 0'}}>
           <Row>
-            <Col style={{ margin: '0 auto', cursor: 'pointer'}}>
+            <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
                 message="Click the state in the map for specific statistics."
                 type="info"
                 showIcon
               />
-              {
-                width > 550
-                ?
-                <div className='australia-map'>
-                    <AustraliaMap
-                      data={mapData}
-                      mapHandler={(event) => onClick(event.data.id)}
-                      scale={650}
-                      translation={[ -2.10, -0.2 ]}
-                    />
-                  </div>
-                  : 
-                  <div className='australia-map'>
-                      <AustraliaMap
-                        data={mapData}
-                        mapHandler={(event) => onClick(event.data.id)}
-                        scale={400}
-                        translation={[-2.35, -0.1]}
-                      />
-                  </div>
-              }
+              <div className='australia-map'>
+                <COVIDAustraliaMap
+                  data={statesCasesData}
+                  total={total}
+                  onClick={onClick}
+                />
+              </div>
             </Col>
           </Row>
           <Row>
@@ -146,6 +116,6 @@ export const AustraliaContainer = ({
             </Col>
           </Row>
         </div>
-     </Spin>
+    </>    
   );
 }
