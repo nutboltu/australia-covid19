@@ -2,46 +2,51 @@
   {
      "age":"0-9",
      "female": 4,
-     "male": 3
+     "male": 6
   },
   {
      "age":"10-19",
-     "female": 14,
-     "male":14
+     "female": 15,
+     "male":19
   },
   {
      "age":"20-29",
-     "female": 99,
-     "male":113
+     "female": 126,
+     "male":130
   },
   {
      "age":"30-39",
-     "female":63,
-     "male":76
+     "female":80,
+     "male":86
   },
   {
      "age":"40-49",
-     "female":53,
-     "male":81
+     "female":59,
+     "male":89
   },
   {
      "age":"50-59​​",
-     "female":81,
-     "male":84
+     "female":101,
+     "male":94
   },
   {
      "age":"60-69",
-     "female":64,
-     "male":81
+     "female":76,
+     "male":97
   },
   {
      "age":"70-79",
-     "female":27,
-     "male":38
+     "female":31,
+     "male":43
   },
   {
      "age":"80-89",
-     "female":6,
-     "male":8
-  }
+     "female":11,
+     "male":10
+  },
+  {
+   "age":"Unknown",
+   "female":1,
+   "male":3
+}
 ]

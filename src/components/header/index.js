@@ -43,9 +43,12 @@ export const AppHeader = ({ state = '' }) => {
 
         <div><Link href='/'><a> <Logo /></a></Link></div>
         <div>
-          <Link href='https://github.com/nutboltu/australia-covid19'>
-            <a style={{ color: '#333'}}> <GithubOutlined /></a>
-          </Link>
+          <a
+            href='https://github.com/nutboltu/australia-covid19'
+            style={{ color: '#333'}}
+          >
+              <GithubOutlined />
+          </a>
         </div>
       </div>
       <StateSelect defaultValue={state} />
