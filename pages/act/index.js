@@ -1,16 +1,19 @@
 import { AppLayout } from '../../src/components/layout';
 import { StateContainer } from '../../src/components/state-container';
 
+const stateCode = 'act';
 const stateName = 'Australian Capital Territory';
 
 const ACT = ({
   CDRData,
+  historicalData
 }) => {
   return (
-    <AppLayout state='act'>
+    <AppLayout state={stateCode}>
         <StateContainer
           stateName={stateName}
           CDRData={CDRData}
+          historicalData={historicalData}
         />
     </AppLayout>
   );
@@ -18,11 +21,13 @@ const ACT = ({
 
 export async function getStaticProps() { 
   const statesCasesData = require('../../src/data/states_cases.json');
-  
+  const allHistoricalData = require('../../src/data/states_historical_data.json');
+
   const CDRData = statesCasesData.find(item => item.location === stateName);
   return {
     props: {
       CDRData,
+      historicalData: allHistoricalData[stateCode.toUpperCase()],
    },
   }
 }

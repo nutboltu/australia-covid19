@@ -1,6 +1,7 @@
 import { AppLayout } from '../../src/components/layout';
 import { StateContainer } from '../../src/components/state-container';
 
+const stateCode = 'nsw';
 const stateName = 'New South Wales';
 
 const NSW = ({
@@ -9,9 +10,10 @@ const NSW = ({
   localDistrictData,
   testedData,
   souceOfInfectionData,
+  historicalData,
 }) => {
   return (
-    <AppLayout state='nsw'>
+    <AppLayout state={stateCode}>
         <StateContainer
           stateName={stateName}
           sexAndAgeGroupData={sexAndAgeGroupData}
@@ -19,6 +21,7 @@ const NSW = ({
           CDRData={CDRData}
           testedData={testedData}
           souceOfInfectionData={souceOfInfectionData}
+          historicalData={historicalData}
         />
     </AppLayout>
   );
@@ -31,6 +34,7 @@ export async function getStaticProps() {
   const testedData = require('../../src/data/nsw/tested.json');
   const souceOfInfectionData = require('../../src/data/nsw/sources_of_infection.json');
   const statesCasesData = require('../../src/data/states_cases.json');
+  const allHistoricalData = require('../../src/data/states_historical_data.json');
 
   const oldCDRData = statesCasesData.find(item => item.location === stateName);
   const CDRData = {
@@ -45,6 +49,7 @@ export async function getStaticProps() {
       localDistrictData,
       testedData,
       souceOfInfectionData,
+      historicalData: allHistoricalData[stateCode.toUpperCase()],
     },
   }
 }

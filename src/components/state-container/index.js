@@ -1,4 +1,4 @@
-import { Row, Col } from 'antd';
+import { Row, Col, Divider } from 'antd';
 import { MainDivider } from '../main-divider';
 import { TestedTable } from '../tested-table';
 import { SourceOfInfection } from '../source-of-infection';
@@ -6,6 +6,7 @@ import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { SexAgeGroup } from '../sex-age-group';
 import { LocalDistrictCases } from '../local-district-cases';
 import { CDRStatistics } from '../cdr-statistics';
+import { TimeSeriesGraph } from '../time-series-graph';
 
 export const StateContainer = ({
     stateName,
@@ -14,6 +15,7 @@ export const StateContainer = ({
     CDRData,
     testedData,
     souceOfInfectionData,
+    historicalData,
 }) => {
   return (
       <>
@@ -27,6 +29,21 @@ export const StateContainer = ({
               </div>
               </Col>
           </Row>
+          {
+            historicalData &&
+              <Row>
+                <Col span={24}>
+                  <Divider orientation='center'>
+                    Cumulative cases
+                  </Divider>
+                  <div style={{ height: 400}}>
+                      <TimeSeriesGraph
+                        data={historicalData}
+                      />
+                  </div>
+                </Col>
+            </Row>
+          }
           <Row gutter={16}>
             {
               testedData && 

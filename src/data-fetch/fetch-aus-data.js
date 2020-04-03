@@ -3,7 +3,7 @@
 const axios = require('axios');
 const { NovelCovid } = require('novelcovid');
 const { write } = require('./file-manager');
-const { dateFormat } = require('./utils');
+const { dateFormat, getHistoricalData } = require('./utils');
 
 const provinces = [
   'australian capital territory',
@@ -60,15 +60,16 @@ const fetchAustraliaData = async () => {
   }
   const statesCases = [];
   const statesCasesToday = [];
-
+  const statesHistoricalData = {};
   const dailyReportArray = await Promise.all(provinces.map(async province => {
     const { data } = await axios.get(`https://corona.lmao.ninja/v2/historical/australia/${province}`);
     const confirmedKeys = Object.keys(data.timeline.cases);
     const deathKeys = Object.keys(data.timeline.deaths);
     const recoveredKeys = Object.keys(data.timeline.recovered);
+    const code = mapProvincestoStateCode[province];
     statesCases.push({
       location: mapProvincestoStateName[province],
-      code: mapProvincestoStateCode[province],
+      code,
       confirmed: data.timeline.cases[confirmedKeys[confirmedKeys.length - 1]],
       deaths: data.timeline.deaths[deathKeys[deathKeys.length - 1]],
       recovered: data.timeline.recovered[recoveredKeys[recoveredKeys.length - 1]]
@@ -81,6 +82,7 @@ const fetchAustraliaData = async () => {
       deaths: data.timeline.deaths[deathKeys[deathKeys.length - 1]] - data.timeline.deaths[deathKeys[deathKeys.length - 2]],
       recovered: data.timeline.recovered[recoveredKeys[recoveredKeys.length - 1]] - data.timeline.recovered[recoveredKeys[recoveredKeys.length - 1]], 
     });
+    statesHistoricalData[code] = getHistoricalData(data.timeline);
     return getDailyReport(data.timeline.cases);
   }));
 
@@ -88,6 +90,8 @@ const fetchAustraliaData = async () => {
     acc[mapProvincestoStateName[province]] = dailyReportArray[index];
     return acc;
   }, {});
+  
+  write('./src/data/states_historical_data.json', JSON.stringify(statesHistoricalData));
   write('./src/data/daily_reports.json', JSON.stringify(dailyReport));
   write('./src/data/aus_cases.json', JSON.stringify(ausCases));
   write('./src/data/states_cases.json', JSON.stringify(statesCases));

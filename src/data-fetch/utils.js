@@ -21,8 +21,27 @@ const getTestedFormat = (totalConfirmed, totalTested) => {
         }];
 }
 
+const getCumulativeData = (obj) => Object.keys(obj).map((key) => ({
+    x: dateFormat(key),
+    y: obj[key],
+ }));
+
+const getHistoricalData = (timeline) => {
+    let historicalData = [];
+    ['recovered', 'deaths', 'cases'].forEach(key => {
+        const id = key === 'cases' ? 'confirmed' : key;
+        historicalData.push({
+            id,
+            data: getCumulativeData(timeline[key])
+        });
+    });
+    return historicalData;
+}
+
 module.exports = {
     toNumber,
     dateFormat,
     getTestedFormat,
+    getCumulativeData,
+    getHistoricalData,
 }
