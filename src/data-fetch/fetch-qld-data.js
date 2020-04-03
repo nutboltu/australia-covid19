@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
-const { toNumber } = require('./utils');
+const { toNumber, getTestedFormat } = require('./utils');
 
 const fetchQLDData = async () => {
   let response;
@@ -36,19 +36,7 @@ const fetchQLDData = async () => {
   html("#table59454")
     .filter((i, el) => {
       const totalTested = el.children[1].children[0].children[1].children[0].children[0].data;
-      qldTested= [
-        {
-          "label":"Total confirmed cases",
-          "value": new Intl.NumberFormat().format(totalConfirmed),
-        },
-        {
-          "label":"Cases tested and excluded",
-          "value": new Intl.NumberFormat().format(toNumber(totalTested) - totalConfirmed),
-        },
-        {
-          "label":"Total",
-          "value": totalTested
-        }]
+      getTestedFormat(totalConfirmed, toNumber(totalTested));
   });
   const qldCases = {
     confirmed: totalConfirmed,
