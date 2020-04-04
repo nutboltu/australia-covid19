@@ -4,7 +4,7 @@ import { ResponsivePie } from '@nivo/pie';
 const color = {
     'Travel overseas': '#000b5b',
     'Contact with a confirmed case': '#60acee',
-    'Locally acquired – unknown source': '#45464c',
+    'Locally acquired – unknown source': '#55d0cf',
     'Under investigation': '#a3a8ca',
 };
 

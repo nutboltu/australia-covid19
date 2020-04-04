@@ -21,7 +21,7 @@ export const DailyCasesCalendar = ({ stateName }) => {
             dayBorderColor="#ffffff"
             legends={[
                 {
-                    anchor: 'bottom-right',
+                    anchor: 'bottom',
                     direction: 'row',
                     translateY: -32,
                     itemCount: 4,
