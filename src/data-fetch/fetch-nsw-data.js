@@ -30,6 +30,7 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
+
     if ( i == 0 ) {
       const totalConfirmed = toNumber(tbody.children[2].children[2].children[0].data);
       const totalTested= toNumber(tbody.children[6].children[2].children[0].data);
@@ -41,12 +42,8 @@ const fetchNSWData = async () => {
         value: tbody.children[2].children[2].children[0].data,
       })
       nswConfirmedCases.push({
-        label: tbody.children[5].children[1].children[0].data,
-        value: tbody.children[5].children[1].children[0].data,
-      })
-      nswConfirmedCases.push({
-        label: tbody.children[7].children[0].children[0].data,
-        value: tbody.children[7].children[2].children[0].data,
+        label: tbody.children[8].children[0].children[0].data,
+        value: tbody.children[8].children[2].children[0].data,
       })
     }
     if ( i == 2 ) {
@@ -83,7 +80,7 @@ const fetchNSWData = async () => {
   });
   nswCases = {
     confirmed: toNumber(nswConfirmedCases[0].value),
-    deaths: toNumber(nswConfirmedCases[2].value),
+    deaths: toNumber(nswConfirmedCases[1].value),
   }
   write('./src/data/nsw/cases.json', JSON.stringify(nswCases));
   write('./src/data/nsw/tested.json', JSON.stringify(nswTested));
