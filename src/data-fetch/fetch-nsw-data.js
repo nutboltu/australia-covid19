@@ -30,7 +30,6 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
-
     if ( i == 0 ) {
       const totalConfirmed = toNumber(tbody.children[2].children[2].children[0].data);
       const totalTested= toNumber(tbody.children[6].children[2].children[0].data);
@@ -68,14 +67,14 @@ const fetchNSWData = async () => {
     if ( i == 4 ) {
       localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32].reduce((acc, index) => {
         const item = {
-          district: el.children[1].children[index].children[1].children[1].children[0].data.replace('\n ', ''),
-          cases: toNumber(el.children[1].children[index].children[3].children[1].children[0].data),
-          test: toNumber(el.children[1].children[index].children[5].children[1].children[0].data),
-          positive_percentage: el.children[1].children[index].children[7].children[1].children[0].data,
+          district: el.children[0].children[index].children[0].children[0].children[0].data.replace('\n ', ''),
+          cases: toNumber(el.children[0].children[index].children[2].children[0].children[0].data),
+          test: toNumber(el.children[0].children[index].children[4].children[0].children[0].data),
+          positive_percentage: el.children[0].children[index].children[6].children[0].children[0].data,
         }
         acc.push(item);
         return acc;
-      }, [])
+      }, []);
     }
   });
   nswCases = {
