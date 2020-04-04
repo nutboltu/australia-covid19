@@ -24,7 +24,7 @@ const fetchSAData = async () => {
       if (i == 0 ) {
         saCases = {
           confirmed: toNumber(el.children[1].children[3].children[3].children[1].children[0].data.trim()),
-          deaths: toNumber(el.children[1].children[7].children[3].children[1].children[0].data.trim()),
+          deaths: toNumber(el.children[1].children[9].children[3].children[1].children[0].data.trim()),
         };
       }
       if (i ==1) {
