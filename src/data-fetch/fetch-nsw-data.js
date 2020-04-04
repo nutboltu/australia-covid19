@@ -65,7 +65,7 @@ const fetchNSWData = async () => {
       }, [])
     }
     if ( i == 4 ) {
-      localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32].reduce((acc, index) => {
+      localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30].reduce((acc, index) => {
         const item = {
           district: el.children[0].children[index].children[0].children[0].children[0].data.replace('\n ', ''),
           cases: toNumber(el.children[0].children[index].children[2].children[0].children[0].data),

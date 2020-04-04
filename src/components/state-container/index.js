@@ -89,7 +89,7 @@ export const StateContainer = ({
             localDistrictData &&
             <Row style={{ marginTop: '100px'}}>
               <Col span={24} style={{margin: '0 auto' }}>
-                  <div style={{ height: 500 }}>
+                  <div style={{ height: 550 }}>
                       <LocalDistrictCases
                           data={localDistrictData}
                           title='Confirmed cases by Local Health District'
