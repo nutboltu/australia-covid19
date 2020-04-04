@@ -6,13 +6,19 @@ const stateName = 'Australian Capital Territory';
 
 const ACT = ({
   CDRData,
-  historicalData
+  ageGroupData,
+  testedData,
+  historicalData,
+  souceOfInfectionData,
 }) => {
   return (
     <AppLayout state={stateCode}>
         <StateContainer
           stateName={stateName}
+          ageGroupData={ageGroupData}
           CDRData={CDRData}
+          testedData={testedData}
+          souceOfInfectionData={souceOfInfectionData}
           historicalData={historicalData}
         />
     </AppLayout>
@@ -22,11 +28,17 @@ const ACT = ({
 export async function getStaticProps() { 
   const statesCasesData = require('../../src/data/states_cases.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
+  const testedData = require('../../src/data/act/tested.json');
+  const souceOfInfectionData = require('../../src/data/act/sources_of_infection.json');
+  const ageGroupData = require('../../src/data/act/age_group.json');
 
   const CDRData = statesCasesData.find(item => item.location === stateName);
   return {
     props: {
       CDRData,
+      testedData,
+      ageGroupData,
+      souceOfInfectionData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
    },
   }

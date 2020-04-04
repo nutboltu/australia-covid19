@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
-const { toNumber, getTestedFormat } = require('./utils');
+const { toNumber, getTestedFormat, getSourceOfInfectionFormat } = require('./utils');
 
 const fetchACTData = async () => {
   let response;
@@ -42,9 +42,22 @@ const fetchACTData = async () => {
   })
   html("#table63126")
   .filter((i, el) => {
-     
+     const overseas = el.children[1].children[1].children[0].children[0].data;
+     const contacted = el.children[1].children[1].children[3].children[0].data;
+     const local = el.children[1].children[1].children[4].children[0].data;
+     const underInvestigation = el.children[1].children[1].children[5].children[0].data;
+
+     sourcesOfInfection = getSourceOfInfectionFormat({
+      overseas,
+      contacted,
+      local,
+      underInvestigation,
+    });
   })
-  console.log(ageGroup, actCases, actTested);
+  write('./src/data/act/cases.json', JSON.stringify(actCases));
+  write('./src/data/act/tested.json', JSON.stringify(actTested));
+  write('./src/data/act/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
+  write('./src/data/act/age_group.json', JSON.stringify(ageGroup));
 };
 
-module.exports = fetchACTData();
+module.exports = fetchACTData;

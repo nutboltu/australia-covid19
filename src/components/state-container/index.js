@@ -1,15 +1,18 @@
 import { Row, Col, Divider } from 'antd';
+import { useCurrentWidth } from 'react-socks';
 import { MainDivider } from '../main-divider';
 import { TestedTable } from '../tested-table';
 import { SourceOfInfection } from '../source-of-infection';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { SexAgeGroup } from '../sex-age-group';
+import { AgeGroup } from '../age-group';
 import { LocalDistrictCases } from '../local-district-cases';
 import { CDRStatistics } from '../cdr-statistics';
 import { TimeSeriesGraph } from '../time-series-graph';
 
 export const StateContainer = ({
     stateName,
+    ageGroupData,
     sexAndAgeGroupData,
     localDistrictData,
     CDRData,
@@ -17,9 +20,11 @@ export const StateContainer = ({
     souceOfInfectionData,
     historicalData,
 }) => {
+  const width = useCurrentWidth();
+  const title = width < 500 && stateName == 'Australian Capital Territory' ? 'ACT' : stateName;
   return (
       <>
-        <MainDivider title={stateName} />
+        <MainDivider title={title} />
         <CDRStatistics {...CDRData} />
         <div style={{ marginBottom: '64px'}}>
           <Row style={{ marginBottom: '32px'}} >
@@ -60,6 +65,16 @@ export const StateContainer = ({
                 </Col>
             }
           </Row>
+          {
+            ageGroupData &&
+              <Row>
+                <Col span={24} style={{margin: '0 auto' }}>
+                    <div style={{ height: 400 }}>
+                        <AgeGroup data={ageGroupData} />
+                    </div>
+                </Col>
+              </Row>
+          }
           {
             sexAndAgeGroupData &&
             <Row>

@@ -21,6 +21,35 @@ const getTestedFormat = (totalConfirmed, totalTested) => {
         }];
 }
 
+const getSourceOfInfectionFormat = ({
+    overseas,
+    contacted,
+    local,
+    underInvestigation,
+}) => {
+    return [
+        {
+           "id":"Travel overseas",
+           "label":"Travel overseas",
+           "value":toNumber(overseas)
+        },
+        {
+           "id":"Contact with a confirmed case",
+           "label":"Contact with a confirmed case",
+           "value": toNumber(contacted)
+        },
+        {
+           "id":"Locally acquired – unknown source",
+           "label":"Locally acquired – unknown source",
+           "value":toNumber(local)
+        },
+        {
+           "id":"Under investigation",
+           "label":"Under investigation",
+           "value": toNumber(underInvestigation)
+        }
+      ];
+}
 const getCumulativeData = (obj) => Object.keys(obj).map((key) => ({
     x: dateFormat(key),
     y: obj[key],
@@ -44,4 +73,5 @@ module.exports = {
     getTestedFormat,
     getCumulativeData,
     getHistoricalData,
+    getSourceOfInfectionFormat,
 }

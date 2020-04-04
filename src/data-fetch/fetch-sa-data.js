@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
-const { toNumber, getTestedFormat } = require('./utils');
+const { toNumber, getTestedFormat, getSourceOfInfectionFormat } = require('./utils');
 
 const fetchSAData = async () => {
   let response;
@@ -40,28 +40,16 @@ const fetchSAData = async () => {
         }, [])
       }
        if (i == 2) {
-        sourcesOfInfection = [
-          {
-             "id":"Travel overseas",
-             "label":"Travel overseas",
-             "value":toNumber(el.children[1].children[3].children[3].children[1].children[0].data)
-          },
-          {
-             "id":"Contact with a confirmed case",
-             "label":"Contact with a confirmed case",
-             "value": toNumber(el.children[1].children[5].children[3].children[1].children[0].data)
-          },
-          {
-             "id":"Locally acquired – unknown source",
-             "label":"Locally acquired – unknown source",
-             "value":toNumber(el.children[1].children[9].children[3].children[1].children[0].data)
-          },
-          {
-             "id":"Under investigation",
-             "label":"Under investigation",
-             "value":el.children[1].children[11].children[3].children[1].children[0].data
-          }
-        ];
+         const overseas = el.children[1].children[3].children[3].children[1].children[0].data;
+         const contacted = el.children[1].children[5].children[3].children[1].children[0].data;
+         const local = el.children[1].children[9].children[3].children[1].children[0].data;
+         const underInvestigation = el.children[1].children[11].children[3].children[1].children[0].data;
+         sourcesOfInfection = getSourceOfInfectionFormat({
+           overseas,
+           contacted,
+           local,
+           underInvestigation,
+         });
        }
   });
   html('.wysiwyg')
