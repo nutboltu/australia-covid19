@@ -30,9 +30,9 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
-    if ( i != 4) {
-      return;
-    }
+    // if ( i != 4) {
+    //   return;
+    // }
     if ( i == 0 ) {
       const totalConfirmed = toNumber(tbody.children[2].children[2].children[0].data);
       const totalTested= toNumber(tbody.children[6].children[2].children[0].data);
