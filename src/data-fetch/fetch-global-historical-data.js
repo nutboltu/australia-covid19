@@ -14,6 +14,7 @@ const getDayData = (obj) => {
 };
 
 const fetchTop5GlobalHistoricalData = async () => {
+  let confirmedResponse;
   try {
     confirmedResponse = await axios.get(`${base}time_series_covid19_confirmed_global.csv`);
   } catch (err) {
@@ -90,9 +91,10 @@ const fetchTop5GlobalHistoricalData = async () => {
   
   // Prepare globalHistoricalDailyCumulativeData
   const globalHistoricalDailyData = [];
-  top5.forEach(function(obj){
+  top5.forEach(function(obj, index) {
     globalHistoricalDailyData.push({
       id: obj.id,
+      rank: index + 1,
       data: getDayData(getHistoricalData(obj.timeline).filter( 
         x => x.id === "confirmed")[0].data.filter(
           obj => obj.y>100))
