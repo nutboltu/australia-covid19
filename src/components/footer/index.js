@@ -25,7 +25,7 @@ export const AppFooter = () => (
         {` `}and{` `}
         <a
           target='_blank'
-          rel="noreferrer noopener" href='<https://sites.google.com/view/kaadnan'
+          rel="noreferrer noopener" href='https://sites.google.com/view/kaadnan'
         >kaadnan</a>
         <a
           target='_blank'
