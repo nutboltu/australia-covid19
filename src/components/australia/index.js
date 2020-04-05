@@ -4,7 +4,6 @@ import {
   Col,
   Divider,
   Alert,
-  Spin,
 } from 'antd';
 import { routeTo } from '../../utils/route';
 import { COVIDAustraliaMap } from '../australia-map';
@@ -23,7 +22,6 @@ export const AustraliaContainer = ({
   ausDailyHistoricalData,
   globalHistoricalData,
 }) => {
-  console.log(globalHistoricalData);
   const total = statesCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
       acc.deaths += item.deaths;
@@ -31,13 +29,6 @@ export const AustraliaContainer = ({
       
     return acc;
   }, { confirmed: 0, deaths: 0, recovered: 0 });
-//   const totalToday = statesCasesTodayData.reduce((acc, item) => {
-//     acc.confirmed += item.confirmed;
-//     acc.deaths += item.deaths;
-//     acc.recovered += item.recovered;
-    
-//   return acc;
-// }, { confirmed: 0, deaths: 0, recovered: 0 });
   
 const onClick = (code) => {
     routeTo(code);
@@ -69,7 +60,7 @@ const onClick = (code) => {
           <Row>
             <Col span={24}>
               <Divider orientation='center'>
-                Compared to other countries
+                AUS vs Top 5 affected countries
               </Divider>
               <div style={{ height: 400}}>
                 <ComparisonGraph
