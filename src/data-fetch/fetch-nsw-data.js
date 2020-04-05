@@ -72,7 +72,6 @@ const fetchNSWData = async () => {
         acc.push(item);
         return acc;
       }, []);
-      console.log(localDistrictCases)
     }
   });
 
