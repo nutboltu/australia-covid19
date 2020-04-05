@@ -18,7 +18,7 @@ export const AppLayout= ({ state, children }) => {
   return (
   <div className="container">
     <Head>
-      <title>Australia COVID-19</title>
+      <title>Australia Covid19</title>
       <meta name="title" content="Australia Covid19"></meta>
       <meta name="description" content="Live updates of Australia's coronavirus cases. It provides the dataset in map, graphs and tabular form with state-level granularity."></meta>
 
@@ -26,13 +26,13 @@ export const AppLayout= ({ state, children }) => {
       <meta property="og:url" content="http://www.australiacovid19.com"></meta>
       <meta property="og:title" content="Australia Covid19"></meta>
       <meta property="og:description" content="Live updates of Australia's coronavirus cases. It provides the dataset in map, graphs and tabular form with state-level granularity."></meta>
-      <meta property="og:image" content="/site_preview.png"></meta>
+      <meta property="og:image" content="https://www.australiacovid19.com/site_preview.png"></meta>
 
       <meta property="twitter:card" content="summary_large_image"></meta>
       <meta property="twitter:url" content="http://www.australiacovid19.com"></meta>
       <meta property="twitter:title" content="Australia Covid19"></meta>
       <meta property="twitter:description" content="Live updates of Australia's coronavirus cases. It provides the dataset in map, graphs and tabular form with state-level granularity."></meta>
-      <meta property="twitter:image" content="/site_preview.png"></meta>
+      <meta property="twitter:image" content="https://www.australiacovid19.com/site_preview.png"></meta>
     </Head>
 
     <main>
