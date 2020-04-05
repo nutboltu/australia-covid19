@@ -29,7 +29,7 @@ const fetchTop5GlobalHistoricalData = async () => {
   const dailyData = [];
   const timelineKey = confirmedCases[0].splice(4);
 
-  for (let b = 0; b < confirmedCases.length;) {
+  for (let b = 1; b < confirmedCases.length;) {
     const timeline = {
       cases: {},
       deaths: {},
@@ -40,23 +40,59 @@ const fetchTop5GlobalHistoricalData = async () => {
       timeline.cases[timelineKey[i]] = c[i]
     }
     dailyData.push({
-      country: confirmedCases[b][1],
+      id: confirmedCases[b][1],
       province: confirmedCases[b][0] === "" ? null : confirmedCases[b][0],
       timeline
     })
     b++;
   }
-  const globalHistoricalDailyData = [];
-  
-  const top5 = dailyData.sort((a, b) => {
+  // Group by province
+  const grouped = dailyData.reduce((accumulator, item) => {
+    if (accumulator[item.id]) {
+      const group = accumulator[item.id];
+      Object.keys(group.timeline.cases).forEach(function(key){
+         group.timeline.cases[key] = parseInt(group.timeline.cases[key]) + parseInt(item.timeline.cases[key])
+      });
+    }
+    else{
+      const newItem = {
+        id: item.id,
+        timeline: item.timeline
+      };
+      accumulator[item.id]= newItem;
+    }
+    return accumulator;
+  }, {});
+
+  // Converting object to array
+  const data = []
+  Object.keys(grouped).forEach(function(key) {
+    data.push(
+      {
+        id: key,
+        timeline: grouped[key].timeline
+      }
+    )
+  });
+
+  // Get top 5 countries
+  const top5 = data.sort((a, b) => {
     const aKey = Object.keys(a.timeline.cases);
     const bKey = Object.keys(b.timeline.cases);
     return b.timeline.cases[bKey[bKey.length - 1]] - a.timeline.cases[aKey[aKey.length - 1]];
-  }).slice(1, 6);
+  }).slice(0, 5);
 
+  //Adding Australian Data with top 5
+  top5.push({
+    id: grouped['Australia'].id,
+    timeline: grouped['Australia'].timeline
+  })
+  
+  // Prepare globalHistoricalDailyCumulativeData
+  const globalHistoricalDailyData = [];
   top5.forEach(function(obj){
     globalHistoricalDailyData.push({
-      country: obj.country,
+      id: obj.id,
       data: getDayData(getHistoricalData(obj.timeline).filter( 
         x => x.id === "confirmed")[0].data.filter(
           obj => obj.y>100))
@@ -67,4 +103,4 @@ const fetchTop5GlobalHistoricalData = async () => {
 }
 
 
-module.exports = fetchTop5GlobalHistoricalData;
+module.exports = fetchTop5GlobalHistoricalData();
