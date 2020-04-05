@@ -14,6 +14,7 @@ const getDayData = (obj) => {
 };
 
 const fetchTop5GlobalHistoricalData = async () => {
+  let confirmedResponse;
   try {
     confirmedResponse = await axios.get(`${base}time_series_covid19_confirmed_global.csv`);
   } catch (err) {

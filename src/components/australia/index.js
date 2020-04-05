@@ -12,6 +12,7 @@ import { MainDivider } from '../main-divider';
 import { CDRStatistics } from '../cdr-statistics';
 import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
+import { ComparisonGraph } from '../comparison-graph';
 
 export const AustraliaContainer = ({
   ausCasesData,
@@ -20,7 +21,9 @@ export const AustraliaContainer = ({
   globalCases,
   ausHistoricalData,
   ausDailyHistoricalData,
+  globalHistoricalData,
 }) => {
+  console.log(globalHistoricalData);
   const total = statesCasesData.reduce((acc, item) => {
       acc.confirmed += item.confirmed;
       acc.deaths += item.deaths;
@@ -28,13 +31,13 @@ export const AustraliaContainer = ({
       
     return acc;
   }, { confirmed: 0, deaths: 0, recovered: 0 });
-  const totalToday = statesCasesTodayData.reduce((acc, item) => {
-    acc.confirmed += item.confirmed;
-    acc.deaths += item.deaths;
-    acc.recovered += item.recovered;
+//   const totalToday = statesCasesTodayData.reduce((acc, item) => {
+//     acc.confirmed += item.confirmed;
+//     acc.deaths += item.deaths;
+//     acc.recovered += item.recovered;
     
-  return acc;
-}, { confirmed: 0, deaths: 0, recovered: 0 });
+//   return acc;
+// }, { confirmed: 0, deaths: 0, recovered: 0 });
   
 const onClick = (code) => {
     routeTo(code);
@@ -66,6 +69,18 @@ const onClick = (code) => {
           <Row>
             <Col span={24}>
               <Divider orientation='center'>
+                Compared to other countries
+              </Divider>
+              <div style={{ height: 400}}>
+                <ComparisonGraph
+                  data={globalHistoricalData}
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Divider orientation='center'>
                 Cumulative cases
               </Divider>
               <div style={{ height: 400}}>
@@ -90,7 +105,7 @@ const onClick = (code) => {
           <Row>
             <Col>
                 <Divider orientation='center'>
-                  Current Status*
+                  Current Status
                 </Divider>
                 <CurrentStatus
                   data={statesCasesData}
@@ -101,20 +116,6 @@ const onClick = (code) => {
                 />
               </Col>
            </Row>
-          <Row>
-            <Col>
-              <Divider orientation='center'>
-                Last 24 hours status
-              </Divider>
-              <CurrentStatus
-                data={statesCasesTodayData}
-                onClick={onClick}
-                totalConfirmed={totalToday.confirmed}
-                totalDeaths={totalToday.deaths}
-                totalRecovered={totalToday.recovered}
-              />
-            </Col>
-          </Row>
         </div>
     </>    
   );
