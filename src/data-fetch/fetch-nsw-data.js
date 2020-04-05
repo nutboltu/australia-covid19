@@ -30,23 +30,17 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
-    // if ( i != 4) {
-    //   return;
-    // }
+    if ( i != 4) {
+      return;
+    }
     if ( i == 0 ) {
       const totalConfirmed = toNumber(tbody.children[2].children[2].children[0].data);
       const totalTested= toNumber(tbody.children[6].children[2].children[0].data);
       nswTested = getTestedFormat(totalConfirmed, totalTested);
+      nswCases['confirmed'] = totalConfirmed;
     }
     if ( i == 1 ) {
-      nswConfirmedCases.push({
-        label: tbody.children[2].children[0].children[0].data,
-        value: tbody.children[2].children[2].children[0].data,
-      })
-      nswConfirmedCases.push({
-        label: tbody.children[8].children[0].children[0].data,
-        value: tbody.children[8].children[2].children[0].data,
-      })
+      nswCases['deaths'] = toNumber(tbody.children[8].children[2].children[0].data);
     }
     if ( i == 2 ) {
       sexAndAgeGroup = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20].reduce((acc, index) => {
@@ -70,24 +64,21 @@ const fetchNSWData = async () => {
     if ( i == 4 ) {
       localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30].reduce((acc, index) => {
         const item = {
-          district: el.children[0].children[index].children[0].children[0].data.replace('\n ', ''),
-          cases: toNumber(el.children[0].children[index].children[2].children[0].data),
-          test: toNumber(el.children[0].children[index].children[4].children[0].data),
-          positive_percentage: el.children[0].children[index].children[6].children[0].data,
+          district: el.children[0].children[index].children[1].children[0].data.replace('\n ', ''),
+          cases: toNumber(el.children[0].children[index].children[3].children[0].data),
+          test: toNumber(el.children[0].children[index].children[5].children[0].data),
+          positive_percentage: el.children[0].children[index].children[7].children[0].data,
         }
         acc.push(item);
         return acc;
       }, []);
+      console.log(localDistrictCases)
     }
   });
-  nswCases = {
-    confirmed: toNumber(nswConfirmedCases[0].value),
-    deaths: toNumber(nswConfirmedCases[1].value),
-  }
+
   // console.log(nswCases, nswTested, nswConfirmedCases, sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
   write('./src/data/nsw/cases.json', JSON.stringify(nswCases));
   write('./src/data/nsw/tested.json', JSON.stringify(nswTested));
-  write('./src/data/nsw/confirmed.json', JSON.stringify(nswConfirmedCases));
   write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
   write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
