@@ -12,7 +12,7 @@ const getLegends = (isColumn) =>  {
             anchor: 'bottom',
             direction: isColumn ? 'column' : 'row',
             justify: false,
-            translateX: isColumn ? 120 : 0,
+            translateX: isColumn ? 105 : 0,
             translateY: isColumn ? 0 : 45,
             itemsSpacing: 0,
             itemDirection: 'left-to-right',

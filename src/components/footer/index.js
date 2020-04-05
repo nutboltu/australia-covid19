@@ -13,20 +13,27 @@ export const AppFooter = () => (
       <Descriptions.Item label="NSW Health"><a href='https://www.health.nsw.gov.au'>https://www.health.nsw.gov.au</a></Descriptions.Item>
       <Descriptions.Item label="SA Health"><a href='https://www.sahealth.sa.gov.au'>https://www.sahealth.sa.gov.au</a></Descriptions.Item>
     </Descriptions>
-    <div style={{ color: '#333', display: 'flex', justifyContent: 'flex-end'}}>
-      maintained by
-      <a
-        target='_blank'
-        rel="noreferrer noopener" href='https://github.com/nutboltu'
-      >
-        {` `}@nutboltu {` `}
-      </a>
-      <a
-        target='_blank'
-        rel="noreferrer noopener" href='https://twitter.com/nutboltu'
-      >
-        <TwitterOutlined />
-      </a>
+    <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+      <div style={{ color: '#333'}}>
+        maintained by
+        <a
+          target='_blank'
+          rel="noreferrer noopener" href='https://github.com/nutboltu'
+        >
+          {` `}@nutboltu 
+        </a>
+        {` `}and{` `}
+        <a
+          target='_blank'
+          rel="noreferrer noopener" href='<https://sites.google.com/view/kaadnan'
+        >kaadnan</a>
+        <a
+          target='_blank'
+          rel="noreferrer noopener" href='https://twitter.com/nutboltu'
+        >
+          <TwitterOutlined />
+        </a>
+      </div>
     </div>
   </Footer>
 )
