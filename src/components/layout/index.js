@@ -1,12 +1,20 @@
-import React from 'react';
-import  { BreakpointProvider } from 'react-socks';
+import React, { useEffect } from 'react';
+import { BreakpointProvider } from 'react-socks';
 import Head from 'next/head';
 import { Layout } from 'antd';
+import { initGA, logPageView } from '../../utils/analytics'
 import { AppHeader } from '../header';
 import { AppFooter } from '../footer';
 const { Content } = Layout;
 
 export const AppLayout= ({ state, children }) => {
+  useEffect(() => {
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+  }, []);
   return (
   <div className="container">
     <Head>
