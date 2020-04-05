@@ -29,10 +29,15 @@ export async function getStaticProps() {
   const statesCasesData = require('../../src/data/states_cases.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const testedData = require('../../src/data/act/tested.json');
+  const newCDRData = require('../../src/data/act/cases.json');
   const souceOfInfectionData = require('../../src/data/act/sources_of_infection.json');
   const ageGroupData = require('../../src/data/act/age_group.json');
 
-  const CDRData = statesCasesData.find(item => item.location === stateName);
+  const oldCDRData = statesCasesData.find(item => item.location === stateName);
+  const CDRData = {
+    ...oldCDRData,
+    ...newCDRData,
+  }
   return {
     props: {
       CDRData,
