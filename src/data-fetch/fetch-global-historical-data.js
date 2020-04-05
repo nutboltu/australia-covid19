@@ -103,4 +103,4 @@ const fetchTop5GlobalHistoricalData = async () => {
 }
 
 
-module.exports = fetchTop5GlobalHistoricalData();
+module.exports = fetchTop5GlobalHistoricalData;
