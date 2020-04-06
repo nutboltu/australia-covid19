@@ -12,6 +12,7 @@ import { CDRStatistics } from '../cdr-statistics';
 import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
 import { ComparisonGraph } from '../comparison-graph';
+import { StatisticCard } from '../statistic-card';
 
 export const AustraliaContainer = ({
   ausCasesData,
@@ -41,6 +42,13 @@ const onClick = (code) => {
         <MainDivider title='Australia' />
         <CDRStatistics {...ausCasesData} />
         <div style={{ margin: '24px 0'}}>
+          <Row>
+            <Col span={24}>
+            <div style={{height: 300}}>
+                <StatisticCard />
+            </div>
+            </Col>
+          </Row>
           <Row>
             <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert

@@ -32,3 +32,16 @@ main {
     height: 310px;
   }
 }
+
+.statistic-card-icon > div > svg {
+  height: 3em;
+  width: 3em;
+  fill: #2893d6;
+}
+
+
+.statistic-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

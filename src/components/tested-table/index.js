@@ -27,7 +27,7 @@ export const TestedTable = ({ data }) => {
   return (
     <>
       <Divider orientation="center">
-          Total tested
+          Total test conducted
       </Divider>
       <Table
         columns={columns}
