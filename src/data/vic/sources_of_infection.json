@@ -2,21 +2,21 @@
   {
      "id":"Travel overseas",
      "label":"Travel overseas",
-     "value":"652"
+     "value":"658"
   },
   {
      "id":"Contact with a confirmed case",
      "label":"Contact with a confirmed case",
-     "value":"384"
+     "value":"404"
   },
   {
      "id":"Locally acquired – unknown source",
      "label":"Locally acquired – unknown source",
-     "value":"75"
+     "value":"88"
   },
   {
      "id":"Under investigation",
      "label":"Under investigation",
-     "value":"24"
+     "value":"8"
   }
 ]
