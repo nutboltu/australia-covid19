@@ -30,7 +30,7 @@ const fetchNSWData = async () => {
   html(".moh-rteTable-6")
     .filter((i, el) => {
       const tbody = el.children[0];
-    // if ( i != 4) {
+    // if ( i != 3) {
     //   return;
     // }
     if ( i == 0 ) {
@@ -55,8 +55,8 @@ const fetchNSWData = async () => {
       }, [])
     }
     if ( i == 3) {
-      sourcesOfInfection = [2, 4, 6, 8].reduce((acc, index, i) => {
-        const value = toNumber(tbody.children[index].children[2].children[0].data);
+      sourcesOfInfection = [3,5,7,9].reduce((acc, index, i) => {
+        const value = toNumber(el.children[1].children[index].children[3].children[0].data);
         acc.push({ id: sources[i], label: sources[i], value});
         return acc;
       }, [])
