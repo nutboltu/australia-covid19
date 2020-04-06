@@ -69,13 +69,13 @@ export const CurrentStatus = ({
         tableLayout='fixed'
         size='small'
         style={{fontSize: 8 }}
-        summary={() => (
-          <TotalRow
-            confirmed={totalConfirmed}
-            deaths={totalDeaths}
-            recovered={totalRecovered}
-          />
-          ) }
+        // summary={() => (
+        //   <TotalRow
+        //     confirmed={totalConfirmed}
+        //     deaths={totalDeaths}
+        //     recovered={totalRecovered}
+        //   />
+        //   ) }
       />
     </div>  
   )
