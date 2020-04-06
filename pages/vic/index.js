@@ -10,6 +10,7 @@ const VIC = ({
   souceOfInfectionData,
   testedData,
   historicalData,
+  localDistrictData,
 }) => {
   return (
     <AppLayout state={stateCode}>
@@ -20,6 +21,7 @@ const VIC = ({
           CDRData={CDRData}
           testedData={testedData}
           historicalData={historicalData}
+          localDistrictData={localDistrictData}
         />
     </AppLayout>
   );
@@ -32,6 +34,7 @@ export async function getStaticProps() {
   const newCDRData = require('../../src/data/vic/cases.json');
   const statesCasesData = require('../../src/data/states_cases.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
+  const localDistrictData = require('../../src/data/vic/local_district_cases.json');
 
   const oldCDRData = statesCasesData.find(item => item.location === stateName);
   const CDRData = {
@@ -44,6 +47,7 @@ export async function getStaticProps() {
       sexAndAgeGroupData,
       souceOfInfectionData,
       testedData,
+      localDistrictData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
     },
   }

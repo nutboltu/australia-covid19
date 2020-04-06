@@ -27,13 +27,16 @@ export const StateContainer = ({
         <MainDivider title={title} />
         <CDRStatistics {...CDRData} />
         <div style={{ marginBottom: '64px'}}>
-          <Row style={{ marginBottom: '32px'}} >
+          {
+            width > 600 &&
+            <Row style={{ marginBottom: '32px'}} >
               <Col span={24}>
               <div style={{height: 300}}>
                   <DailyCasesCalendar stateName={stateName} />
               </div>
               </Col>
-          </Row>
+            </Row>
+          }
           {
             historicalData &&
               <Row>
