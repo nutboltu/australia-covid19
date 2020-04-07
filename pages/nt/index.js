@@ -20,13 +20,12 @@ const NT = ({
 }
 
 export async function getStaticProps() { 
-  const statesCasesData = require('../../src/data/states_cases.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
-
-  const CDRData = statesCasesData.find(item => item.location === stateName);
+  const AusCDRTData = require('../../src/data/aus_cdrt.json');
+  
   return {
     props: {
-      CDRData,
+      CDRData: AusCDRTData.NT,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
    },
   }

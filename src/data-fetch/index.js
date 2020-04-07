@@ -1,4 +1,5 @@
 const fetchAustraliaData = require('./fetch-aus-data');
+const fetchCDRTData = require('./fetch-cdrt-data');
 const fetchNSWData = require('./fetch-nsw-data');
 const fetchQLDData = require('./fetch-qld-data');
 const fetchVICData = require('./fetch-vic-data');
@@ -14,6 +15,7 @@ const fetchAll = async () => {
   await fetchLatestGlobalData();
   await fetchAusHistoricalData();
   await fetchTop5GlobalHistoricalData();
+  await fetchCDRTData();
   await fetchQLDData();
   await fetchSAData();
   await fetchWAData();

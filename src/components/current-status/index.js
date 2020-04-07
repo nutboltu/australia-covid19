@@ -19,9 +19,9 @@ const TotalRow = ({ confirmed, deaths, recovered}) => (
 )
 const columns = [
   {
-    title: 'Location',
-    dataIndex: 'location',
-    key: 'location',
+    title: 'State',
+    dataIndex: 'state',
+    key: 'state',
     render: (text) => <span>{text}</span>,
   },
   {
@@ -47,9 +47,7 @@ const columns = [
 export const CurrentStatus = ({
   data,
   onClick,
-  totalConfirmed,
-  totalDeaths,
-  totalRecovered,
+  total,
 }) => {
   return (
     <div style={{ cursor: 'pointer'}}>
@@ -69,13 +67,14 @@ export const CurrentStatus = ({
         tableLayout='fixed'
         size='small'
         style={{fontSize: 8 }}
-        // summary={() => (
-        //   <TotalRow
-        //     confirmed={totalConfirmed}
-        //     deaths={totalDeaths}
-        //     recovered={totalRecovered}
-        //   />
-        //   ) }
+        summary={() => (
+          <TotalRow
+            confirmed={total.confirmed}
+            deaths={total.deaths}
+            recovered={total.recovered}
+          />
+          )
+        }
       />
     </div>  
   )
