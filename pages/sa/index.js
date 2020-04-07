@@ -27,21 +27,16 @@ const NSW = ({
 
 export async function getStaticProps() { 
   const sexAndAgeGroupData = require('../../src/data/sa/sex_age_group.json');
-  const newCDRData = require('../../src/data/sa/cases.json');
   const testedData = require('../../src/data/sa/tested.json');
   const souceOfInfectionData = require('../../src/data/sa/sources_of_infection.json');
   const statesCasesData = require('../../src/data/states_cases.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
+  const AusCDRTData = require('../../src/data/aus_cdrt.json');
 
-  const oldCDRData = statesCasesData.find(item => item.location === stateName);
-  const CDRData = {
-      ...oldCDRData,
-      ...newCDRData,
-  }
   return {
     props: {
       sexAndAgeGroupData,
-      CDRData,
+      CDRData: AusCDRTData.SA,
       testedData,
       souceOfInfectionData,
       statesCasesData,

@@ -12,24 +12,28 @@ import { CDRStatistics } from '../cdr-statistics';
 import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
 import { ComparisonGraph } from '../comparison-graph';
+import { stateCodeToName } from '../../constants/states';
 
+const getStateCDRData = (ausCDRTData) => {
+  return Object.keys(ausCDRTData).reduce((acc, code) => {
+    if(code != 'AUS') {
+      acc.push({
+        ...ausCDRTData[code],
+        code,
+        state: stateCodeToName[code],
+      })
+    }  
+    return acc;
+  }, []);
+}
 export const AustraliaContainer = ({
-  ausCasesData,
-  statesCasesData,
-  statesCasesTodayData,
+  ausCDRTData,
   globalCases,
   ausHistoricalData,
   ausDailyHistoricalData,
   globalHistoricalData,
 }) => {
-  const total = statesCasesData.reduce((acc, item) => {
-      acc.confirmed += item.confirmed;
-      acc.deaths += item.deaths;
-      acc.recovered += item.recovered;
-      
-    return acc;
-  }, { confirmed: 0, deaths: 0, recovered: 0 });
-  
+const stateCDRData = getStateCDRData(ausCDRTData);
 const onClick = (code) => {
     routeTo(code);
   }
@@ -39,7 +43,7 @@ const onClick = (code) => {
         <MainDivider title='Worldwide' />
         <CDRStatistics {...globalCases} />
         <MainDivider title='Australia' />
-        <CDRStatistics {...ausCasesData} />
+        <CDRStatistics {...ausCDRTData.AUS} />
         <div style={{ margin: '24px 0'}}>
           <Row>
             <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
@@ -50,8 +54,8 @@ const onClick = (code) => {
               />
               <div className='australia-map'>
                 <COVIDAustraliaMap
-                  data={statesCasesData}
-                  total={total}
+                  data={stateCDRData}
+                  total={ausCDRTData.AUS}
                   onClick={onClick}
                 />
               </div>
@@ -99,11 +103,9 @@ const onClick = (code) => {
                   Current Status
                 </Divider>
                 <CurrentStatus
-                  data={statesCasesData}
+                  data={stateCDRData}
+                  total={ausCDRTData.AUS}
                   onClick={onClick}
-                  totalConfirmed={total.confirmed}
-                  totalDeaths={total.deaths}
-                  totalRecovered={total.recovered}
                 />
               </Col>
            </Row>

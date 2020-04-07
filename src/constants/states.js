@@ -27,6 +27,16 @@ const states = [{
     code: 'ACT'
   }];
 
+const stateCodeToName = {
+  NSW: 'New South Wales',
+  VIC: 'Victoria',
+  NT: 'Northern Territory',
+  QLD: 'Queensland',
+  SA: 'South Australia',
+  WA: 'Western Australia',
+  TAS: 'Tasmania',
+  ACT: 'Australian Capital Territory'
+} 
 const stateNames = states.map(item => item.name);
 
 const mapToStateName = {
@@ -41,6 +51,7 @@ const mapToStateName = {
 };
 
 module.exports = {
+    stateCodeToName,
     mapToStateName,
     states,
     stateNames,
