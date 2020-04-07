@@ -21,7 +21,7 @@ const columns = [
     title: 'State',
     dataIndex: 'code',
     key: 'code',
-    width: '65px',
+    width: '70px',
     render: (text) => <span>{text}</span>,
   },
   {
