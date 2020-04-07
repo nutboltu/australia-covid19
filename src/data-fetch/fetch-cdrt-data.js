@@ -44,21 +44,18 @@ const fetchCDRTData = async () => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
-      console.log(CDRT)
     }
     if (i == 2) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
-      console.log(CDRT)
     }
     if (i == 7) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['deaths'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
-      console.log(CDRT)
     }
     if (i == 8) {
       arr.forEach(index => {

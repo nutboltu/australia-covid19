@@ -58,7 +58,6 @@ const fetchSAData = async () => {
     const totalTested = ulEl[4].children[1].children[0].data.split(' ')[4];
     saTested = getTestedFormat(saCases.confirmed, toNumber(totalTested));
   })
-  write('./src/data/sa/cases.json', JSON.stringify(saCases));
   write('./src/data/sa/tested.json', JSON.stringify(saTested));
   write('./src/data/sa/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/sa/sex_age_group.json', JSON.stringify(sexAndAgeGroup));

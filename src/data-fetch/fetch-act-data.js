@@ -14,7 +14,6 @@ const fetchACTData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  let actCases = {};
   let ageGroup = [];
   let sourcesOfInfection = [];
   let actTested = [];
@@ -54,7 +53,6 @@ const fetchACTData = async () => {
       underInvestigation,
     });
   })
-  write('./src/data/act/cases.json', JSON.stringify(actCases));
   write('./src/data/act/tested.json', JSON.stringify(actTested));
   write('./src/data/act/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/act/age_group.json', JSON.stringify(ageGroup));

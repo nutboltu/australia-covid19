@@ -38,10 +38,6 @@ const fetchQLDData = async () => {
       const totalTested = el.children[1].children[0].children[1].children[0].children[0].data;
       qldTested = getTestedFormat(totalConfirmed, toNumber(totalTested));
   });
-  const qldCases = {
-    confirmed: totalConfirmed,
-  };
-  write('./src/data/qld/cases.json', JSON.stringify(qldCases));
   write('./src/data/qld/tested.json', JSON.stringify(qldTested));
   write('./src/data/qld/local_district_cases.json', JSON.stringify(localDistrictCases));
 };
