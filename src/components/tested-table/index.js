@@ -11,7 +11,7 @@ const columns = [
           <Tag color='volcano'>POSITIVE</Tag>
         )
       } else if (text.includes('Negative')) {
-        return <Tag color='cyan'>NEGATIVE</Tag>
+        return <Tag color='cyan'>Tested and Excluded</Tag>
       }
       return <span>{text}</span>
     },
@@ -27,7 +27,7 @@ export const TestedTable = ({ data }) => {
   return (
     <>
       <Divider orientation="center">
-          Total tested
+          Total test conducted
       </Divider>
       <Table
         columns={columns}

@@ -46,6 +46,18 @@ const onClick = (code) => {
         <CDRStatistics {...ausCDRTData.AUS} />
         <div style={{ margin: '24px 0'}}>
           <Row>
+            <Col>
+                <Divider orientation='center'>
+                  Current Status
+                </Divider>
+                <CurrentStatus
+                  data={stateCDRData}
+                  total={ausCDRTData.AUS}
+                  onClick={onClick}
+                />
+              </Col>
+           </Row>
+          <Row>
             <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
                 message="Click the state in the map for specific statistics."
@@ -97,18 +109,6 @@ const onClick = (code) => {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col>
-                <Divider orientation='center'>
-                  Current Status
-                </Divider>
-                <CurrentStatus
-                  data={stateCDRData}
-                  total={ausCDRTData.AUS}
-                  onClick={onClick}
-                />
-              </Col>
-           </Row>
         </div>
     </>    
   );
