@@ -5,7 +5,7 @@ import {
   Divider,
   Alert,
 } from 'antd';
-import { IoMdBeaker } from 'react-icons/io';
+import { IoMdBeaker, IoMdPulse } from 'react-icons/io';
 import { routeTo } from '../../utils/route';
 import { COVIDAustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
@@ -15,7 +15,9 @@ import { TimeSeriesGraph } from '../time-series-graph';
 import { ComparisonGraph } from '../comparison-graph';
 import { stateCodeToName } from '../../constants/states';
 import { AusTestConductedTable } from '../aus-test-conducted-table';
+import { AusICUTable } from '../aus-icu-table';
 import { StatisticCard } from '../statistic-card';
+import { nFormatter } from '../../utils/number';
 
 const getStateData = (ausCDRTData) => {
   return Object.keys(ausCDRTData).reduce((acc, code) => {
@@ -36,9 +38,11 @@ export const AustraliaContainer = ({
   ausDailyHistoricalData,
   globalHistoricalData,
   ausTestConductedData,
+  ausICUCasesData,
 }) => {
 const stateCDRData = getStateData(ausCDRTData);
 const testConductedData = getStateData(ausTestConductedData);
+const icuData = getStateData(ausICUCasesData);
 const onClick = (code) => {
     routeTo(code);
   }
@@ -67,10 +71,25 @@ const onClick = (code) => {
               <StatisticCard
                 title='Total Test Conducted'
                 icon={<IoMdBeaker />}
-                total={ausTestConductedData.AUS}
+                value={nFormatter(ausTestConductedData.AUS.tested)}
               >
                 <AusTestConductedTable
                   data={testConductedData}
+                  onClick={onClick}
+                />
+              </StatisticCard>
+                
+              </Col>
+           </Row>
+           <Row>
+            <Col span={24}>
+              <StatisticCard
+                title='Cases in ICU'
+                icon={<IoMdPulse />}
+                value={ausICUCasesData.AUS.icu}
+              >
+                <AusICUTable
+                  data={icuData}
                   onClick={onClick}
                 />
               </StatisticCard>

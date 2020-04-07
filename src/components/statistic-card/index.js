@@ -1,7 +1,6 @@
 import { Card, Statistic } from 'antd';
-import { nFormatter } from '../../utils/number';
 
-export const StatisticCard = ({ title, total, icon, children }) => {
+export const StatisticCard = ({ title, icon, value, children }) => {
     return (
         <Card
           title={
@@ -14,7 +13,7 @@ export const StatisticCard = ({ title, total, icon, children }) => {
                   display: 'inline-flex',
                   borderRadius: '2px',
               }}
-              value={nFormatter(total.tested)}
+              value={value}
           />}
           extra={
             <div className='statistic-card-icon'>
