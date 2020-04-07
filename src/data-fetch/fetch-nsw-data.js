@@ -31,10 +31,13 @@ const fetchNSWData = async () => {
   let localDistrictCases = [];
   html(".moh-rteTable-6")
     .filter((i, el) => {
+    // if(i != 1) {
+    //   return ;
+    // }
     if ( i == 0 ) {
-      const confirmed = toNumber(el.children[1].children[2].children[2].children[0].data);
-      const totalNegative= toNumber(el.children[1].children[8].children[3].children[0].data);
-      const deaths = toNumber(el.children[1].children[10].children[2].children[0].data);
+      const confirmed = toNumber(el.children[0].children[2].children[2].children[0].data);
+      const totalNegative= toNumber(el.children[0].children[8].children[2].children[0].data);
+      const deaths = toNumber(el.children[0].children[10].children[2].children[0].data);
       nswTested = getTestedFormat(confirmed, totalNegative + confirmed);
       nswCases = {
         confirmed,
@@ -42,19 +45,19 @@ const fetchNSWData = async () => {
       }
     }
     if ( i == 1 ) {
-      sexAndAgeGroup = [3,5,7,9,11,13,15,17,19,21].reduce((acc, index) => {
+      sexAndAgeGroup = [2,4,6,8,10,12,14,16,18,20].reduce((acc, index) => {
         const item = {
-          age: el.children[1].children[index].children[1].children[0].data,
-          female: toNumber(el.children[1].children[index].children[3].children[0].data),
-          male: toNumber(el.children[1].children[index].children[5].children[0].data),
+          age: el.children[0].children[index].children[0].children[0].data,
+          female: toNumber(el.children[0].children[index].children[2].children[0].data),
+          male: toNumber(el.children[0].children[index].children[4].children[0].data),
         }
         acc.push(item);
         return acc;
       }, [])
     }
     if ( i == 2) {
-      sourcesOfInfection = [3,5,7,9].reduce((acc, index, i) => {
-        const value = toNumber(el.children[1].children[index].children[3].children[0].data);
+      sourcesOfInfection = [2,4,6,8].reduce((acc, index, i) => {
+        const value = toNumber(el.children[0].children[index].children[2].children[0].data);
         acc.push({ id: sources[i], label: sources[i], value});
         return acc;
       }, [])
