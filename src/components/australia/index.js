@@ -5,6 +5,7 @@ import {
   Divider,
   Alert,
 } from 'antd';
+import { IoMdBeaker } from 'react-icons/io';
 import { routeTo } from '../../utils/route';
 import { COVIDAustraliaMap } from '../australia-map';
 import { MainDivider } from '../main-divider';
@@ -14,6 +15,7 @@ import { TimeSeriesGraph } from '../time-series-graph';
 import { ComparisonGraph } from '../comparison-graph';
 import { stateCodeToName } from '../../constants/states';
 import { AusTestConductedTable } from '../aus-test-conducted-table';
+import { StatisticCard } from '../statistic-card';
 
 const getStateData = (ausCDRTData) => {
   return Object.keys(ausCDRTData).reduce((acc, code) => {
@@ -62,13 +64,17 @@ const onClick = (code) => {
            </Row>
            <Row>
             <Col span={24}>
-                <Divider orientation='center'>
-                  Total Test Conducted
-                </Divider>
+              <StatisticCard
+                title='Total Test Conducted'
+                icon={<IoMdBeaker />}
+                total={ausTestConductedData.AUS}
+              >
                 <AusTestConductedTable
                   data={testConductedData}
                   onClick={onClick}
                 />
+              </StatisticCard>
+                
               </Col>
            </Row>
           <Row style={{ marginTop: '24px'}}>
