@@ -14,7 +14,7 @@ const stateMap = {
   'ACT': 'ACT',
   'Australia': 'AUS'
 }
-const fetchCDRTData = async () => {
+const fetchTestConductedData = async () => {
   let response;
   try {
     response = await axios.get("https://covidlive.com.au");
@@ -26,7 +26,7 @@ const fetchCDRTData = async () => {
   }
   const html = cheerio.load(response.data);
   const arr = [2,4,6,8,10,12,14,16,18];
-  const CDRT = {
+  const testConducted = {
     NSW: {},
     VIC: {},
     ACT: {},
@@ -39,32 +39,24 @@ const fetchCDRTData = async () => {
   };
   html('table')
   .filter((i, el) => {
-    if (i == 1) {
-      arr.forEach(index => {
-        const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        CDRT[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-      });
-    }
     if (i == 2) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        CDRT[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateMap[stateName]]['positive'] = el.children[0].children[index].children[4].children[0].data.trim();
+
       });
     }
-    if (i == 7) {
+    if (i == 9) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        CDRT[stateMap[stateName]]['deaths'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-      });
-    }
-    if (i == 8) {
-      arr.forEach(index => {
-        const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        CDRT[stateMap[stateName]]['recovered'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateMap[stateName]]['population'] = toNumber(el.children[0].children[index].children[2].children[0].data);
       });
     }
   });
-  write('./src/data/aus_cdrt.json', JSON.stringify(CDRT));
+  write('./src/data/aus_test_conducted.json', JSON.stringify(testConducted));
+
 };
 
-module.exports = fetchCDRTData;
+module.exports = fetchTestConductedData;

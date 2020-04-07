@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, Tag, Typography } from 'antd';
-import { states } from '../../constants/states';
 const { Text } = Typography;
 
 const TotalRow = ({ confirmed, deaths, recovered}) => (
@@ -20,8 +19,9 @@ const TotalRow = ({ confirmed, deaths, recovered}) => (
 const columns = [
   {
     title: 'State',
-    dataIndex: 'state',
-    key: 'state',
+    dataIndex: 'code',
+    key: 'code',
+    width: '65px',
     render: (text) => <span>{text}</span>,
   },
   {
@@ -34,13 +34,13 @@ const columns = [
     title: () => <Text type='danger'>Deaths</Text>,
     dataIndex: 'deaths',
     key: 'deaths',
+    width: '65px',
     sorter: (a, b) => a.deaths - b.deaths,
   },
   {
     title: <Text type='secondary'>Recovered</Text>,
     dataIndex: 'recovered',
     key: 'recovered',
-    sorter: (a, b) => a.recovered - b.recovered,
   },
 ];
 
@@ -55,8 +55,7 @@ export const CurrentStatus = ({
         onRow={(record) => {
           return {
             onClick: () => {
-                const { code } = states.find(item => item.name === record.location);
-                onClick(code);
+                onClick(record.code);
             },
           };
         }}

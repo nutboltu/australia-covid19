@@ -13,8 +13,9 @@ import { CurrentStatus } from '../current-status';
 import { TimeSeriesGraph } from '../time-series-graph';
 import { ComparisonGraph } from '../comparison-graph';
 import { stateCodeToName } from '../../constants/states';
+import { AusTestConductedTable } from '../aus-test-conducted-table';
 
-const getStateCDRData = (ausCDRTData) => {
+const getStateData = (ausCDRTData) => {
   return Object.keys(ausCDRTData).reduce((acc, code) => {
     if(code != 'AUS') {
       acc.push({
@@ -32,8 +33,10 @@ export const AustraliaContainer = ({
   ausHistoricalData,
   ausDailyHistoricalData,
   globalHistoricalData,
+  ausTestConductedData,
 }) => {
-const stateCDRData = getStateCDRData(ausCDRTData);
+const stateCDRData = getStateData(ausCDRTData);
+const testConductedData = getStateData(ausTestConductedData);
 const onClick = (code) => {
     routeTo(code);
   }
@@ -46,7 +49,7 @@ const onClick = (code) => {
         <CDRStatistics {...ausCDRTData.AUS} />
         <div style={{ margin: '24px 0'}}>
           <Row>
-            <Col>
+            <Col span={24}>
                 <Divider orientation='center'>
                   Current Status
                 </Divider>
@@ -57,7 +60,18 @@ const onClick = (code) => {
                 />
               </Col>
            </Row>
-          <Row>
+           <Row>
+            <Col span={24}>
+                <Divider orientation='center'>
+                  Total Test Conducted
+                </Divider>
+                <AusTestConductedTable
+                  data={testConductedData}
+                  onClick={onClick}
+                />
+              </Col>
+           </Row>
+          <Row style={{ marginTop: '24px'}}>
             <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
               <Alert
                 message="Click the state in the map for specific statistics."

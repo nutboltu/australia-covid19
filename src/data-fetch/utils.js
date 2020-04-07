@@ -1,4 +1,4 @@
-const toNumber = (str) => parseInt(str.replace(',', ''));
+const toNumber = (str) => parseInt(str.split(",").join(""));
 
 const dateFormat = (str) => {
     const part = str.split('/');
