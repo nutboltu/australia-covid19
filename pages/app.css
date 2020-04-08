@@ -33,6 +33,16 @@ main {
   }
 }
 
+.app-content {
+  margin: 130px 0 100px;
+}
+
+@media screen and (max-width: 550px) {
+  .app-content {
+    margin: 134px 0 100px;
+  }
+}
+
 .statistic-card-icon > div > svg {
   height: 3em;
   width: 3em;

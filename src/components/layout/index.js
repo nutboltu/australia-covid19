@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import  { BreakpointProvider } from 'react-socks';
+import  { BreakpointProvider, useCurrentWidth } from 'react-socks';
 import Head from 'next/head';
 import { Layout } from 'antd';
 import { initGA, logPageView } from '../../utils/analytics'
@@ -41,10 +41,8 @@ export const AppLayout= ({ state, children }) => {
           backgroundColor: 'white'
         }}>
           <AppHeader state={state} />
-          <Content style={{
-            margin: '134px 0 100px'
-          }}>
-            {children}
+          <Content className='app-content'>
+              {children}
           </Content>
           <AppFooter />
         </Layout>

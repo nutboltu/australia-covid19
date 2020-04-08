@@ -28,16 +28,6 @@ export const StateContainer = ({
         <CDRStatistics {...CDRData} />
         <div style={{ marginBottom: '64px'}}>
           {
-            width > 600 &&
-            <Row style={{ marginBottom: '32px'}} >
-              <Col span={24}>
-              <div style={{height: 300}}>
-                  <DailyCasesCalendar stateName={stateName} />
-              </div>
-              </Col>
-            </Row>
-          }
-          {
             historicalData &&
               <Row>
                 <Col span={24}>
@@ -98,6 +88,16 @@ export const StateContainer = ({
                           title='Confirmed cases by Local Health District'
                       />
                   </div>
+              </Col>
+            </Row>
+          }
+          {
+            width > 600 &&
+            <Row style={{ marginTop: '48px'}} >
+              <Col span={24}>
+              <div style={{height: 300}}>
+                  <DailyCasesCalendar stateName={stateName} />
+              </div>
               </Col>
             </Row>
           }
