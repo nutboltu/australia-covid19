@@ -24,7 +24,7 @@ const fetchAll = async () => {
   await fetchQLDData();
   await fetchSAData();
   await fetchWAData();
-  await fetchACTData();
+  // await fetchACTData();
   await fetchNSWData();
   await fetchVICData();
 }

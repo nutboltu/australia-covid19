@@ -21,12 +21,9 @@ const fetchSAData = async () => {
   
   html("table")
     .filter((i, el) => {
-      if (i == 0 ) {
-        saCases = {
-          confirmed: toNumber(el.children[1].children[3].children[3].children[1].children[0].data.trim()),
-          deaths: toNumber(el.children[1].children[9].children[3].children[1].children[0].data.trim()),
-        };
-      }
+      // if (i != 1) {
+      //   return;
+      // }
       if (i ==1) {
         sexAndAgeGroup = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
         .reduce((acc, index) => {
@@ -38,6 +35,7 @@ const fetchSAData = async () => {
           acc.push(item);
           return acc;
         }, [])
+       //  console.log(el.children[3].children[3].children[5].children[0].data)
       }
        if (i == 2) {
          const overseas = el.children[1].children[3].children[3].children[1].children[0].data;
@@ -52,15 +50,10 @@ const fetchSAData = async () => {
          });
        }
   });
-  html('.wysiwyg')
-  .filter((i, el) => {
-    const ulEl = el.children.filter((i) => i.name =='ul');
-    const totalTested = ulEl[4].children[1].children[0].data.split(' ')[4];
-    saTested = getTestedFormat(saCases.confirmed, toNumber(totalTested));
-  })
-  write('./src/data/sa/tested.json', JSON.stringify(saTested));
+
   write('./src/data/sa/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/sa/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
 };
 
+//module.exports = fetchSAData();
 module.exports = fetchSAData;

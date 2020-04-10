@@ -16,30 +16,19 @@ const fetchQLDData = async () => {
   const html = cheerio.load(response.data);
   let localDistrictCases = [];
   
-  html("#table48465")
+  html("#table92250")
     .filter((i, el) => {
       localDistrictCases = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
       .reduce((acc, index) => {
         acc.push({
           district: el.children[1].children[index].children[0].children[0].data.trim(),
-          cases: toNumber(el.children[1].children[index].children[1].children[0].data.trim()),
+          cases: toNumber(el.children[1].children[index].children[4].children[0].data.trim()),
         })
         return acc;
       }, []);
   });
-  const totalConfirmed = localDistrictCases.reduce((acc, i) => {
-    acc += i.cases;
-    return acc;
-  }, 0);
-  let qldTested = [];
-
-  html("#table59454")
-    .filter((i, el) => {
-      const totalTested = el.children[1].children[0].children[1].children[0].children[0].data;
-      qldTested = getTestedFormat(totalConfirmed, toNumber(totalTested));
-  });
-  write('./src/data/qld/tested.json', JSON.stringify(qldTested));
   write('./src/data/qld/local_district_cases.json', JSON.stringify(localDistrictCases));
 };
 
+// module.exports = fetchQLDData();
 module.exports = fetchQLDData;
