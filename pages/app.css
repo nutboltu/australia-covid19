@@ -34,12 +34,29 @@ main {
 }
 
 .app-content {
-  margin: 130px 0 100px;
+  margin: 100px 0;
 }
 
-@media screen and (max-width: 550px) {
+.main-divider {
+  top: 100px;
+  position: sticky;
+  z-index: 3;
+  background: white;
+  overflow: auto;
+}
+
+.main-divider > .ant-divider {
+  font-size: 28px;
+  color: #108ee9;
+}
+
+@media screen and (max-width: 623px) {
   .app-content {
-    margin: 134px 0 100px;
+    margin: 144px 0 100px;
+  }
+  .main-divider {
+    top: 144px;
+    position: sticky;
   }
 }
 
@@ -65,4 +82,14 @@ main {
 
 .statistic-card {
   margin: 24px 0;
+}
+
+.state-selector {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.state-selector label {
+  margin: 4px;
+  width: 64px;
 }

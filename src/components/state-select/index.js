@@ -10,10 +10,7 @@ export const StateSelect = ({ defaultValue = ''}) => {
     <Radio.Group
       onChange={onChange}
       defaultValue={defaultValue}
-      style={{
-        lineHeight: 0,
-        textAlign: 'center',
-      }}
+      className='state-selector'
     >
       <Radio.Button value="nsw">NSW</Radio.Button>
       <Radio.Button value="act">ACT</Radio.Button>
