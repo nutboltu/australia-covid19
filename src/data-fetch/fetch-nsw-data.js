@@ -73,12 +73,12 @@ const fetchNSWData = async () => {
       }
   })
 
-  console.log(nswTested, sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
-  // write('./src/data/nsw/tested.json', JSON.stringify(nswTested));
-  // write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
-  // write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
-  // write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
+  // console.log(nswTested, sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
+  write('./src/data/nsw/tested.json', JSON.stringify(nswTested));
+  write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
+  write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
+  write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
 }
 
-module.exports = fetchNSWData();
-// module.exports = fetchNSWData;
+//module.exports = fetchNSWData();
+module.exports = fetchNSWData;
