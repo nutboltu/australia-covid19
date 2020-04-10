@@ -31,7 +31,7 @@ export async function getStaticProps() {
   const sexAndAgeGroupData = require('../../src/data/nsw/sex_age_group.json');
   const localDistrictData = require('../../src/data/nsw/local_district_cases.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
-  const testedData = require('../../src/data/nsw/tested.json');
+  const alltestedData = require('../../src/data/aus_test_conducted.json');
   const souceOfInfectionData = require('../../src/data/nsw/sources_of_infection.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
 
@@ -40,7 +40,7 @@ export async function getStaticProps() {
       CDRData: AusCDRTData.NSW,
       sexAndAgeGroupData,
       localDistrictData,
-      testedData,
+      testedData: alltestedData.NSW,
       souceOfInfectionData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
     },

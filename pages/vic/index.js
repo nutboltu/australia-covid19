@@ -30,7 +30,7 @@ const VIC = ({
 export async function getStaticProps() { 
   const sexAndAgeGroupData = require('../../src/data/vic/sex_age_group.json');
   const souceOfInfectionData = require('../../src/data/vic/sources_of_infection.json');
-  const testedData = require('../../src/data/vic/tested.json');
+  const alltestedData = require('../../src/data/aus_test_conducted.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const localDistrictData = require('../../src/data/vic/local_district_cases.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
@@ -40,7 +40,7 @@ export async function getStaticProps() {
       CDRData: AusCDRTData.VIC,
       sexAndAgeGroupData,
       souceOfInfectionData,
-      testedData,
+      testedData: alltestedData.VIC,
       localDistrictData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
     },

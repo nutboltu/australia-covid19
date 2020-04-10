@@ -27,7 +27,7 @@ const ACT = ({
 
 export async function getStaticProps() { 
   const allHistoricalData = require('../../src/data/states_historical_data.json');
-  const testedData = require('../../src/data/act/tested.json');
+  const alltestedData = require('../../src/data/aus_test_conducted.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
   const souceOfInfectionData = require('../../src/data/act/sources_of_infection.json');
   const ageGroupData = require('../../src/data/act/age_group.json');
@@ -35,7 +35,7 @@ export async function getStaticProps() {
   return {
     props: {
       CDRData: AusCDRTData.ACT,
-      testedData,
+      testedData: alltestedData.ACT,
       ageGroupData,
       souceOfInfectionData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],

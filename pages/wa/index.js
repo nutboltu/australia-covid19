@@ -25,7 +25,7 @@ const WA = ({
 
 export async function getStaticProps() { 
   const localDistrictData = require('../../src/data/wa/local_district_cases.json');
-  const testedData = require('../../src/data/wa/tested.json');
+  const alltestedData = require('../../src/data/aus_test_conducted.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
 
@@ -33,7 +33,7 @@ export async function getStaticProps() {
     props: {
       CDRData: AusCDRTData.WA,
       localDistrictData,
-      testedData,
+      testedData: alltestedData.WA,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
    },
   }
