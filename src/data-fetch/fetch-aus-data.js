@@ -1,7 +1,6 @@
 
 
 const axios = require('axios');
-const { NovelCovid } = require('novelcovid');
 const { write } = require('./file-manager');
 const { dateFormat, getHistoricalData } = require('./utils');
 

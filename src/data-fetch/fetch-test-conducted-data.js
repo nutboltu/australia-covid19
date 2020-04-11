@@ -16,15 +16,19 @@ const stateMap = {
 }
 const fetchTestConductedData = async () => {
   let response;
+  let responseState;
   try {
     response = await axios.get("https://covidlive.com.au");
-    if (response.status !== 200) {
+    responseState = await axios.get('https://covidlive.com.au/state');
+    if (response.status !== 200 || responseState.status !==200) {
       console.log("ERROR");
     }
   } catch (err) {
+    console.log(err)
     return null;
   }
   const html = cheerio.load(response.data);
+  const htmlState = cheerio.load(responseState.data);
   const arr = [2,4,6,8,10,12,14,16,18];
   const testConducted = {
     NSW: {},
@@ -47,13 +51,15 @@ const fetchTestConductedData = async () => {
 
       });
     }
-    if (i == 10) {
-      arr.forEach(index => {
-        const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        testConducted[stateMap[stateName]]['population'] = toNumber(el.children[0].children[index].children[2].children[0].data);
-      });
-    }
+  });
+ 
+  htmlState('.CASES-PER-CAPITA')
+  .filter((i, el) => {
+    arr.forEach(index => {
+      const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
+      testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+      testConducted[stateMap[stateName]]['population'] = toNumber(el.children[0].children[index].children[2].children[0].data);
+    });
   });
   write('./src/data/aus_test_conducted.json', JSON.stringify(testConducted));
 
