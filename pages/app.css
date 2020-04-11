@@ -42,12 +42,13 @@ main {
   position: sticky;
   z-index: 3;
   background: white;
-  overflow: auto;
 }
 
 .main-divider > .ant-divider {
   font-size: 28px;
   color: #108ee9;
+  margin: 0;
+  padding: 16px 0;
 }
 
 @media screen and (max-width: 623px) {
