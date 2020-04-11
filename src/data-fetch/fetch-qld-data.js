@@ -16,7 +16,7 @@ const fetchQLDData = async () => {
   const html = cheerio.load(response.data);
   let localDistrictCases = [];
   
-  html("#table92250")
+  html("#table45273")
     .filter((i, el) => {
       localDistrictCases = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
       .reduce((acc, index) => {
@@ -26,6 +26,7 @@ const fetchQLDData = async () => {
         })
         return acc;
       }, []);
+      // console.log(localDistrictCases);
   });
   write('./src/data/qld/local_district_cases.json', JSON.stringify(localDistrictCases));
 };
