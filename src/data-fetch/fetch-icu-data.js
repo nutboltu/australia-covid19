@@ -26,7 +26,7 @@ const fetchICUData = async () => {
   }
   const html = cheerio.load(response.data);
   const arr = [2,4,6,8,10,12,14,16,18];
-  const icuCases = {
+  const activeCases = {
     NSW: {},
     VIC: {},
     ACT: {},
@@ -37,18 +37,28 @@ const fetchICUData = async () => {
     TAS: {},
     AUS: {}
   };
+  html('.ACTIVE-CASES')
+  .filter((i, el) => {
+    arr.forEach(index => {
+      const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
+      activeCases[stateMap[stateName]]['active'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+      activeCases[stateMap[stateName]]['mild'] = toNumber(el.children[0].children[index].children[2].children[0].data);
+      activeCases[stateMap[stateName]]['icu'] = toNumber(el.children[0].children[index].children[3].children[0].data);
+    });
+  });
   html('table')
   .filter((i, el) => {
     if (i == 6) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        icuCases[stateMap[stateName]]['icu'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        icuCases[stateMap[stateName]]['icu_beds'] = toNumber(el.children[0].children[index].children[4].children[0].data);
+        activeCases[stateMap[stateName]]['icu'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        activeCases[stateMap[stateName]]['icu_beds'] = toNumber(el.children[0].children[index].children[4].children[0].data);
       });
     }
   });
-  write('./src/data/aus_icu_cases.json', JSON.stringify(icuCases));
+  write('./src/data/aus_active_cases.json', JSON.stringify(activeCases));
 
 };
 
+// module.exports = fetchICUData();
 module.exports = fetchICUData;

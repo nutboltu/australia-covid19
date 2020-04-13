@@ -1,14 +1,9 @@
 import { Radio } from 'antd';
-import { routeTo } from '../../utils/route';
 
-export const StateSelect = ({ defaultValue = ''}) => {
-  const onChange = (event) => {
-    routeTo(event.target.value);
-  };
-
+export const StateSelect = ({ defaultValue = '', onStateChange }) => {
   return (
     <Radio.Group
-      onChange={onChange}
+      onChange={onStateChange}
       defaultValue={defaultValue}
       className='state-selector'
     >

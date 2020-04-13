@@ -41,6 +41,7 @@ const fetchTestConductedData = async () => {
     TAS: {},
     AUS: {}
   };
+
   html('table')
   .filter((i, el) => {
     if (i == 2) {
@@ -62,7 +63,6 @@ const fetchTestConductedData = async () => {
     });
   });
   write('./src/data/aus_test_conducted.json', JSON.stringify(testConducted));
-
 };
 
 module.exports = fetchTestConductedData;

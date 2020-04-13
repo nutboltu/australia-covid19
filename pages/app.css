@@ -98,3 +98,17 @@ main {
 .ant-statistic-content {
   font-size: 20px;
 }
+
+.route-loader {
+  position: fixed;
+  opacity: 0.5;
+  z-index: 5;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.route-loader > .ant-spin-dot {
+  margin: 0 auto;
+  top: 200px
+}

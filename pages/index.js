@@ -31,7 +31,7 @@ export async function getStaticProps() {
   const ausDailyHistoricalData = require('../src/data/aus_daily_historical_data.json');
   const globalHistoricalData = require('../src/data/global_historical_data.json');
   const ausTestConductedData = require('../src/data/aus_test_conducted.json');
-  const ausICUCasesData = require('../src/data/aus_icu_cases.json');
+  const ausICUCasesData = require('../src/data/aus_active_cases.json');
 
   return {
     props: {

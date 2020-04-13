@@ -20,7 +20,7 @@ const Logo = () => (
   </span>
 );
 
-export const AppHeader = ({ state = '' }) => {
+export const AppHeader = ({ state = '', onStateChange }) => {
   return (
     <Header
       style={{
@@ -51,7 +51,7 @@ export const AppHeader = ({ state = '' }) => {
           </a>
         </div>
       </div>
-      <StateSelect defaultValue={state} />
+      <StateSelect defaultValue={state} onStateChange={onStateChange} />
   </Header>
   );
 }

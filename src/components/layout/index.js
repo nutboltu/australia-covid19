@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import  { BreakpointProvider, useCurrentWidth } from 'react-socks';
 import Head from 'next/head';
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 import { initGA, logPageView } from '../../utils/analytics'
 import { AppHeader } from '../header';
 import { AppFooter } from '../footer';
+import { routeTo } from '../../utils/route';
 const { Content } = Layout;
 
 export const AppLayout= ({ state, children }) => {
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA()
@@ -15,6 +17,12 @@ export const AppLayout= ({ state, children }) => {
     }
     logPageView();
   }, []);
+
+  const onStateChange = (event) => {
+    setLoading(true);
+    routeTo(event.target.value);
+  }
+
   return (
   <div className="container">
     <Head>
@@ -40,7 +48,8 @@ export const AppLayout= ({ state, children }) => {
         <Layout style={{
           backgroundColor: 'white'
         }}>
-          <AppHeader state={state} />
+          { loading && <Spin className='route-loader' size="large" /> }
+          <AppHeader state={state} onStateChange={onStateChange} />
           <Content className='app-content'>
               {children}
           </Content>
