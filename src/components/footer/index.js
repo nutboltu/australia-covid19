@@ -10,8 +10,7 @@ export const AppFooter = () => (
       <Descriptions.Item label="Johns Hopkins University CSSE"><a href='https://systems.jhu.edu'>https://systems.jhu.edu</a></Descriptions.Item>
       <Descriptions.Item label="World Health Organization (WHO)"><a href='https://www.who.int'>https://www.who.int</a></Descriptions.Item>
       <Descriptions.Item label="Worldometers"><a href='https://www.worldometers.info/coronavirus'>https://www.worldometers.info/coronavirus</a></Descriptions.Item>
-      <Descriptions.Item label="NSW Health"><a href='https://www.health.nsw.gov.au'>https://www.health.nsw.gov.au</a></Descriptions.Item>
-      <Descriptions.Item label="SA Health"><a href='https://www.sahealth.sa.gov.au'>https://www.sahealth.sa.gov.au</a></Descriptions.Item>
+      <Descriptions.Item label="Covidlive site"><a href='https://covidlive.com.au'>https://covidlive.com.au</a></Descriptions.Item>
     </Descriptions>
     <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
       <div style={{ color: '#333'}}>

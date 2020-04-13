@@ -94,3 +94,7 @@ main {
   margin: 4px;
   width: 64px;
 }
+
+.ant-statistic-content {
+  font-size: 20px;
+}

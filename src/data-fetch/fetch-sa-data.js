@@ -14,34 +14,32 @@ const fetchSAData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  let saCases = {};
   let sexAndAgeGroup = [];
   let sourcesOfInfection = [];
-  let saTested = [];
-  
+
   html("table")
     .filter((i, el) => {
-      // if (i != 1) {
+      // if (i != 2) {
       //   return;
       // }
       if (i ==1) {
         sexAndAgeGroup = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
         .reduce((acc, index) => {
           const item = {
-            age: el.children[3].children[index].children[1].children[0].data,
-            female: toNumber(el.children[3].children[index].children[3].children[0].data),
-            male: toNumber(el.children[3].children[index].children[5].children[0].data),
+            age: el.children[5].children[index].children[1].children[0].data,
+            female: toNumber(el.children[5].children[index].children[3].children[0].data),
+            male: toNumber(el.children[5].children[index].children[5].children[0].data),
           }
           acc.push(item);
           return acc;
         }, [])
-       //  console.log(el.children[3].children[3].children[5].children[0].data)
+       // console.log(el.children[5])
       }
        if (i == 2) {
-         const overseas = el.children[1].children[3].children[3].children[1].children[0].data;
-         const contacted = el.children[1].children[5].children[3].children[1].children[0].data;
-         const local = el.children[1].children[9].children[3].children[1].children[0].data;
-         const underInvestigation = el.children[1].children[11].children[3].children[1].children[0].data;
+         const overseas = el.children[5].children[1].children[3].children[0].data;
+         const contacted = el.children[5].children[3].children[3].children[0].data;
+         const local = el.children[5].children[5].children[3].children[0].data;
+         const underInvestigation = el.children[5].children[9].children[3].children[0].data;
          sourcesOfInfection = getSourceOfInfectionFormat({
            overseas,
            contacted,
@@ -50,10 +48,10 @@ const fetchSAData = async () => {
          });
        }
   });
-
+  //console.log(sexAndAgeGroup, sourcesOfInfection)
   write('./src/data/sa/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/sa/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
 };
 
-//module.exports = fetchSAData();
+// module.exports = fetchSAData();
 module.exports = fetchSAData;

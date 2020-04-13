@@ -57,7 +57,7 @@ const getCumulativeData = (obj) => Object.keys(obj).map((key) => ({
 
 const getHistoricalData = (timeline) => {
     let historicalData = [];
-    ['recovered', 'deaths', 'cases'].forEach(key => {
+    ['deaths', 'cases'].forEach(key => {
         const id = key === 'cases' ? 'confirmed' : key;
         historicalData.push({
             id,

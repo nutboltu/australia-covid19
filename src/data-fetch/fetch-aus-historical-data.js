@@ -26,10 +26,10 @@ const fetchAusHistoricalData = async () => {
     id: 'deaths',
     data: getDailyData(ausDailyData.timeline['deaths'])
   });
-  ausHistoricalDailyData.push({
-    id: 'recovered',
-    data: getDailyData(ausDailyData.timeline['recovered'])
-  });
+  // ausHistoricalDailyData.push({
+  //   id: 'recovered',
+  //   data: getDailyData(ausDailyData.timeline['recovered'])
+  // });
   write('./src/data/aus_historical_data.json', JSON.stringify(ausHistoricalData));
   write('./src/data/aus_daily_historical_data.json', JSON.stringify(ausHistoricalDailyData));
 }
