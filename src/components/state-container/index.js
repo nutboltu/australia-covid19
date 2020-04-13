@@ -9,6 +9,7 @@ import { AgeGroup } from '../age-group';
 import { LocalDistrictCases } from '../local-district-cases';
 import { CDRStatistics } from '../cdr-statistics';
 import { TimeSeriesGraph } from '../time-series-graph';
+import { StateInfo } from '../state-info';
 
 export const StateContainer = ({
     stateName,
@@ -19,14 +20,24 @@ export const StateContainer = ({
     testedData,
     souceOfInfectionData,
     historicalData,
+    activeCases,
 }) => {
   const width = useCurrentWidth();
+  const statesInfo = {
+    ...activeCases,
+    ...testedData,
+  }
   const title = width < 500 && stateName == 'Australian Capital Territory' ? 'ACT' : stateName;
   return (
       <>
         <MainDivider title={title} />
         <CDRStatistics {...CDRData} />
         <div style={{ marginBottom: '64px'}}>
+          <Row>
+            <Col span={24}>
+              <StateInfo data={statesInfo} title={title} />
+            </Col>
+          </Row>
           {
             historicalData &&
               <Row>
@@ -44,14 +55,8 @@ export const StateContainer = ({
           }
           <Row gutter={16}>
             {
-              testedData && 
-                <Col xs={24} lg={13} xl={11}>
-                  <TestedTable data={testedData} />
-                </Col>
-            }
-            {
               souceOfInfectionData &&
-                <Col xs={24} lg={10} xl={11}>
+                <Col span={24}>
                   <div style={{ height: 280, margin: '0 auto' }}>
                       <SourceOfInfection data={souceOfInfectionData} />
                   </div>

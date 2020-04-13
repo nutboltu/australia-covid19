@@ -11,6 +11,7 @@ const NSW = ({
   testedData,
   souceOfInfectionData,
   historicalData,
+  activeCases,
 }) => {
   return (
     <AppLayout state={stateCode}>
@@ -22,6 +23,7 @@ const NSW = ({
           testedData={testedData}
           souceOfInfectionData={souceOfInfectionData}
           historicalData={historicalData}
+          activeCases={activeCases}
         />
     </AppLayout>
   );
@@ -34,7 +36,7 @@ export async function getStaticProps() {
   const alltestedData = require('../../src/data/aus_test_conducted.json');
   const souceOfInfectionData = require('../../src/data/nsw/sources_of_infection.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
-
+  const allActiveCases = require('../../src/data/aus_active_cases.json');
   return {
     props: {
       CDRData: AusCDRTData.NSW,
@@ -42,6 +44,7 @@ export async function getStaticProps() {
       localDistrictData,
       testedData: alltestedData.NSW,
       souceOfInfectionData,
+      activeCases: allActiveCases.NSW,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
     },
   }

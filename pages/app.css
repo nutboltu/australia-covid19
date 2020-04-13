@@ -112,3 +112,87 @@ main {
   margin: 0 auto;
   top: 200px
 }
+
+.state-info-item {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0;
+}
+
+.state-info-item-key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  width: 120px;
+}
+
+.state-info-item svg {
+  height: 3em;
+  width: 3em;
+}
+
+.state-info-item-value {
+  font-size: 18px;
+  padding: 10px 20px;
+  width: 120px;
+  display: block;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.state-info-item.info svg {
+  fill: #2893d6;
+}
+
+.state-info-item.info .state-info-item-key {
+  color: #2893d6;
+}
+.state-info-item.info .state-info-item-value {
+  color: #2893d6;
+  background: #e6f7ff;
+  border: 1px solid #91d5ff;
+}
+
+.state-info-item.warning svg {
+  fill: #faad14;
+}
+
+.state-info-item.warning .state-info-item-key {
+  color: #faad14;
+}
+
+.state-info-item.warning .state-info-item-value {
+  color: #faad14;
+  background: #fff7e6;
+  border: 1px solid #ffd591;
+}
+
+.state-info-item.success svg {
+  fill: #13c2c2;
+}
+
+.state-info-item.success .state-info-item-key {
+  color: #13c2c2;
+}
+.state-info-item.success .state-info-item-value {
+  color: #13c2c2;
+  background: rgb(230, 255, 251);
+  border: 1px solid rgb(135, 232, 222);
+}
+
+.state-info-item.danger svg {
+  fill: #fa541c;
+}
+
+.state-info-item.danger .state-info-item-key {
+  color: #fa541c;
+}
+
+.state-info-item.danger .state-info-item-value {
+  color: #fa541c;
+  background: #fff2e8;
+  border: 1px solid #ffbb96;
+}

@@ -9,6 +9,7 @@ const QLD = ({
   testedData,
   CDRData,
   historicalData,
+  activeCases,
 }) => {
   return (
     <AppLayout state={stateCode}>
@@ -18,6 +19,7 @@ const QLD = ({
           testedData={testedData}
           CDRData={CDRData}
           historicalData={historicalData}
+          activeCases={activeCases}
         />
     </AppLayout>
   );
@@ -28,12 +30,14 @@ export async function getStaticProps() {
   const alltestedData = require('../../src/data/aus_test_conducted.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
+  const allActiveCases = require('../../src/data/aus_active_cases.json');
 
   return {
     props: {
       CDRData: AusCDRTData.QLD,
       localDistrictData,
       testedData: alltestedData.QLD,
+      activeCases: allActiveCases.QLD,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
    },
   }

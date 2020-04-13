@@ -10,6 +10,7 @@ const ACT = ({
   testedData,
   historicalData,
   souceOfInfectionData,
+  activeCases,
 }) => {
   return (
     <AppLayout state={stateCode}>
@@ -20,6 +21,7 @@ const ACT = ({
           testedData={testedData}
           souceOfInfectionData={souceOfInfectionData}
           historicalData={historicalData}
+          activeCases={activeCases}
         />
     </AppLayout>
   );
@@ -31,11 +33,12 @@ export async function getStaticProps() {
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
   const souceOfInfectionData = require('../../src/data/act/sources_of_infection.json');
   // const ageGroupData = require('../../src/data/act/age_group.json');
-
+  const allActiveCases = require('../../src/data/aus_active_cases.json');
   return {
     props: {
       CDRData: AusCDRTData.ACT,
       testedData: alltestedData.ACT,
+      activeCases: allActiveCases.ACT,
       // ageGroupData,
       souceOfInfectionData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
