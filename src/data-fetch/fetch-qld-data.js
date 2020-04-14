@@ -16,12 +16,12 @@ const fetchQLDData = async () => {
   const html = cheerio.load(response.data);
   let localDistrictCases = [];
   
-  html("#table45273")
+  html("#table12074")
     .filter((i, el) => {
       localDistrictCases = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
       .reduce((acc, index) => {
         acc.push({
-          district: el.children[1].children[index].children[0].children[0].data.trim(),
+          district: el.children[1].children[index].children[0].children[0].data.replace('\n ', '').trim(),
           cases: toNumber(el.children[1].children[index].children[4].children[0].data.trim()),
         })
         return acc;

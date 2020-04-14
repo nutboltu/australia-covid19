@@ -106,19 +106,23 @@ main {
   background: #fff;
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .route-loader > .ant-spin-dot {
   margin: 0 auto;
-  top: 200px
+  top: 200px;
 }
 
-.state-info-item {
-  display: inline-flex;
-  justify-content: space-evenly;
+.state-info > .ant-card-body {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 100%;
-  padding: 16px 0;
+  justify-content: center;
+}
+.state-info-item {
+  padding: 16px;
 }
 
 .state-info-item-key {

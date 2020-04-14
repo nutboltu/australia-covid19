@@ -48,10 +48,10 @@ export const AppLayout= ({ state, children }) => {
         <Layout style={{
           backgroundColor: 'white'
         }}>
-          { loading && <Spin className='route-loader' size="large" /> }
           <AppHeader state={state} onStateChange={onStateChange} />
           <Content className='app-content'>
-              {children}
+            { loading && <Spin className='route-loader' size="large" /> }
+            {children}
           </Content>
           <AppFooter />
         </Layout>

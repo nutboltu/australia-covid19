@@ -11,7 +11,7 @@ export const StateInfo = ({ data }) => {
     <Divider orientation="center">
           Information board
       </Divider>
-    <Card size="small">
+    <Card size="small" className="state-info">
       <div className="state-info-item info">
         <div className="state-info-item-key">
           <IoIosPeople />
