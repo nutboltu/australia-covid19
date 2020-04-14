@@ -18,6 +18,7 @@ import { AusTestConductedTable } from '../aus-test-conducted-table';
 import { AusICUTable } from '../aus-icu-table';
 import { StatisticCard } from '../statistic-card';
 import { nFormatter } from '../../utils/number';
+import { Last24hTable } from '../last-24h-table';
 
 const getStateData = (ausCDRTData) => {
   return Object.keys(ausCDRTData).reduce((acc, code) => {
@@ -35,14 +36,15 @@ export const AustraliaContainer = ({
   ausCDRTData,
   globalCases,
   ausHistoricalData,
-  ausDailyHistoricalData,
   globalHistoricalData,
   ausTestConductedData,
   ausICUCasesData,
+  ausLast24hData,
 }) => {
 const stateCDRData = getStateData(ausCDRTData);
 const testConductedData = getStateData(ausTestConductedData);
 const icuData = getStateData(ausICUCasesData);
+const last24hData = getStateData(ausLast24hData);
 const onClick = (code) => {
     routeTo(code);
   }
@@ -62,10 +64,44 @@ const onClick = (code) => {
                 <CurrentStatus
                   data={stateCDRData}
                   total={ausCDRTData.AUS}
-                  onClick={onClick}
                 />
               </Col>
            </Row>
+           <Row>
+            <Col span={24}>
+              <Divider orientation='center'>
+                Cumulative cases
+              </Divider>
+              <div style={{ height: 400}}>
+                  <TimeSeriesGraph
+                    data={ausHistoricalData}
+                  />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Divider orientation='center'>
+                Last 24 hours
+              </Divider>
+              <div style={{ height: 400}}>
+                  <Last24hTable
+                    data={last24hData}
+                  />
+              </div>
+            </Col>
+          </Row>
+          <Row style={{ marginTop: '12px'}}>
+            <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
+              <div className='australia-map'>
+                <COVIDAustraliaMap
+                  data={stateCDRData}
+                  total={ausCDRTData.AUS}
+                  onClick={onClick}
+                />
+              </div>
+            </Col>
+          </Row>
            <Row>
             <Col span={24}>
               <StatisticCard
@@ -75,7 +111,6 @@ const onClick = (code) => {
               >
                 <AusTestConductedTable
                   data={testConductedData}
-                  onClick={onClick}
                 />
               </StatisticCard>
                 
@@ -96,17 +131,6 @@ const onClick = (code) => {
                 
               </Col>
            </Row>
-          <Row style={{ marginTop: '24px'}}>
-            <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
-              <div className='australia-map'>
-                <COVIDAustraliaMap
-                  data={stateCDRData}
-                  total={ausCDRTData.AUS}
-                  onClick={onClick}
-                />
-              </div>
-            </Col>
-          </Row>
           <Row>
             <Col span={24}>
               <Divider orientation='center'>
@@ -119,31 +143,7 @@ const onClick = (code) => {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col span={24}>
-              <Divider orientation='center'>
-                Cumulative cases
-              </Divider>
-              <div style={{ height: 400}}>
-                  <TimeSeriesGraph
-                    data={ausHistoricalData}
-                  />
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <Divider orientation='center'>
-                Daily cases
-              </Divider>
-              <div style={{ height: 400}}>
-                  <TimeSeriesGraph
-                    data={ausDailyHistoricalData}
-                  />
-              </div>
-            </Col>
-          </Row>
-        </div>
+      </div>
     </>    
   );
 }
