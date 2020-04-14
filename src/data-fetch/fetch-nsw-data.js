@@ -4,9 +4,9 @@ const { write } = require('./file-manager');
 const { toNumber, getTestedFormat } = require('./utils');
 
 const sources = [
-  'Travel overseas',
-  'Contact with a confirmed case',
-  'Locally acquired – unknown source',
+  'Overseas',
+  'Contact with others',
+  'Locally acquired',
   'Under investigation'
 ]
 const fetchNSWData = async () => {

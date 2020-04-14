@@ -29,18 +29,18 @@ const getSourceOfInfectionFormat = ({
 }) => {
     return [
         {
-           "id":"Travel overseas",
-           "label":"Travel overseas",
+           "id":"Overseas",
+           "label":"Overseas",
            "value":toNumber(overseas)
         },
         {
-           "id":"Contact with a confirmed case",
-           "label":"Contact with a confirmed case",
+           "id":"Contact with others",
+           "label":"Contact with others",
            "value": toNumber(contacted)
         },
         {
-           "id":"Locally acquired – unknown source",
-           "label":"Locally acquired – unknown source",
+           "id":"Locally acquired",
+           "label":"Locally acquired",
            "value":toNumber(local)
         },
         {

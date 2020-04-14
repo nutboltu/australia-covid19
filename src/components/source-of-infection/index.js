@@ -2,13 +2,20 @@ import { Divider } from 'antd';
 import { ResponsivePie } from '@nivo/pie';
 
 const color = {
-    'Travel overseas': '#000b5b',
-    'Contact with a confirmed case': '#60acee',
-    'Locally acquired – unknown source': '#55d0cf',
+    'Overseas': '#000b5b',
+    'Contact with others': '#60acee',
+    'Locally acquired': '#55d0cf',
     'Under investigation': '#a3a8ca',
+};
+const textColor = {
+    'Overseas': '#eeeeee',
+    'Contact with others': '#111',
+    'Locally acquired': '#111',
+    'Under investigation': '#eeeeee',
 };
 
 const getColor = (item) => color[item.label];
+const getTextColor = (item) => textColor[item.label];
 
 export const SourceOfInfection = ({ data }) => {
     return (
@@ -19,40 +26,42 @@ export const SourceOfInfection = ({ data }) => {
         <ResponsivePie
             data={data}
             background='#ffffff'
-            margin={{ top: 0, right: 80, bottom: 100, left: 0 }}
+            margin={{ top: 0, right: 0, bottom: 80, left: 0 }}
             innerRadius={0.5}
             padAngle={2}
             colors={getColor}
             borderWidth={1}
             borderColor={{ from: 'color', modifiers: [ [ 'darker', 0.2 ] ] }}
             slicesLabelsSkipAngle={10}
-            slicesLabelsTextColor="#eeeeee"
+            slicesLabelsTextColor={getTextColor}
             animate={true}
             motionStiffness={90}
             motionDamping={15}
+            sliceLabel="id"
+            //radialLabelsLinkHorizontalLength='8px'
             enableRadialLabels={false}
-            legends={[
-                {
-                    anchor: 'right',
-                    direction: 'column',
-                    translateX: 230,
-                    translateY: 0,
-                    itemWidth: 250,
-                    itemHeight: 24,
-                    itemTextColor: '#999',
-                    itemTextSize: 8,
-                    symbolSize: 12,
-                    symbolShape: 'circle',
-                    effects: [
-                        {
-                            on: 'hover',
-                            style: {
-                                itemTextColor: '#000'
-                            }
-                        }
-                    ]
-                }
-            ]}
+            // legends={[
+            //     {
+            //         anchor: 'bottom',
+            //         direction: 'row',
+            //         translateX: 20,
+            //         translateY: 30,
+            //         itemWidth: 100,
+            //         itemHeight: 24,
+            //         itemTextColor: '#999',
+            //         itemTextSize: 6,
+            //         symbolSize: 12,
+            //         symbolShape: 'circle',
+            //         effects: [
+            //             {
+            //                 on: 'hover',
+            //                 style: {
+            //                     itemTextColor: '#000'
+            //                 }
+            //             }
+            //         ]
+            //     }
+            // ]}
         />
     </>
 ); 

@@ -57,7 +57,7 @@ const onClick = (code) => {
           <Row>
             <Col span={24}>
                 <Divider orientation='center'>
-                  Current Status
+                  Overall Australia
                 </Divider>
                 <CurrentStatus
                   data={stateCDRData}
@@ -98,11 +98,6 @@ const onClick = (code) => {
            </Row>
           <Row style={{ marginTop: '24px'}}>
             <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
-              <Alert
-                message="Click the state in the map for specific statistics."
-                type="info"
-                showIcon
-              />
               <div className='australia-map'>
                 <COVIDAustraliaMap
                   data={stateCDRData}

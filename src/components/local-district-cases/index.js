@@ -30,9 +30,9 @@ export const LocalDistrictCases = ({ data, title }) => {
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
-                    tickSize: 5,
+                    tickSize: 10,
                     tickPadding: 5,
-                    tickRotation: 0,
+                    tickRotation: -59,
                     legend: 'Number of people',
                     legendPosition: 'middle',
                     legendOffset: 45

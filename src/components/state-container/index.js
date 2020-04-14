@@ -1,7 +1,6 @@
 import { Row, Col, Divider } from 'antd';
 import { useCurrentWidth } from 'react-socks';
 import { MainDivider } from '../main-divider';
-import { TestedTable } from '../tested-table';
 import { SourceOfInfection } from '../source-of-infection';
 import { DailyCasesCalendar } from '../daily-cases-calendar';
 import { SexAgeGroup } from '../sex-age-group';
@@ -57,7 +56,7 @@ export const StateContainer = ({
             {
               souceOfInfectionData &&
                 <Col span={24}>
-                  <div style={{ height: 280, margin: '0 auto' }}>
+                  <div style={{ height: 400, margin: '0 auto' }}>
                       <SourceOfInfection data={souceOfInfectionData} />
                   </div>
                 </Col>

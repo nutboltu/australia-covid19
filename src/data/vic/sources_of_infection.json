@@ -1,17 +1,17 @@
 [
   {
-     "id":"Travel overseas",
-     "label":"Travel overseas",
+     "id":"Overseas",
+     "label":"Overseas",
      "value":"688"
   },
   {
-     "id":"Contact with a confirmed case",
-     "label":"Contact with a confirmed case",
+     "id":"Contact with others",
+     "label":"Contact with others",
      "value":"418"
   },
   {
-     "id":"Locally acquired – unknown source",
-     "label":"Locally acquired – unknown source",
+     "id":"Locally acquired",
+     "label":"Locally acquired",
      "value":"110"
   },
   {
