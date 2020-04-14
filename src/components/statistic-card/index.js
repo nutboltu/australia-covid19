@@ -11,7 +11,7 @@ export const StatisticCard = ({ title, icon, value, children }) => {
                   border: '#87e8de 1px solid',
                   padding: '10px 20px',
                   display: 'inline-flex',
-                  borderRadius: '2px',
+                  borderRadius: '30px',
               }}
               value={value}
           />}

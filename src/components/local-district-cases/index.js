@@ -2,7 +2,7 @@ import { ResponsiveBar } from '@nivo/bar';
 import { Divider } from 'antd';
 
 const colors = {
-    cases: '#000b5b',
+    cases: '#13c2c2',
     test: '#ffd700',
 }
 

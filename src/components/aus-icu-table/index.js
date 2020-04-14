@@ -13,10 +13,10 @@ const columns = [
     title: () => <Text type='danger'>ICU</Text>,
     dataIndex: 'icu',
     key: 'icu',
-    render: (text) => <span>{text.toLocaleString()}</span>,
+    render: (text) => <Text type='danger'>{text.toLocaleString()}</Text>,
   },
   {
-    title: <Text type='warning'>ICU Beds</Text>,
+    title: <Text>ICU Beds</Text>,
     dataIndex: 'icu_beds',
     key: 'icu_beds',
     render: (text) => <span>{text.toLocaleString()}</span>,
@@ -25,18 +25,10 @@ const columns = [
 
 export const AusICUTable = ({
   data,
-  onClick,
 }) => {
   return (
     <div style={{ cursor: 'pointer'}}>
       <Table
-        onRow={(record) => {
-          return {
-            onClick: () => {
-                onClick(record.code);
-            },
-          };
-        }}
         columns={columns}
         dataSource={data}
         pagination={false}

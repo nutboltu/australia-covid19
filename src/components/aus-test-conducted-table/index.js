@@ -27,24 +27,16 @@ const columns = [
     dataIndex: 'positive',
     key: 'positive',
     width: '75px',
-    render: (text) => <span>{text}</span>,
+    render: (text) => <Text type='danger'>{text}</Text>,
   },
 ];
 
 export const AusTestConductedTable = ({
   data,
-  onClick,
 }) => {
   return (
     <div style={{ cursor: 'pointer'}}>
       <Table
-        onRow={(record) => {
-          return {
-            onClick: () => {
-                onClick(record.code);
-            },
-          };
-        }}
         columns={columns}
         dataSource={data}
         pagination={false}

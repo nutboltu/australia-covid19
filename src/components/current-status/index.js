@@ -28,7 +28,6 @@ const columns = [
     title: () => <Text type='warning'>Confirmed</Text>,
     dataIndex: 'confirmed',
     key: 'confirmed',
-    sorter: (a, b) => a.confirmed - b.confirmed,
   },
   {
     title: () => <Text type='danger'>Deaths</Text>,
