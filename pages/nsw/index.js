@@ -29,7 +29,7 @@ const NSW = ({
   );
 }
 
-export async function getStaticProps() { 
+export async function getServerSideProps() { 
   const sexAndAgeGroupData = require('../../src/data/nsw/sex_age_group.json');
   const localDistrictData = require('../../src/data/nsw/local_district_cases.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');

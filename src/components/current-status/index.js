@@ -34,7 +34,6 @@ const columns = [
     dataIndex: 'deaths',
     key: 'deaths',
     width: '65px',
-    sorter: (a, b) => a.deaths - b.deaths,
   },
   {
     title: <Text type='secondary'>Recovered</Text>,

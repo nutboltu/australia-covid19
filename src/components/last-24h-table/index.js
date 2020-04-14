@@ -28,6 +28,8 @@ const columns = [
 export const Last24hTable = ({
   data,
 }) => {
+  const totalConfirmed = data.reduce((a, i) => a +=i.confirmed, 0);
+  const totalTested = data.reduce((a, i) => a +=i.tested, 0);
   return (
     <div style={{ cursor: 'pointer'}}>
       <Table
@@ -38,6 +40,13 @@ export const Last24hTable = ({
         tableLayout='fixed'
         size='small'
         style={{fontSize: 6 }}
+        summary={() => (
+          <tr>
+            <th>Total</th>
+            <th><Text type='warning'>{totalConfirmed} </Text></th>
+            <th>{totalTested}</th>
+          </tr>
+          ) }
       />
     </div>  
   )

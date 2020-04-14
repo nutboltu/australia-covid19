@@ -25,7 +25,7 @@ const fetch24hData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  const arr = [2,4,6,8,10,12,14,16,18];
+  const arr = [2,4, 6, 8, 10, 12, 14, 16];
   const last24hData = {
     NSW: {},
     VIC: {},
@@ -35,7 +35,7 @@ const fetch24hData = async () => {
     NT: {},
     QLD: {},
     TAS: {},
-    AUS: {}
+   //  Total: {}
   };
   html('table')
   .filter((i, el) => {
