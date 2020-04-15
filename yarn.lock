@@ -5917,11 +5917,6 @@ rc-virtual-list@~1.0.0:
     classnames "^2.2.6"
     rc-util "^4.8.0"
 
-react-australia-map@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/react-australia-map/-/react-australia-map-0.1.3.tgz#575dbf07fe70e1704b36554009ce1beccc460d97"
-  integrity sha1-V12/B/5w4XBLNlVACc4b7MxGDZc=
-
 react-dom@16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
