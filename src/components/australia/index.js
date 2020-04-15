@@ -91,15 +91,14 @@ const onClick = (code) => {
               </div>
             </Col>
           </Row>
-          <Row style={{ marginTop: '12px'}}>
-            <Col span={18} style={{ margin: '0 auto', cursor: 'pointer'}}>
-              <div className='australia-map'>
-                <COVIDAustraliaMap
-                  data={stateCDRData}
-                  total={ausCDRTData.AUS}
-                  onClick={onClick}
-                />
-              </div>
+          <Row style={{ marginTop: '24px'}}>
+            <Col span={24}>
+              <Divider orientation='center'>
+                Confirmed cases in Geo Chart
+              </Divider>
+              <COVIDAustraliaMap
+                data={stateCDRData}
+              />
             </Col>
           </Row>
            <Row>
