@@ -28,7 +28,7 @@ const fetchNSWData = async () => {
   let localDistrictCases = [];
   html(".moh-rteTable-6")
     .filter((i, el) => {
-    // if(i != 1) {
+    // if(i != 2) {
     //   return ;
     // }
     if ( i == 1 ) {
@@ -42,20 +42,21 @@ const fetchNSWData = async () => {
         return acc;
       }, [])
     }
-    if ( i == 2) {
-      sourcesOfInfection = [2,4,6,8].reduce((acc, index, i) => {
-        const value = toNumber(el.children[0].children[index].children[2].children[0].data);
-        acc.push({ id: sources[i], label: sources[i], value});
-        return acc;
-      }, [])
-    }
+    // if ( i == 2) {
+    //   sourcesOfInfection = [2, 8, 10].reduce((acc, index, i) => {
+    //     const value = toNumber(el.children[0].children[index].children[3].children[0].data);
+    //     acc.push({ id: sources[i], label: sources[i], value});
+    //     return acc;
+    //   }, [])
+    //   // console.log(el.children[0].children[2].children[3].children[0].data)
+    // }
   });
 
   ldHtml(".moh-rteTable-6")
   .filter((i, el) => {
       if (i == 0) {
         // 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30
-          localDistrictCases = [2, 4, 6, 8, 10, 14, 16, 18, 20, 22, 24, 26, 28, 30].reduce((acc, index) => {
+          localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30].reduce((acc, index) => {
             const item = {
               district: el.children[1].children[index].children[1].children[0].data.trim(),
               cases: toNumber(el.children[1].children[index].children[3].children[0].data),
@@ -65,12 +66,12 @@ const fetchNSWData = async () => {
             acc.push(item);
             return acc;
            }, []);
-           localDistrictCases.push({
-            district: el.children[1].children[12].children[0].children[0].data.trim(),
-            cases: toNumber(el.children[1].children[12].children[2].children[0].data),
-            test: toNumber(el.children[1].children[12].children[4].children[0].data),
-            positive_percentage: el.children[1].children[12].children[6].children[0].data.trim(),
-           })
+          //  localDistrictCases.push({
+          //   district: el.children[1].children[12].children[0].children[0].data.trim(),
+          //   cases: toNumber(el.children[1].children[12].children[2].children[0].data),
+          //   test: toNumber(el.children[1].children[12].children[4].children[0].data),
+          //   positive_percentage: el.children[1].children[12].children[6].children[0].data.trim(),
+          //  })
           // console.log(el.children[1].children[12].children[2])
           // console.log(el.children[1].children[12].children[3].children[0].data)
           // console.log(el.children[1].children[12].children[5].children[0].data)
@@ -79,7 +80,7 @@ const fetchNSWData = async () => {
   })
 
   // console.log(sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
-  write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
+  // write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
   write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
   write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
 }

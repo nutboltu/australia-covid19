@@ -25,7 +25,7 @@ const fetch24hData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  const arr = [2,4, 6, 8, 10, 12, 14, 16];
+  const arr = [2, 4, 6, 8, 10, 12, 14, 16];
   const last24hData = {
     NSW: {},
     VIC: {},
@@ -42,9 +42,11 @@ const fetch24hData = async () => {
     if (i == 1) {
        arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        last24hData[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[3].children[0].children[0].data);
+        const a = el.children[0].children[index].children[3].children[0];
+        const b = a.data || a.children[0].data;
+        const value = b === '-' ? '0' : b;
+        last24hData[stateMap[stateName]]['confirmed'] = toNumber(value);
       });
-      // console.log(el.children[0].children[2].children[3].children[0])
     }
     if (i == 2) {
       arr.forEach(index => {
