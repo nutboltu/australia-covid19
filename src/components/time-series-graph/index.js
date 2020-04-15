@@ -37,7 +37,6 @@ export const TimeSeriesGraph = ({ data }) => (
             tickPadding: 5,
             tickRotation: 0,
         }}
-        enableGridX={false}
         colors={getColors}
         pointSize={1}
         enableArea
