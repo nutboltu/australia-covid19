@@ -33,7 +33,7 @@ const columns = [
     title: () => <Text type='danger'>Deaths</Text>,
     dataIndex: 'deaths',
     key: 'deaths',
-    width: '65px',
+    width: '70px',
   },
   {
     title: <Text type='secondary'>Recovered</Text>,
