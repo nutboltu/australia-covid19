@@ -42,8 +42,6 @@ const fetchICUData = async () => {
     arr.forEach(index => {
       const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
       activeCases[stateMap[stateName]]['active'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-      activeCases[stateMap[stateName]]['mild'] = toNumber(el.children[0].children[index].children[2].children[0].data);
-      activeCases[stateMap[stateName]]['icu'] = toNumber(el.children[0].children[index].children[3].children[0].data);
     });
   });
   html('table')
