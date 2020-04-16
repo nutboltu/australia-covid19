@@ -23,7 +23,7 @@ const fetchSAData = async () => {
       //   return;
       // }
       if (i ==1) {
-        sexAndAgeGroup = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+        sexAndAgeGroup = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
         .reduce((acc, index) => {
           const item = {
             age: el.children[5].children[index].children[1].children[0].data,

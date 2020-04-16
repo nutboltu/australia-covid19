@@ -14,16 +14,10 @@ const fetchWAData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  // let waTested = [];
   let localDistrictCases = [];
 
   html("table")
     .filter((i, el) => {
-      // if (i == 0 ) {
-      //   const testedNegative = toNumber(el.children[1].children[3].children[3].children[0].data);
-      //   const confirmed = toNumber(el.children[1].children[5].children[3].children[0].data);
-      //   waTested = getTestedFormat(confirmed, confirmed + testedNegative);
-      // }
       if (i == 1) {
         localDistrictCases = [3,5,7,9,11,13,15]
         .reduce((acc, index) => {
@@ -35,7 +29,6 @@ const fetchWAData = async () => {
         }, []);
       }
   });
-  // write('./src/data/wa/tested.json', JSON.stringify(waTested));
   write('./src/data/wa/local_district_cases.json', JSON.stringify(localDistrictCases));
 };
 

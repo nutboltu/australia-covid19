@@ -48,7 +48,7 @@ export const SexAgeGroup = ({ data }) => {
                 data={data}
                 keys={[ 'female', 'male' ]}
                 indexBy="age"
-                margin={{ top: 50, right: 20, bottom: 70, left: 30 }}
+                margin={{ top: 50, right: 20, bottom: 100, left: 30 }}
                 padding={0.3}
                 groupMode="grouped"
                 colors={getColors}
