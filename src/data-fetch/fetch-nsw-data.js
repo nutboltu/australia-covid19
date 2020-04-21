@@ -31,7 +31,7 @@ const fetchNSWData = async () => {
     // if(i != 2) {
     //   return ;
     // }
-    if ( i == 1 ) {
+    if ( i == 2 ) {
       sexAndAgeGroup = [2,4,6,8,10,12,14,16,18,20].reduce((acc, index) => {
         const item = {
           age: el.children[0].children[index].children[0].children[0].data,
@@ -41,6 +41,7 @@ const fetchNSWData = async () => {
         acc.push(item);
         return acc;
       }, [])
+
     }
     // if ( i == 2) {
     //   sourcesOfInfection = [2, 8, 10].reduce((acc, index, i) => {
@@ -66,16 +67,6 @@ const fetchNSWData = async () => {
             acc.push(item);
             return acc;
            }, []);
-          //  localDistrictCases.push({
-          //   district: el.children[1].children[12].children[0].children[0].data.trim(),
-          //   cases: toNumber(el.children[1].children[12].children[2].children[0].data),
-          //   test: toNumber(el.children[1].children[12].children[4].children[0].data),
-          //   positive_percentage: el.children[1].children[12].children[6].children[0].data.trim(),
-          //  })
-          // console.log(el.children[1].children[12].children[2])
-          // console.log(el.children[1].children[12].children[3].children[0].data)
-          // console.log(el.children[1].children[12].children[5].children[0].data)
-          // console.log(el.children[1].children[12].children[7].children[0].data)
       }
   })
 
