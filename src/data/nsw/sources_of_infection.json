@@ -1,1 +1,22 @@
-[{"id":"Overseas","label":"Overseas","value":1727},{"id":"Contact with others","label":"Contact with others","value":744},{"id":"Locally acquired","label":"Locally acquired","value":350},{"id":"Under investigation","label":"Under investigation","value":9}]
+[
+    {
+       "id":"Overseas",
+       "label":"Overseas",
+       "value":1738
+    },
+    {
+       "id":"Contact with others",
+       "label":"Contact with others",
+       "value":795
+    },
+    {
+       "id":"Locally acquired",
+       "label":"Locally acquired",
+       "value":360
+    },
+    {
+       "id":"Under investigation",
+       "label":"Under investigation",
+       "value":8
+    }
+ ]

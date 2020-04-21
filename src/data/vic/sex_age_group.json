@@ -7,42 +7,42 @@
   {
      "age":"10-19",
      "female": 20,
-     "male":21
+     "male":22
   },
   {
      "age":"20-29",
      "female": 147,
-     "male":144
+     "male":150
   },
   {
      "age":"30-39",
-     "female":99,
-     "male":102
+     "female":101,
+     "male":104
   },
   {
      "age":"40-49",
-     "female":71,
-     "male":100
+     "female":73,
+     "male":101
   },
   {
      "age":"50-59​​",
-     "female":123,
-     "male":109
+     "female":127,
+     "male":113
   },
   {
      "age":"60-69",
-     "female":96,
-     "male":118
+     "female":99,
+     "male":119
   },
   {
      "age":"70-79",
-     "female":43,
-     "male":61
+     "female":46,
+     "male":62
   },
   {
      "age":"80-89",
-     "female":16,
-     "male":13
+     "female":18,
+     "male":18
   },
   {
    "age":"Unknown",
