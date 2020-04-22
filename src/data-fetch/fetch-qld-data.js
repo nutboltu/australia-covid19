@@ -6,7 +6,7 @@ const { toNumber, getTestedFormat } = require('./utils');
 const fetchQLDData = async () => {
   let response;
   try {
-    response = await axios.get("https://www.qld.gov.au/health/conditions/health-alerts/coronavirus-covid-19/current-status/current-status-and-contact-tracing-alerts");
+    response = await axios.get("https://www.qld.gov.au/health/conditions/health-alerts/coronavirus-covid-19/current-status/statistics#testbyhhs");
     if (response.status !== 200) {
       console.log("ERROR");
     }
@@ -16,18 +16,18 @@ const fetchQLDData = async () => {
   const html = cheerio.load(response.data);
   let localDistrictCases = [];
   
-  html("#table12074")
+  html("#QLD_Cases_By_HHS")
     .filter((i, el) => {
-      localDistrictCases = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+      localDistrictCases = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33]
       .reduce((acc, index) => {
         acc.push({
-          district: el.children[1].children[index].children[0].children[0].data.replace('\n ', '').trim(),
-          cases: toNumber(el.children[1].children[index].children[4].children[0].data.trim()),
+          district: el.children[7].children[index].children[1].children[0].data.replace('\n ', '').trim(),
+          cases: toNumber(el.children[7].children[index].children[3].children[0].data.trim()),
         })
         return acc;
       }, []);
-      // console.log(localDistrictCases);
   });
+  //console.log(localDistrictCases);
   write('./src/data/qld/local_district_cases.json', JSON.stringify(localDistrictCases));
 };
 

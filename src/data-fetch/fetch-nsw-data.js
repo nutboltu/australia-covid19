@@ -59,14 +59,15 @@ const fetchNSWData = async () => {
         // 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30
           localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30].reduce((acc, index) => {
             const item = {
-              district: el.children[1].children[index].children[1].children[0].data.trim(),
-              cases: toNumber(el.children[1].children[index].children[3].children[0].data),
-              test: toNumber(el.children[1].children[index].children[5].children[0].data),
-              positive_percentage: el.children[1].children[index].children[7].children[0].data.trim(),
+              district: el.children[0].children[index].children[0].children[0].data.trim(),
+              cases: toNumber(el.children[0].children[index].children[2].children[0].data),
+              test: toNumber(el.children[0].children[index].children[4].children[0].data),
+              positive_percentage: el.children[0].children[index].children[6].children[0].data.trim(),
             }
             acc.push(item);
             return acc;
            }, []);
+          // console.log(el.children[0].children[2].children[0]);
       }
   })
 
