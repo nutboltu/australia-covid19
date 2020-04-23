@@ -28,6 +28,7 @@ const fetchNSWData = async () => {
   let localDistrictCases = [];
   html(".moh-rteTable-6")
     .filter((i, el) => {
+     // console.log(i);
     // if(i != 2) {
     //   return ;
     // }
@@ -41,7 +42,6 @@ const fetchNSWData = async () => {
         acc.push(item);
         return acc;
       }, [])
-
     }
     // if ( i == 2) {
     //   sourcesOfInfection = [2, 8, 10].reduce((acc, index, i) => {
@@ -59,22 +59,21 @@ const fetchNSWData = async () => {
         // 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30
           localDistrictCases = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30].reduce((acc, index) => {
             const item = {
-              district: el.children[0].children[index].children[0].children[0].data.trim(),
-              cases: toNumber(el.children[0].children[index].children[2].children[0].data),
-              test: toNumber(el.children[0].children[index].children[4].children[0].data),
-              positive_percentage: el.children[0].children[index].children[6].children[0].data.trim(),
+              district: el.children[0].children[2].children[0].children[0].children[0].data.trim(),
+              cases: toNumber(el.children[0].children[2].children[2].children[0].children[0].data.trim()),
+              test: toNumber(el.children[0].children[2].children[4].children[0].children[0].data),
+              positive_percentage: el.children[0].children[2].children[6].children[0].children[0].data.trim(),
             }
             acc.push(item);
             return acc;
            }, []);
-          // console.log(el.children[0].children[2].children[0]);
       }
   })
 
   // console.log(sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
   // write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
-  write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
-  write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
+    write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
+    write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
 }
 
 // module.exports = fetchNSWData();
