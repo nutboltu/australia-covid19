@@ -2,21 +2,21 @@
   {
      "id":"Overseas",
      "label":"Overseas",
-     "value":"791"
+     "value":"794"
   },
   {
      "id":"Contact with others",
      "label":"Contact with others",
-     "value":"402"
+     "value":"405"
   },
   {
      "id":"Locally acquired",
      "label":"Locally acquired",
-     "value":"138"
+     "value":"135"
   },
   {
      "id":"Under investigation",
      "label":"Under investigation",
-     "value":"5"
+     "value":"3"
   }
 ]
