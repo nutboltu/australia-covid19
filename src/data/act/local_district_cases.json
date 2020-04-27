@@ -1,0 +1,43 @@
+[
+  {
+    "district":"Belconnen",
+    "cases": 14
+  },
+  {
+    "district":"East Canberra",
+    "cases": 5
+  },
+
+  {
+    "district":"Gungahlin",
+    "cases": 17
+  },
+  {
+    "district":"Molonglo",
+    "cases": 5
+  },
+  {
+    "district":"North Canberra",
+    "cases": 12
+  },
+  {
+    "district":"South Canberra",
+    "cases": 17
+  },
+  {
+    "district":"Tuggeranong",
+    "cases": 23
+  },
+  {
+    "district":"Uriarra",
+    "cases": 5
+  },
+  {
+    "district":"Weston Creek",
+    "cases": 7
+  },
+  {
+    "district":"Woden Valley",
+    "cases": 12
+  }
+]

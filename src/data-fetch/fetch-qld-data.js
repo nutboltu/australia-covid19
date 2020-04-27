@@ -15,7 +15,8 @@ const fetchQLDData = async () => {
   }
   const html = cheerio.load(response.data);
   let localDistrictCases = [];
-  
+  let sexAndAgeGroup = [];
+
   html("#QLD_Cases_By_HHS")
     .filter((i, el) => {
       localDistrictCases = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33]
@@ -27,7 +28,19 @@ const fetchQLDData = async () => {
         return acc;
       }, []);
   });
-  //console.log(localDistrictCases);
+  html('#QLD_CasesByAgeAndGender')
+  .filter((i, el) => {
+    sexAndAgeGroup = [1,3,5,7,9,11,13,15,17].reduce((acc, index) => {
+      const item = {
+        age: el.children[3].children[index].children[1].children[0].data,
+        female: toNumber(el.children[3].children[index].children[3].children[0].data),
+        male: toNumber(el.children[3].children[index].children[5].children[0].data),
+      }
+      acc.push(item);
+      return acc;
+    }, [])
+  });
+  write('./src/data/qld/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
   write('./src/data/qld/local_district_cases.json', JSON.stringify(localDistrictCases));
 };
 

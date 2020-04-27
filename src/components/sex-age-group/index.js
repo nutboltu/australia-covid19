@@ -10,50 +10,60 @@ const commonStyles = {
 const colors = {
     male: '#000b5b',
     female: '#60acee',
+    cases: '#000b5b',
 }
 
 const getColors = (bar) => colors[bar.id];
 
 export const SexAgeGroup = ({ data }) => {
     let maxValue = 0;
-    const numbers = data.reduce((acc, item) => {
-        acc.male += item.male;
-        acc.female += item.female;
-        maxValue = Math.max(Math.max(item.male, item.female), maxValue);
-        return acc;
-    }, {male: 0, female: 0});
-    const total = numbers.male + numbers.female;
-    const female_percentage = ((numbers.female * 100) / total).toFixed(2);
-    const male_percentage = ((numbers.male * 100) / total).toFixed(2);
+    let female_percentage;
+    let male_percentage;
+    let numbers;
+    const sexExists = data[0].male ;
+    if (sexExists) {
+        numbers = data.reduce((acc, item) => {
+            acc.male += item.male;
+            acc.female += item.female;
+            maxValue = Math.max(Math.max(item.male, item.female), maxValue);
+            return acc;
+        }, {male: 0, female: 0});
+        const total = numbers.male + numbers.female;
+        female_percentage = ((numbers.female * 100) / total).toFixed(2);
+        male_percentage = ((numbers.male * 100) / total).toFixed(2);
+    }
     return (
         <>
             <Divider orientation="center">
                 Age and sex grouped of confirmed cases
             </Divider>
-            <Row style={{ height: 50 }}>
-                <Col
-                    flex={female_percentage}
-                    style={{ background: colors.female, ...commonStyles }}
-                >
-                    Female {numbers.female} ({female_percentage} %)
-                </Col>
-                <Col
-                    flex={male_percentage}
-                    style={{ background: colors.male, color: 'white', ...commonStyles }}
+            {
+                 male_percentage &&
+                 <Row style={{ height: 50 }}>
+                    <Col
+                        flex={female_percentage}
+                        style={{ background: colors.female, ...commonStyles }}
                     >
-                        Male {numbers.male} ({male_percentage} %)
-                </Col>
-            </Row>
+                        Female {numbers.female} ({female_percentage} %)
+                    </Col>
+                    <Col
+                        flex={male_percentage}
+                        style={{ background: colors.male, color: 'white', ...commonStyles }}
+                        >
+                            Male {numbers.male} ({male_percentage} %)
+                    </Col>
+                </Row>
+            }
             <ResponsiveBar
                 data={data}
-                keys={[ 'female', 'male' ]}
+                keys={ sexExists ? [ 'female', 'male'] : ['cases']}
                 indexBy="age"
                 margin={{ top: 50, right: 20, bottom: 100, left: 30 }}
                 padding={0.3}
-                groupMode="grouped"
+                groupMode={ sexExists ? "grouped" : "stacked"}
                 colors={getColors}
                 borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-                maxValue={maxValue}
+                maxValue={sexExists &&  maxValue}
                 axisTop={null}
                 axisRight={null}
                 axisBottom={{
