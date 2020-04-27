@@ -13,7 +13,7 @@ const fetchNSWData = async () => {
   let response;
   let responseLD;
   try {
-    response = await axios.get("https://www.health.nsw.gov.au/Infectious/diseases/Pages/covid-19-latest.aspx#statistics");
+    response = await axios.get("https://www.health.nsw.gov.au/Infectious/covid-19/Pages/stats-nsw.aspx");
     responseLD = await axios.get("https://www.health.nsw.gov.au/Infectious/diseases/Pages/covid-19-lhd.aspx");
     if (response.status !== 200) {
       console.log("ERROR");
@@ -42,6 +42,7 @@ const fetchNSWData = async () => {
         acc.push(item);
         return acc;
       }, [])
+      // console.log(el.children[0].children[2].children[2])
     }
     // if ( i == 2) {
     //   sourcesOfInfection = [2, 8, 10].reduce((acc, index, i) => {
@@ -70,7 +71,7 @@ const fetchNSWData = async () => {
       }
   })
 
-  // console.log(sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
+  //console.log(sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
   // write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
     write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
     write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
