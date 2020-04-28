@@ -1,1 +1,1 @@
-{"NSW":{"active":725},"VIC":{"active":55},"ACT":{"active":2},"SA":{"active":14},"WA":{"active":47},"NT":{"active":5},"QLD":{"active":95},"TAS":{"active":70},"AUS":{"active":1013}}
+{"NSW":{"active":727,"icu":19,"icu_beds":874},"VIC":{"active":55,"icu":11,"icu_beds":476},"ACT":{"active":2,"icu":0,"icu_beds":44},"SA":{"active":14,"icu":2,"icu_beds":188},"WA":{"active":47,"icu":4,"icu_beds":162},"NT":{"active":5,"icu":0,"icu_beds":22},"QLD":{"active":93,"icu":6,"icu_beds":413},"TAS":{"active":72,"icu":0,"icu_beds":50},"AUS":{"active":1015,"icu":42,"icu_beds":2229}}
