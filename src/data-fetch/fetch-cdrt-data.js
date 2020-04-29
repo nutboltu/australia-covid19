@@ -51,13 +51,13 @@ const fetchCDRTData = async () => {
         CDRT[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 7) {
+    if (i == 5) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['deaths'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 8) {
+    if (i == 6) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['recovered'] = toNumber(el.children[0].children[index].children[1].children[0].data);
