@@ -39,7 +39,7 @@ const fetch24hData = async () => {
   };
   html('table')
   .filter((i, el) => {
-    if (i == 1) {
+    if (i == 2) {
        arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         const a = el.children[0].children[index].children[3].children[0];
@@ -48,7 +48,7 @@ const fetch24hData = async () => {
         last24hData[stateMap[stateName]]['confirmed'] = toNumber(value);
       });
     }
-    if (i == 2) {
+    if (i == 3) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         const a = el.children[0].children[index].children[3].children[0];
@@ -57,21 +57,6 @@ const fetch24hData = async () => {
         last24hData[stateMap[stateName]]['tested'] = toNumber(value);
       });
     }
-    // if (i == 7) {
-    //   arr.forEach(index => {
-    //     const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-    //     last24hData[stateMap[stateName]]['deaths'] = toNumber(el.children[0].children[index].children[3].children[0].children[0].data);
-    //   });
-    // }
-    // if (i == 8) {
-    //   arr.forEach(index => {
-    //     console.log(index)
-    //     const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-    //     last24hData[stateMap[stateName]]['recovered'] = el.children[0].children[index].children[3].children[0].data;
-    //   });
-    //   console.log(el.children[0].children[6].children[3].children[0].data)
-    //   console.log(el.children[0].children[6].children[0].children[0].children[0].data.trim())
-    // }
   });
   write('./src/data/aus_last_24h_cases.json', JSON.stringify(last24hData));
 

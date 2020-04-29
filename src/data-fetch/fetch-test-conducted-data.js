@@ -44,7 +44,7 @@ const fetchTestConductedData = async () => {
 
   html('table')
   .filter((i, el) => {
-    if (i == 2) {
+    if (i == 3) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
