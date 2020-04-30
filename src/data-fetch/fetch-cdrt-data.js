@@ -39,25 +39,25 @@ const fetchCDRTData = async () => {
   };
   html('table')
   .filter((i, el) => {
-    if (i == 2) {
+    if (i == 1) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 3) {
+    if (i == 2) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 6) {
+    if (i == 5) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['deaths'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 7) {
+    if (i == 6) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['recovered'] = toNumber(el.children[0].children[index].children[1].children[0].data);

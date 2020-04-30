@@ -39,7 +39,7 @@ const fetch24hData = async () => {
   };
   html('table')
   .filter((i, el) => {
-    if (i == 2) {
+    if (i == 1) {
        arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         const a = el.children[0].children[index].children[3].children[0];
@@ -48,7 +48,7 @@ const fetch24hData = async () => {
         last24hData[stateMap[stateName]]['confirmed'] = toNumber(value);
       });
     }
-    if (i == 3) {
+    if (i == 2) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         const a = el.children[0].children[index].children[3].children[0];
