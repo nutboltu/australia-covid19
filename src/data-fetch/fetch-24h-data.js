@@ -48,7 +48,7 @@ const fetch24hData = async () => {
         last24hData[stateMap[stateName]]['confirmed'] = toNumber(value);
       });
     }
-    if (i == 2) {
+    if (i == 3) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         const a = el.children[0].children[index].children[3].children[0];

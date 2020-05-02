@@ -45,7 +45,7 @@ const fetchCDRTData = async () => {
         CDRT[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 2) {
+    if (i == 3) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
@@ -57,7 +57,7 @@ const fetchCDRTData = async () => {
         CDRT[stateMap[stateName]]['deaths'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
-    if (i == 6) {
+    if (i == 4) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         CDRT[stateMap[stateName]]['recovered'] = toNumber(el.children[0].children[index].children[1].children[0].data);
