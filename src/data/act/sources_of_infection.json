@@ -2,7 +2,7 @@
   {
      "id":"Overseas",
      "label":"Overseas",
-     "value":"76.4"
+     "value":"77.4"
   },
   {
      "id":"Contact with others",
@@ -17,6 +17,6 @@
   {
      "id":"Under investigation",
      "label":"Under investigation",
-     "value":"0.9"
+     "value":"0.0"
   }
 ]

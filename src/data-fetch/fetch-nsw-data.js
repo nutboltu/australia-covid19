@@ -35,14 +35,13 @@ const fetchNSWData = async () => {
     if ( i == 2 ) {
       sexAndAgeGroup = [2,4,6,8,10,12,14,16,18,20].reduce((acc, index) => {
         const item = {
-          age: el.children[0].children[index].children[0].children[0].data,
-          female: toNumber(el.children[0].children[index].children[2].children[0].data),
-          male: toNumber(el.children[0].children[index].children[4].children[0].data),
+          age: el.children[1].children[index + 1].children[1].children[0].data,
+          female: toNumber(el.children[1].children[index + 1].children[3].children[0].data),
+          male: toNumber(el.children[1].children[index + 1].children[5].children[0].data),
         }
         acc.push(item);
         return acc;
       }, [])
-      // console.log(el.children[0].children[2].children[2])
     }
     // if ( i == 2) {
     //   sourcesOfInfection = [2, 8, 10].reduce((acc, index, i) => {
@@ -71,7 +70,7 @@ const fetchNSWData = async () => {
       }
   })
 
-  // console.log(sourcesOfInfection, sexAndAgeGroup, localDistrictCases)
+  // console.log(sexAndAgeGroup, localDistrictCases)
   // write('./src/data/nsw/sources_of_infection.json', JSON.stringify(sourcesOfInfection));
     write('./src/data/nsw/sex_age_group.json', JSON.stringify(sexAndAgeGroup));
     write('./src/data/nsw/local_district_cases.json', JSON.stringify(localDistrictCases));
