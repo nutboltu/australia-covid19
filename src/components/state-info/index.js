@@ -50,7 +50,7 @@ export const StateInfo = ({ data }) => {
       <div className="state-info-item danger">
         <div className="state-info-item-key">
           <FiPercent />
-          Positive percentage
+          Cases / Tests
         </div>
         <div className="state-info-item-value">{data.positive}</div>
       </div>

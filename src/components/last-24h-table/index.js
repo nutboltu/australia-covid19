@@ -44,7 +44,7 @@ export const Last24hTable = ({
           <tr>
             <th>Total</th>
             <th><Text type='warning'>{totalConfirmed} </Text></th>
-            <th>{totalTested}</th>
+            <th>{totalTested.toLocaleString()}</th>
           </tr>
           ) }
       />

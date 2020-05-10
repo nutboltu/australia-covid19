@@ -16,9 +16,9 @@ const columns = [
     render: (text) => <Text type='danger'>{text.toLocaleString()}</Text>,
   },
   {
-    title: <Text>ICU Beds</Text>,
-    dataIndex: 'icu_beds',
-    key: 'icu_beds',
+    title: <Text>Hospitalised</Text>,
+    dataIndex: 'hospitalised',
+    key: 'hospitalised',
     render: (text) => <span>{text.toLocaleString()}</span>,
   },
 ];

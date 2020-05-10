@@ -23,10 +23,10 @@ const columns = [
     render: (text) => <span>{text.toLocaleString()}</span>,
   },
   {
-    title: <Text type='danger'>Positive</Text>,
+    title: <Text type='danger'>Cases/ Tests</Text>,
     dataIndex: 'positive',
     key: 'positive',
-    width: '75px',
+    width: '80px',
     render: (text) => <Text type='danger'>{text}</Text>,
   },
 ];
