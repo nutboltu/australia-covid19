@@ -27,36 +27,56 @@ const fetchICUData = async () => {
   const html = cheerio.load(response.data);
   const arr = [2,4,6,8,10,12,14,16,18];
   const activeCases = {
-    NSW: {},
-    VIC: {},
-    ACT: {},
-    SA: {},
-    WA: {},
-    NT: {},
-    QLD: {},
-    TAS: {},
-    AUS: {}
+    NSW: {
+      icu_beds: 874,
+    },
+    VIC: {
+      icu_beds: 476,
+    },
+    ACT: {
+      icu_beds: 44,
+    },
+    SA: {
+      icu_beds: 188,
+    },
+    WA: {
+      icu_beds: 162,
+    },
+    NT: {
+      icu_beds: 22,
+    },
+    QLD: {
+      icu_beds: 413,
+    },
+    TAS: {
+      icu_beds: 50,
+    },
+    AUS: {
+      icu_beds: 2229,
+    }
   };
   html('.ACTIVE-CASES')
   .filter((i, el) => {
-    arr.forEach(index => {
-      const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-      activeCases[stateMap[stateName]]['active'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-    });
-  });
-  html('table')
-  .filter((i, el) => {
-    if (i == 7) {
+    if (i == 1) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        activeCases[stateMap[stateName]]['icu'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        activeCases[stateMap[stateName]]['icu_beds'] = toNumber(el.children[0].children[index].children[4].children[0].data);
+        activeCases[stateMap[stateName]]['active'] = toNumber(el.children[0].children[index].children[1].children[0].data);
       });
     }
   });
+  html('.HOSPITALISED')
+  .filter((i, el) => {
+    if (i == 1) {
+      arr.forEach(index => {
+        const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
+        activeCases[stateMap[stateName]]['hospitalised'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        activeCases[stateMap[stateName]]['icu'] = toNumber(el.children[0].children[index].children[2].children[0].data);
+      });
+    }
+  });
+  // console.log(activeCases)
   write('./src/data/aus_active_cases.json', JSON.stringify(activeCases));
-
 };
 
-// module.exports = fetchICUData();
+//module.exports = fetchICUData();
 module.exports = fetchICUData;

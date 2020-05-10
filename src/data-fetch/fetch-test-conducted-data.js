@@ -19,8 +19,7 @@ const fetchTestConductedData = async () => {
   let responseState;
   try {
     response = await axios.get("https://covidlive.com.au");
-    responseState = await axios.get('https://covidlive.com.au/state');
-    if (response.status !== 200 || responseState.status !==200) {
+    if (response.status !== 200) {
       console.log("ERROR");
     }
   } catch (err) {
@@ -28,40 +27,50 @@ const fetchTestConductedData = async () => {
     return null;
   }
   const html = cheerio.load(response.data);
-  const htmlState = cheerio.load(responseState.data);
   const arr = [2,4,6,8,10,12,14,16,18];
   const testConducted = {
-    NSW: {},
-    VIC: {},
-    ACT: {},
-    SA: {},
-    WA: {},
-    NT: {},
-    QLD: {},
-    TAS: {},
-    AUS: {}
+    NSW: {
+      population: 8118000,
+    },
+    VIC: {
+      population: 6629900,
+    },
+    ACT: {
+      population: 428100,
+    },
+    SA: {
+      population: 1756500,
+    },
+    WA: {
+      population: 2630600,
+    },
+    NT: {
+      population: 245600,
+    },
+    QLD: {
+      population: 5115500,
+    },
+    TAS: {
+      population: 535500,
+    },
+    AUS: {
+      population: 25464100,
+    }
   };
 
-  html('table')
+  html('.POSITIVE-TEST-RATE')
   .filter((i, el) => {
-    if (i == 3) {
-      arr.forEach(index => {
+    if (i == 1) {
+     arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        testConducted[stateMap[stateName]]['positive'] = el.children[0].children[index].children[4].children[0].data.trim();
-
+        testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[2].children[0].data);
+        testConducted[stateMap[stateName]]['positive'] = el.children[0].children[index].children[3].children[0].data.trim();
       });
     }
+
   });
  
-  htmlState('.CASES-PER-CAPITA')
-  .filter((i, el) => {
-    arr.forEach(index => {
-      const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-      testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-      testConducted[stateMap[stateName]]['population'] = toNumber(el.children[0].children[index].children[2].children[0].data);
-    });
-  });
   write('./src/data/aus_test_conducted.json', JSON.stringify(testConducted));
 };
 
