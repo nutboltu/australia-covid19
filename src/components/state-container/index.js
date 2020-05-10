@@ -17,7 +17,7 @@ export const StateContainer = ({
     localDistrictData,
     CDRData,
     testedData,
-    souceOfInfectionData,
+    sourceOfInfectionData,
     historicalData,
     activeCases,
 }) => {
@@ -54,10 +54,10 @@ export const StateContainer = ({
           }
           <Row gutter={16}>
             {
-              souceOfInfectionData &&
+              sourceOfInfectionData &&
                 <Col span={24}>
                   <div style={{ height: 400, margin: '0 auto' }}>
-                      <SourceOfInfection data={souceOfInfectionData} />
+                      <SourceOfInfection data={sourceOfInfectionData} />
                   </div>
                 </Col>
             }

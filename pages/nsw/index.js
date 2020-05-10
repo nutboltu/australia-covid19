@@ -1,5 +1,6 @@
 import { AppLayout } from '../../src/components/layout';
 import { StateContainer } from '../../src/components/state-container';
+import { SourceOfInfection } from '../../src/components/source-of-infection';
 
 const stateCode = 'nsw';
 const stateName = 'New South Wales';
@@ -9,7 +10,7 @@ const NSW = ({
   sexAndAgeGroupData,
   localDistrictData,
   testedData,
-  souceOfInfectionData,
+  sourceOfInfectionData,
   historicalData,
   activeCases,
 }) => {
@@ -21,7 +22,7 @@ const NSW = ({
           localDistrictData={localDistrictData}
           CDRData={CDRData}
           testedData={testedData}
-          souceOfInfectionData={souceOfInfectionData}
+          sourceOfInfectionData={sourceOfInfectionData}
           historicalData={historicalData}
           activeCases={activeCases}
         />
@@ -34,7 +35,7 @@ export async function getServerSideProps() {
   const localDistrictData = require('../../src/data/nsw/local_district_cases.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
   const alltestedData = require('../../src/data/aus_test_conducted.json');
-  const souceOfInfectionData = require('../../src/data/nsw/sources_of_infection.json');
+  const sourceOfInfectionData = require('../../src/data/aus_source_of_infections.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const allActiveCases = require('../../src/data/aus_active_cases.json');
   return {
@@ -43,7 +44,7 @@ export async function getServerSideProps() {
       sexAndAgeGroupData,
       localDistrictData,
       testedData: alltestedData.NSW,
-      souceOfInfectionData,
+      sourceOfInfectionData: sourceOfInfectionData.NSW,
       activeCases: allActiveCases.NSW,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
     },

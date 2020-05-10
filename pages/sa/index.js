@@ -8,7 +8,7 @@ const NSW = ({
   sexAndAgeGroupData,
   CDRData,
   testedData,
-  souceOfInfectionData,
+  sourceOfInfectionData,
   historicalData,
   activeCases
 }) => {
@@ -19,7 +19,7 @@ const NSW = ({
           sexAndAgeGroupData={sexAndAgeGroupData}
           CDRData={CDRData}
           testedData={testedData}
-          souceOfInfectionData={souceOfInfectionData}
+          sourceOfInfectionData={sourceOfInfectionData}
           historicalData={historicalData}
           activeCases={activeCases}
         />
@@ -30,7 +30,7 @@ const NSW = ({
 export async function getStaticProps() { 
   const sexAndAgeGroupData = require('../../src/data/sa/sex_age_group.json');
   const alltestedData = require('../../src/data/aus_test_conducted.json');
-  const souceOfInfectionData = require('../../src/data/sa/sources_of_infection.json');
+  const sourceOfInfectionData = require('../../src/data/aus_source_of_infections.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
   const allActiveCases = require('../../src/data/aus_active_cases.json');
@@ -40,7 +40,7 @@ export async function getStaticProps() {
       sexAndAgeGroupData,
       CDRData: AusCDRTData.SA,
       testedData: alltestedData.SA,
-      souceOfInfectionData,
+      sourceOfInfectionData: sourceOfInfectionData.SA,
       activeCases: allActiveCases.SA,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
     },

@@ -9,6 +9,7 @@ const TAS = ({
   historicalData,
   testedData,
   activeCases,
+  sourceOfInfectionData,
 }) => {
   return (
     <AppLayout state={stateCode}>
@@ -18,6 +19,7 @@ const TAS = ({
           testedData={testedData}
           historicalData={historicalData}
           activeCases={activeCases}
+          sourceOfInfectionData={sourceOfInfectionData}
         />
     </AppLayout>
   );
@@ -28,13 +30,14 @@ export async function getStaticProps() {
   const alltestedData = require('../../src/data/aus_test_conducted.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
   const allActiveCases = require('../../src/data/aus_active_cases.json');
-
+  const sourceOfInfectionData = require('../../src/data/aus_source_of_infections.json');
   return {
     props: {
       CDRData: AusCDRTData.TAS,
       testedData: alltestedData.TAS,
       activeCases: allActiveCases.TAS,
-      historicalData: allHistoricalData[stateCode.toUpperCase()],
+      sourceOfInfectionData: sourceOfInfectionData.TAS,
+      historicalData: allHistoricalData.TAS,
    },
   }
 }

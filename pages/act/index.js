@@ -9,7 +9,7 @@ const ACT = ({
   localDistrictData,
   testedData,
   historicalData,
-  souceOfInfectionData,
+  sourceOfInfectionData,
   activeCases,
 }) => {
   return (
@@ -19,7 +19,7 @@ const ACT = ({
           localDistrictData={localDistrictData}
           CDRData={CDRData}
           testedData={testedData}
-          souceOfInfectionData={souceOfInfectionData}
+          sourceOfInfectionData={sourceOfInfectionData}
           historicalData={historicalData}
           activeCases={activeCases}
         />
@@ -31,7 +31,7 @@ export async function getStaticProps() {
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const alltestedData = require('../../src/data/aus_test_conducted.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
-  const souceOfInfectionData = require('../../src/data/act/sources_of_infection.json');
+  const sourceOfInfectionData = require('../../src/data/aus_source_of_infections.json');
   const localDistrictData = require('../../src/data/act/local_district_cases.json');
   const allActiveCases = require('../../src/data/aus_active_cases.json');
   return {
@@ -39,7 +39,7 @@ export async function getStaticProps() {
       CDRData: AusCDRTData.ACT,
       testedData: alltestedData.ACT,
       activeCases: allActiveCases.ACT,
-      souceOfInfectionData,
+      sourceOfInfectionData: sourceOfInfectionData.ACT,
       localDistrictData,
       historicalData: allHistoricalData[stateCode.toUpperCase()],
    },

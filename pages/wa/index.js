@@ -8,9 +8,9 @@ const WA = ({
   CDRData,
   testedData,
   historicalData,
-  // localDistrictData,
   activeCases,
   sexAndAgeGroupData,
+  sourceOfInfectionData,
 }) => {
   return (
     <AppLayout state={stateCode}>
@@ -19,7 +19,7 @@ const WA = ({
           CDRData={CDRData}
           testedData={testedData}
           historicalData={historicalData}
-          // localDistrictData={localDistrictData}
+          sourceOfInfectionData={sourceOfInfectionData}
           activeCases={activeCases}
           sexAndAgeGroupData={sexAndAgeGroupData}
         />
@@ -28,21 +28,21 @@ const WA = ({
 }
 
 export async function getStaticProps() { 
-  // const localDistrictData = require('../../src/data/wa/local_district_cases.json');
   const alltestedData = require('../../src/data/aus_test_conducted.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const AusCDRTData = require('../../src/data/aus_cdrt.json');
   const allActiveCases = require('../../src/data/aus_active_cases.json');
   const sexAndAgeGroupData = require('../../src/data/wa/sex_age_group.json');
+  const sourceOfInfectionData = require('../../src/data/aus_source_of_infections.json');
 
   return {
     props: {
       sexAndAgeGroupData,
       CDRData: AusCDRTData.WA,
-      // localDistrictData,
+      sourceOfInfectionData: sourceOfInfectionData.WA,
       testedData: alltestedData.WA,
       activeCases: allActiveCases.WA,
-      historicalData: allHistoricalData[stateCode.toUpperCase()],
+      historicalData: allHistoricalData.WA,
    },
   }
 }

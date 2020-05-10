@@ -7,7 +7,7 @@ const stateName = 'Victoria';
 const VIC = ({
   CDRData,
   sexAndAgeGroupData,
-  souceOfInfectionData,
+  sourceOfInfectionData,
   testedData,
   historicalData,
   localDistrictData,
@@ -18,7 +18,7 @@ const VIC = ({
         <StateContainer
           stateName={stateName}
           sexAndAgeGroupData={sexAndAgeGroupData}
-          souceOfInfectionData={souceOfInfectionData}
+          sourceOfInfectionData={sourceOfInfectionData}
           CDRData={CDRData}
           testedData={testedData}
           historicalData={historicalData}
@@ -31,7 +31,7 @@ const VIC = ({
 
 export async function getStaticProps() { 
   const sexAndAgeGroupData = require('../../src/data/vic/sex_age_group.json');
-  const souceOfInfectionData = require('../../src/data/vic/sources_of_infection.json');
+  const sourceOfInfectionData = require('../../src/data/aus_source_of_infections.json');
   const alltestedData = require('../../src/data/aus_test_conducted.json');
   const allHistoricalData = require('../../src/data/states_historical_data.json');
   const localDistrictData = require('../../src/data/vic/local_district_cases.json');
@@ -42,11 +42,11 @@ export async function getStaticProps() {
     props: {
       CDRData: AusCDRTData.VIC,
       sexAndAgeGroupData,
-      souceOfInfectionData,
+      sourceOfInfectionData: sourceOfInfectionData.VIC,
       testedData: alltestedData.VIC,
       activeCases: allActiveCases.VIC,
       localDistrictData,
-      historicalData: allHistoricalData[stateCode.toUpperCase()],
+      historicalData: allHistoricalData.VIC,
     },
   }
 }
