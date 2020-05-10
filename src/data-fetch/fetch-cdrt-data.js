@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const { write } = require('./file-manager');
-const { toNumber, getTestedFormat, getSourceOfInfectionFormat } = require('./utils');
+const { toNumber } = require('./utils');
 
 const stateMap = {
   'New South Wales': 'NSW',

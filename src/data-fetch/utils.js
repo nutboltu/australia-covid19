@@ -31,22 +31,22 @@ const getSourceOfInfectionFormat = ({
         {
            "id":"Overseas",
            "label":"Overseas",
-           "value":toNumber(overseas)
+           "value":overseas
         },
         {
            "id":"Contact with others",
            "label":"Contact with others",
-           "value": toNumber(contacted)
+           "value": contacted
         },
         {
            "id":"Locally acquired",
            "label":"Locally acquired",
-           "value":toNumber(local)
+           "value":local
         },
         {
            "id":"Under investigation",
            "label":"Under investigation",
-           "value": toNumber(underInvestigation)
+           "value": underInvestigation
         }
       ];
 }

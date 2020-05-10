@@ -12,13 +12,6 @@ export const StateInfo = ({ data }) => {
           Information board
       </Divider>
     <Card size="small" className="state-info">
-      <div className="state-info-item info">
-        <div className="state-info-item-key">
-          <IoIosPeople />
-          Population
-        </div>
-        <div className="state-info-item-value">{data.population.toLocaleString()}</div>
-      </div>
       <div className="state-info-item success">
         <div className="state-info-item-key">
           <IoMdBeaker />
@@ -33,7 +26,7 @@ export const StateInfo = ({ data }) => {
         </div>
         <div className="state-info-item-value"><span>{data.confirmed.toLocaleString()}</span></div>
       </div>
-      <div className="state-info-item warning">
+      <div className="state-info-item danger">
         <div className="state-info-item-key">
           <FaClinicMedical />
           Active Cases
@@ -47,7 +40,14 @@ export const StateInfo = ({ data }) => {
         </div>
         <div className="state-info-item-value">{data.icu.toLocaleString()}</div>
       </div>
-      <div className="state-info-item danger">
+      <div className="state-info-item info">
+        <div className="state-info-item-key">
+          <IoIosPeople />
+          Population
+        </div>
+        <div className="state-info-item-value">{data.population.toLocaleString()}</div>
+      </div>
+      <div className="state-info-item info">
         <div className="state-info-item-key">
           <FiPercent />
           Cases / Tests

@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const { write } = require('./file-manager');
-const { toNumber, getTestedFormat, getSourceOfInfectionFormat } = require('./utils');
+const { write } = require('../src/data-fetch/file-manager');
+const { toNumber, getTestedFormat, getSourceOfInfectionFormat } = require('../src/data-fetch/utils');
 
 const fetchACTData = async () => {
   let response;
