@@ -64,12 +64,20 @@ const fetchTestConductedData = async () => {
      arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[2].children[0].data);
+        // testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[2].children[0].data);
         testConducted[stateMap[stateName]]['positive'] = el.children[0].children[index].children[3].children[0].data.trim();
       });
     }
-
   });
+  html('table')
+  .filter((i, el) => {
+    if (i == 4) {
+      arr.forEach(index => {
+        const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
+        testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+      });
+    }
+  })
  
   write('./src/data/aus_test_conducted.json', JSON.stringify(testConducted));
 };
