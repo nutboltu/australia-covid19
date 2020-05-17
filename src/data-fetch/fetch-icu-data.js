@@ -94,7 +94,7 @@ const fetchICUData = async () => {
         const contacted = toNumber(el.children[0].children[index].children[2].children[0].data);
         const local = toNumber(el.children[0].children[index].children[3].children[0].data);
         const underInvestigation = toNumber(el.children[0].children[index].children[4].children[0].data);
-        sourceOfInfections[stateName] = getSourceOfInfectionFormat({ overseas, contacted, local, underInvestigation });
+        sourceOfInfections[stateMap[stateName]] = getSourceOfInfectionFormat({ overseas, contacted, local, underInvestigation });
       });
     }
   });
