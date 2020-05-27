@@ -37,7 +37,7 @@ export const StateContainer = ({
               <StateInfo data={statesInfo} title={title} />
             </Col>
           </Row>
-          {
+          {/* {
             historicalData &&
               <Row>
                 <Col span={24}>
@@ -50,7 +50,7 @@ export const StateContainer = ({
                       />
                   </div>
                 </Col>
-            </Row>
+            </Row> */}
           }
           <Row gutter={16}>
             {

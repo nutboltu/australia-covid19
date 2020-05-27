@@ -67,7 +67,8 @@ const onClick = (code) => {
                 />
               </Col>
            </Row>
-           <Row>
+           {/** Disabled cumulative graphs. It's no longer important now */}
+           {/* <Row>
             <Col span={24}>
               <Divider orientation='center'>
                 Cumulative cases
@@ -78,7 +79,7 @@ const onClick = (code) => {
                   />
               </div>
             </Col>
-          </Row>
+          </Row> */}
           <Row>
             <Col span={24}>
               <Divider orientation='center'>

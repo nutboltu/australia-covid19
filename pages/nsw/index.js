@@ -18,7 +18,7 @@ const NSW = ({
     <AppLayout state={stateCode}>
         <StateContainer
           stateName={stateName}
-          sexAndAgeGroupData={sexAndAgeGroupData}
+          // sexAndAgeGroupData={sexAndAgeGroupData}
           localDistrictData={localDistrictData}
           CDRData={CDRData}
           testedData={testedData}
