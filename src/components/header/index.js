@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Layout  } from 'antd';
 import { StateSelect } from '../state-select';
-import { GithubOutlined } from '@ant-design/icons';
+import { CoffeeOutlined } from '@ant-design/icons';
 
 const { Header } = Layout;
 
@@ -44,10 +44,10 @@ export const AppHeader = ({ state = '', onStateChange }) => {
         <div><Link href='/'><a> <Logo /></a></Link></div>
         <div>
           <a
-            href='https://github.com/nutboltu/australia-covid19'
+            href='https://github.com/sponsors/nutboltu'
             style={{ color: '#333'}}
           >
-              <GithubOutlined />
+              <CoffeeOutlined />
           </a>
         </div>
       </div>
