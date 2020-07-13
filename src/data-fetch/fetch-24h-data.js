@@ -41,13 +41,13 @@ const fetch24hData = async () => {
     if (i == 1) {
        arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        const a = el.children[0].children[index].children[3].children[0];
+        const a = el.children[0].children[index].children[4].children[0];
         const b = a.data || a.children[0].data;
         const value = b === '-' ? '0' : b;
         last24hData[stateMap[stateName]]['confirmed'] = toNumber(value);
       });
     }
-    if (i == 4) {
+    if (i == 2) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         const a = el.children[0].children[index].children[3].children[0];

@@ -16,7 +16,6 @@ const stateMap = {
 }
 const fetchTestConductedData = async () => {
   let response;
-  let responseState;
   try {
     response = await axios.get("https://covidlive.com.au");
     if (response.status !== 200) {
@@ -61,17 +60,17 @@ const fetchTestConductedData = async () => {
   html('.POSITIVE-TEST-RATE')
   .filter((i, el) => {
     if (i == 1) {
-     arr.forEach(index => {
+      arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        // testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[2].children[0].data);
-        testConducted[stateMap[stateName]]['positive'] = el.children[0].children[index].children[3].children[0].data.trim();
+        testConducted[stateName]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateName]['positive'] = el.children[0].children[index].children[3].children[0].data.trim();
       });
     }
   });
+
   html('table')
   .filter((i, el) => {
-    if (i == 4) {
+    if (i == 2) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
         testConducted[stateMap[stateName]]['tested'] = toNumber(el.children[0].children[index].children[1].children[0].data);
