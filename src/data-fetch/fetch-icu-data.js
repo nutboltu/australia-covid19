@@ -90,11 +90,13 @@ const fetchICUData = async () => {
     if (i == 1) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
+        
         const overseas = toNumber(el.children[0].children[index].children[1].children[0].data);
         const contacted = toNumber(el.children[0].children[index].children[2].children[0].data);
         const local = toNumber(el.children[0].children[index].children[3].children[0].data);
         const underInvestigation = toNumber(el.children[0].children[index].children[4].children[0].data);
-        sourceOfInfections[stateMap[stateName]] = getSourceOfInfectionFormat({ overseas, contacted, local, underInvestigation });
+        console.log(stateName, overseas, contacted, local);
+        sourceOfInfections[stateName] = getSourceOfInfectionFormat({ overseas, contacted, local, underInvestigation });
       });
     }
   });
