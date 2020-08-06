@@ -1,1 +1,1 @@
-{"NSW":{"confirmed":12,"tested":28035},"VIC":{"confirmed":434,"tested":25000},"ACT":{"confirmed":0,"tested":892},"SA":{"confirmed":0,"tested":0},"WA":{"confirmed":0,"tested":3138},"NT":{"confirmed":0,"tested":0},"QLD":{"confirmed":0,"tested":25411},"TAS":{"confirmed":0,"tested":0}}
+{"NSW":{"confirmed":12,"tested":28035},"VIC":{"confirmed":434,"tested":24947},"ACT":{"confirmed":0,"tested":892},"SA":{"confirmed":1,"tested":6002},"WA":{"confirmed":-28,"tested":3138},"NT":{"confirmed":0,"tested":549},"QLD":{"confirmed":0,"tested":25411},"TAS":{"confirmed":0,"tested":1007}}
