@@ -8,7 +8,7 @@ const stateMap = {
   'Victoria': 'VIC',
   'South Australia': 'SA',
   'Western Australia': 'WA',
-  'Northern Territory': 'NT',
+  'NT': 'NT',
   'Tasmania': 'TAS',
   'Queensland': 'QLD',
   'ACT': 'ACT',

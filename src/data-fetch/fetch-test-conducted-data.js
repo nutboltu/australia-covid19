@@ -8,7 +8,7 @@ const stateMap = {
   'Victoria': 'VIC',
   'South Australia': 'SA',
   'Western Australia': 'WA',
-  'Northern Territory': 'NT',
+  'NT': 'NT',
   'Tasmania': 'TAS',
   'Queensland': 'QLD',
   'ACT': 'ACT',
@@ -62,8 +62,8 @@ const fetchTestConductedData = async () => {
     if (i == 1) {
       arr.forEach(index => {
         const stateName = el.children[0].children[index].children[0].children[0].children[0].data.trim();
-        testConducted[stateName]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
-        testConducted[stateName]['positive'] = el.children[0].children[index].children[3].children[0].data.trim();
+        testConducted[stateMap[stateName]]['confirmed'] = toNumber(el.children[0].children[index].children[1].children[0].data);
+        testConducted[stateMap[stateName]]['positive'] = el.children[0].children[index].children[3].children[0].data.trim();
       });
     }
   });
