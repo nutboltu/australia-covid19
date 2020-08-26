@@ -50,9 +50,9 @@ export const StateContainer = ({
                       />
                   </div>
                 </Col>
-            </Row> */}
+            </Row> */
           }
-          <Row gutter={16}>
+          {/* <Row gutter={16}>
             {
               sourceOfInfectionData &&
                 <Col span={24}>
@@ -61,7 +61,7 @@ export const StateContainer = ({
                   </div>
                 </Col>
             }
-          </Row>
+          </Row> */}
           {
             ageGroupData &&
               <Row>
